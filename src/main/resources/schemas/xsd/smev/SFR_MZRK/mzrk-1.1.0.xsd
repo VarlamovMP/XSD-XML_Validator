@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iis="urn://iis.ecp.ru/mzrk/types/1.1.0" xmlns="urn://iis.ecp.ru/mzrk/1.1.0" targetNamespace="urn://iis.ecp.ru/mzrk/1.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="urn://iis.ecp.ru/mzrk/types/1.1.0" schemaLocation="commons/mzrk-types-1.1.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="ru">
+			Приём заявления о распоряжении средствами (частью средств) материнского (семейного) капитала) (МЗРК)
+		</xs:documentation>
+	</xs:annotation>
+	<xs:element name="Request">
+		<xs:annotation>
+			<xs:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="iis:ApplicationRequestType">
+					<xs:sequence>
+						<xs:element name="FRGUTargetId">
+							<xs:annotation>
+								<xs:documentation xml:lang="ru">
+									Идентификатор цели оказания госуслуги по ФРГУ, в рамках которой идёт обращение к виду сведений:
+										390079743 - Рассмотрение заявления о распоряжении средствами (частью средств) материнского (семейного) капитала на улучшение жилищных условий
+										338958599 - Рассмотрение заявления о распоряжении средствами (частью средств) материнского (семейного) капитала на получение образования ребенком (детьми) и осуществление иных связанных с получением образования ребенком (детьми) расходов
+										338958650 - Рассмотрение заявления о распоряжении средствами (частью средств) материнского (семейного) капитала на формирование накопительной пенсии женщины
+										359661199 - Рассмотрение заявления о распоряжении средствами (частью средств) материнского (семейного) капитала на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов
+								</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="iis:string-20">
+									<xs:enumeration value="390079743"/>
+									<xs:enumeration value="338958599"/>
+									<xs:enumeration value="338958650"/>
+									<xs:enumeration value="359661199"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Documents" type="iis:AttachmentsDataType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Response" type="iis:ApplicationResponseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="ru">
+        Сообщение-ответ
+      </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

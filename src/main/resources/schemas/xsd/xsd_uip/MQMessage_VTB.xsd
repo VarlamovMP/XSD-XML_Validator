@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Private person (Private person) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mq="MQMessage_VTB" targetNamespace="MQMessage_VTB" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+	<xs:include schemaLocation="SFP.xsd"/>
+	<xs:simpleType name="ProccessId">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AnswerMessageType">
+		<xs:annotation>
+			<xs:documentation>Тип сообщения-ответа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AnswerXML" type="mq:MessageDataType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Содержимое сообщения-ответа
+							</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:element ref="mq:FileTransferDefinition" maxOccurs="unbounded"/>
+				<xs:element ref="mq:ECM_ID" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestMessageType">
+		<xs:annotation>
+			<xs:documentation>Тип сообщения-запроса</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RequestXML" type="mq:MessageDataType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Запрос к сервису</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:element ref="mq:FileTransferDefinition" maxOccurs="unbounded"/>
+				<xs:element ref="mq:ECM_ID" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageDataType">
+		<xs:annotation>
+			<xs:documentation>Тип для передачи XML данных входящего и исходящего документа СА.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="skip"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Elements-->
+	<xs:element name="AnswerMessage" type="mq:AnswerMessageType">
+		<xs:annotation>
+			<xs:documentation>Сообщение-ответ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="RequestMessage" type="mq:RequestMessageType">
+		<xs:annotation>
+			<xs:documentation>Сообщение-запрос</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ECM_ID">
+		<xs:annotation>
+			<xs:documentation>Идентификатор файла в системе СХК (GUID)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="128"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

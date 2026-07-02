@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://пф.рф/МРУВ/2024-01-01"
+           xmlns:МСК8="http://пф.рф/ВВ/МСК/2024-01-01" xmlns:УТ7="http://пф.рф/УТ/2023-04-03"
+           xmlns:МСКР8="http://пф.рф/ВВ/МСКР/2024-01-01" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#"
+           xmlns:sig="http://iis.ecp.ru/SignInfo/2023-01-10" targetNamespace="http://пф.рф/МРУВ/2024-01-01"
+           elementFormDefault="qualified" version="2.0">
+    <xs:import namespace="http://пф.рф/УТ/2023-04-03" schemaLocation="../uni_types_2023-04-03.xsd"/>
+    <xs:import namespace="http://пф.рф/ВВ/МСК/2024-01-01" schemaLocation="../mat_cap_types_2024-01-01.xsd"/>
+    <xs:import namespace="http://пф.рф/ВВ/МСКР/2024-01-01" schemaLocation="../mat_cap_order_types_2024-01-01.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
+               schemaLocation="../xmldsig_core_schema.xsd"/>
+    <xs:import namespace="http://iis.ecp.ru/SignInfo/2023-01-10"
+               schemaLocation="../SignInfo_2023-01-10.xsd"/>
+    <xs:annotation>
+        <xs:documentation>Формат Документа «Уведомление об удовлетворении заявления о распоряжении средствами (частью
+            средств) материнского (семейного) капитала»
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="ЭДСФР">
+        <xs:annotation>
+            <xs:documentation>Корневой элемент. Электронный документ «Уведомление об удовлетворении заявления о
+                распоряжении средствами (частью средств) материнского (семейного) капитала». Содержит сведения самого
+                документа и служебную информацию об электронном документе.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="МРУВ">
+                    <xs:annotation>
+                        <xs:documentation>Документ «Уведомление об удовлетворении заявления о распоряжении средствами
+                            (частью средств) материнского (семейного) капитала»
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Реквизиты" type="УТ7:ТипРеквизитыДокумента">
+                                <xs:annotation>
+                                    <xs:documentation>Дата и номер уведомления</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="ТОСФР" type="УТ7:ТипТОСФР">
+                                <xs:annotation>
+                                    <xs:documentation>Территориальный орган СФР, принявший решение</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="Заявитель">
+                                <xs:annotation>
+                                    <xs:documentation>Анкетные данные заявителя</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="УТ7:ФИО" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>Фамилия, имя, отчество заявителя</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element ref="УТ7:СНИЛС" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>Страховой номер</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="РеквизитыМЗРК" type="УТ7:ТипРеквизитыДокумента"
+                                        minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>Дата и номер регистрации заявления о распоряжении
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="РеквизитыМРРУ" type="УТ7:ТипРеквизитыДокумента"
+                                        minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>Дата и номер решения об удовлетворении заявления о распоряжении
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="ПринятоеРешение">
+                                <xs:annotation>
+                                    <xs:documentation>Сведения о принятом решении</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Распоряжение"
+                                                    type="МСКР8:ТипНаправлениеРаспоряженияМСК" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>Указываются сведения о направлении распоряжения
+                                                    средствами, виде расходов и сумме в соответствии с вынесенным
+                                                    решением по заявлению о распоряжении
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="РазмерМСК" type="УТ7:ТипДеньгиКоп"
+                                                    minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="СлужебнаяИнформация" type="МСК8:ТипСлужебнаяИнформацияМСК"
+                            minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Служебная информация об электронном документе</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="ns1:Signature" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Электронная подпись (ЭП). Электронный документ, для которого законодательством
+                            Российской Федерации предусмотрена юридически значимая подпись, должен быть подписан
+                            усиленной квалифицированной электронной подписью в соответствии со спецификацией XMLDSig
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="sig:SignInfo" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

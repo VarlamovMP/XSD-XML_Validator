@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Private person (Private person) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="CheckEPOVResult" type="CheckSignatureResultType">
+		<xs:annotation>
+			<xs:documentation>Результат проверки подписи ЭП-ОВ.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CheckEPSPResult" type="CheckSignatureResultType">
+		<xs:annotation>
+			<xs:documentation>Результат проверки подписи ЭП-СП.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CheckEPSMEVResult" type="CheckSignatureResultType">
+		<xs:annotation>
+			<xs:documentation>Результат проверки подписи ЭП-СМЭВ.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CheckAttachmentSignatureResult" type="CheckSignatureResultType">
+		<xs:annotation>
+			<xs:documentation>Результат проверки подписи вложения.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="SignatureResultEnum">
+		<xs:annotation>
+			<xs:documentation>Тип, используемы для передачи результата проверки подписи.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Valid">
+				<xs:annotation>
+					<xs:documentation>ЭЦП действительна.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Unvalid">
+				<xs:annotation>
+					<xs:documentation>ЭЦП недействительна.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation>ЭЦП не проверена (не удалось проверить подпись);</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="None">
+				<xs:annotation>
+					<xs:documentation>ЭЦП отсутсвует.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NotUse">
+				<xs:annotation>
+					<xs:documentation>ЭЦП не используется.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NotTested">
+				<xs:annotation>
+					<xs:documentation>ЭЦП не проверялась.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CheckSignatureResultType">
+		<xs:annotation>
+			<xs:documentation>Тип, используемый для передачи результата проверки подписи.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Если при проверки подписи возникла ошибка, то в данном атрибуте приводиться описание ошибки.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Result" type="SignatureResultEnum" use="required">
+			<xs:annotation>
+				<xs:documentation>Результат проверки подписи.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="HEXCode" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>HEX отпечаток сертификата подписанта.
+Атрибут формируется, если выполнялась идентификация подписанта.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

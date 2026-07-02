@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iis="urn://iis.sfr.ru/mskd/types/1.1.0"
+	xmlns="urn://iis.sfr.ru/mskd/1.1.0" targetNamespace="urn://iis.sfr.ru/mskd/1.1.0"
+	elementFormDefault="qualified">
+	<xs:import namespace="urn://iis.sfr.ru/mskd/types/1.1.0"
+		schemaLocation="commons/mskd-types-1.1.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="ru">
+      Запрос сведений из кредитного договора (договора займа) (МСКД)
+    </xs:documentation>
+	</xs:annotation>
+	<xs:element name="Request">
+		<xs:annotation>
+			<xs:documentation xml:lang="ru">Сообщение-запрос</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BIK_INN">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">БИК для банка или ИНН для другой кредитной организации</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="\d{9}"/>
+							<xs:pattern value="([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{8}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="RequestId" type="iis:guid">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Идентификатор запроса </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AgreementDate" type="xs:date">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Дата отправления</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AgreementNumber" type="iis:string-50">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Номер договора</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AttachmentsData" type="iis:AttachmentsDataType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Блок описания вложений</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Response">
+		<xs:annotation>
+			<xs:documentation xml:lang="ru">Сообщение-ответ</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RequestId" type="iis:guid">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Идентификатор запроса </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ResponseDate" type="xs:date">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Дата ответа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProcessingStatusCode">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">Код статуса обработки:
+200 - Договор во вложении;
+204 - Договор не найден;
+400 - Ошибки в запросе: в запросе нет вложения, документ во вложении не соответствует схеме и другие ошибки в запросе;
+500 - Внутренние ошибки сервиса банка/кредитной организации.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+							<xs:enumeration value="200"/>
+							<xs:enumeration value="204"/>
+							<xs:enumeration value="400"/>
+							<xs:enumeration value="500"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ProcessingStatusComment" type="iis:string-4000">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">
+            Комментарий к статусу
+          </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element maxOccurs="1" minOccurs="0" name="AttachmentData"
+					type="iis:AttachmentDataType">
+					<xs:annotation>
+						<xs:documentation xml:lang="ru">
+            Данные о вложении
+          </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:annotation>
+		<xsd:documentation>Версия схемы 1.0 от 04.03.2021</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="FileTransferDefinition" type="TransferDefinition_Type">
+		<xsd:annotation>
+			<xsd:documentation>Параметры файловой транзакции</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>Комплексные типы данных</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="TransferDefinition_Type">
+		<xsd:annotation>
+			<xsd:documentation>Информация о файле</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="UUID" type="UUID">
+				<xsd:annotation>
+					<xsd:documentation>Уникальный идентификатор транзакции. Генерируется на стороне инициатора процесса.
+                        Заполняется на стороне системы отправителя сообщения
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FileInfo" type="FileInfo_Type" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Файлы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FileInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Файл</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Name">
+				<xsd:annotation>
+					<xsd:documentation>Уникальное имя файла на ресурсе. Генерируется на стороне системы Отправителя файла.
+                        Заполняется на стороне системы Отправителя сообщения
+                    </xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="C">
+						<xsd:maxLength value="256"/>
+						<xsd:minLength value="1"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="BusinessName" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Бизнес название файла. Заполняется на стороне системы Отправителя файла
+                    </xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="C">
+						<xsd:maxLength value="256"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Size" type="Long" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Размер файла</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CheckSum" type="Long" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Контрольная сумма файла в десятеричной системе исчисления. Считается алгоритмом
+                        crc32 на стороне системы Отправителя файла. Заполняется на стороне системы Отправителя сообщения
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:annotation>
+		<xsd:documentation>Простые типы данных</xsd:documentation>
+	</xsd:annotation>
+	<xsd:simpleType name="C">
+		<xsd:annotation>
+			<xsd:documentation>Строковый тип с поддержкой русского языка в кодировке UTF-8</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Long">
+		<xsd:annotation>
+			<xsd:documentation>Длинное число</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:long"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="UUID">
+		<xsd:annotation>
+			<xsd:documentation>Уникальный идентификатор</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

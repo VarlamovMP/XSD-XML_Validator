@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://пф.рф/ВВ/МСК/2024-01-01"
+	xmlns:УТ7="http://пф.рф/УТ/2023-04-03" xmlns:АФ7="http://пф.рф/АФ/2023-04-03"
+	targetNamespace="http://пф.рф/ВВ/МСК/2024-01-01" elementFormDefault="qualified" version="2.0">
+	<xs:import namespace="http://пф.рф/УТ/2023-04-03" schemaLocation="uni_types_2023-04-03.xsd"/>
+	<xs:import namespace="http://пф.рф/АФ/2023-04-03" schemaLocation="format_album_types_2023-04-03.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Типы данных для документов группы МСК</xs:documentation>
+		<xs:documentation>Рекомендуемый префикс для пространства имен http://пф.рф/ВВ/МСК/2024-01-01 - МСК8</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ТипСлужебнаяИнформацияМСК">
+		<xs:annotation>
+			<xs:documentation>Тип, использующийся для представления служебной информации для группы документов МСК</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="АФ7:ТипСлужебнаяИнформация">
+				<xs:sequence>
+					<xs:choice>
+						<xs:annotation>
+							<xs:documentation>Указываются сведения об организации-составителе пачке</xs:documentation>
+						</xs:annotation>
+						<xs:element name="Составитель">
+							<xs:annotation>
+								<xs:documentation>Сведения об организации-составителе пачки, в случае, если это не ТО СФР</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="УТ7:ТипОрганизация">
+										<xs:sequence>
+											<xs:element ref="УТ7:БИК" minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>Банковский идентификационный код (БИК)</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="СоставительСФР" type="УТ7:ТипСведенияТОСФР">
+							<xs:annotation>
+								<xs:documentation>Сведения об организации-составителе пачки, в случае, если это ТО СФР</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+					<xs:element name="ТипФормы">
+						<xs:annotation>
+							<xs:documentation>Тип формы: 1 - исходная, 2 - корректирующая, 3 - отменяющая</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:positiveInteger">
+								<xs:enumeration value="1"/>
+								<xs:enumeration value="2"/>
+								<xs:enumeration value="3"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ТипСлужебнаяИнформацияМСК-ЭП">
+		<xs:annotation>
+			<xs:documentation>Тип, использующийся для представления служебной информации для группы документов МСК с возможностью указания реквизитов электронной подписи</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ТипСлужебнаяИнформацияМСК">
+				<xs:sequence>
+					<xs:element ref="АФ7:РеквизитыЭП" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о реквизитах электронной подписи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ТипСлужебнаяИнформацияЗМСК">
+		<xs:annotation>
+			<xs:documentation>Тип, использующийся для представления служебной информации для заявлений группы документов МСК</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ТипСлужебнаяИнформацияМСК">
+				<xs:sequence>
+					<xs:element name="ДатаПодачи" type="xs:date">
+						<xs:annotation>
+							<xs:documentation>Дата подачи заявления (дата обращения)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ТипОбращения" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Тип обращения. Возможные значения:
+								1 - бумажное обращение,
+								2 - электронное обращение</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:enumeration value="1"/>
+								<xs:enumeration value="2"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Реквизиты" type="УТ7:ТипРеквизитыДокумента" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата и номер регистрации заявления на сертификат</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ТипСлужебнаяИнформацияЗМСК-ЭП">
+		<xs:annotation>
+			<xs:documentation>Тип, использующийся для представления служебной информации для заявлений группы документов МСК с возможностью указания реквизитов электронной подписи</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ТипСлужебнаяИнформацияЗМСК">
+				<xs:sequence>
+					<xs:element ref="АФ7:РеквизитыЭП" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о реквизитах электронной подписи</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="СтатусПоМСК" type="ТипСтатусПоМСК">
+		<xs:annotation>
+			<xs:documentation>Статус заявителя по МСК</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ТипСтатусПоМСК">
+		<xs:annotation>
+			<xs:documentation>Статус по МСК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Код">
+				<xs:annotation>
+					<xs:documentation>Код статуса МСК</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="УТ7:Наименование">
+				<xs:annotation>
+					<xs:documentation>Наименование статуса МСК</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипСертифицируемыйРебенок">
+		<xs:annotation>
+			<xs:documentation>Тип отражающий основные сведения о сертифицируемом ребенке (ребенке, в связи с рождением/усыновлением которого возникло право на ДМГП)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ТипРодства" type="ТипТипРодства">
+				<xs:annotation>
+					<xs:documentation>Тип родства лица, имеющего право на ДМГП, с сертифицируемым ребенком. 1 - рождение, 2 - усыновление</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ОчередностьРождения" type="xs:positiveInteger">
+				<xs:annotation>
+					<xs:documentation>Очередность рождения сертифицируемого ребенка, указывается одно из значений очередности рождения блока "Сведения о детях"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ФИО" type="УТ7:ТипФИО">
+				<xs:annotation>
+					<xs:documentation>Фамилия, имя, отчество ребенка, в связи с рождением (усыновлением) которого возникло право на дополнительные меры государственной поддержки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="УТ7:СНИЛС">
+				<xs:annotation>
+					<xs:documentation>СНИЛС ребенка</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ДатаВозникновенияПраваНаДМГП" type="ТипДатаВозникновенияПраваНаДМГП">
+				<xs:annotation>
+					<xs:documentation>Дата рождения (усыновления) ребенка, в связи с рождением (усыновлением) которого возникло право на дополнительные меры государственной поддержки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипДатаВозникновенияПраваНаДМГП">
+		<xs:annotation>
+			<xs:documentation>Дата рождения (усыновления) ребенка, в связи с рождением (усыновлением) которого возникло право на дополнительные меры государственной поддержки</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Дата рождения (усыновления) ребенка, в связи с рождением (усыновлением) которого возникло право на дополнительные меры государственной поддержки</xs:documentation>
+				</xs:annotation>
+				<xs:group ref="УТ7:ГрДатаРождения">
+					<xs:annotation>
+						<xs:documentation>Дата рождения ребенка, в связи с рождением которого возникло право на дополнительные меры государственной поддержки</xs:documentation>
+					</xs:annotation>
+				</xs:group>
+				<xs:element name="ДатаУсыновления" type="xs:date">
+					<xs:annotation>
+						<xs:documentation>Дата усыновления ребенка, в связи с усыновлением которого возникло право на дополнительные меры государственной поддержки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипОснованияОтказа">
+		<xs:annotation>
+			<xs:documentation>Тип для представления перечня оснований для отказа в удовлетворении различного рода заявлений.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Основание" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Основание отказа в выдаче сертификата: пункт статьи ФЗ и (необязательно) текстовое описание</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ПунктНормативногоДокумента"
+							type="УТ7:ТипПунктНормативногоДокумента" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Пункт статьи нормативного документа, на основании которого выносится решение об отказе</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ПричинаОтказа" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Текстовое описание причины отказа (дополнительное пояснение ТО СФР)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="УточняющаяПричинаОтказа" type="УТ7:ТипНепустаяСтрока"
+							minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Текстовое описание причины отказа (расширенное пояснение ТО СФР)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипСведенияОСертификатеМСК">
+		<xs:annotation>
+			<xs:documentation>Тип, отражающий сведения о всех доступных реквизитах сертификата МСК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ГрКраткиеСведенияСертификатаМСК">
+				<xs:annotation>
+					<xs:documentation>Серия, номер, дата выдачи сертификата</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+			<xs:element name="КемВыдан" type="УТ7:ТипТОСФР">
+				<xs:annotation>
+					<xs:documentation>Наименование и код территориального органа Фонда пенсионного и социального страхования Российской Федерации, выдавшего сертификат</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Дубликат" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Является ли указанный сертификат дубликатом или первично выданным сертификатом. Отсутствие элемента должно приравниваться к значению "не дубликат", т.е. первично выданный сертификат.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:group name="ГрСерияНомерСертификатаМСК">
+		<xs:annotation>
+			<xs:documentation>Группа элементов, представляющая сведения только о серии и номере сертификата МСК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Серия">
+				<xs:annotation>
+					<xs:documentation>Серия сертификата (либо МК-X, где X - число записанное арабскими цифрами, либо МК-Y, где Y - число записанное римскими цифрами) или серия электронного сертификата МК-Э-ххх-хххх (где х-цифры)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:normalizedString">
+						<xs:minLength value="1"/>
+						<xs:pattern
+							value="(МК-){1}((Э-\d{3}-\d{4})|(\d+)|(M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})((IX|IV|V)?I{0,3}))){1}"
+						/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Номер">
+				<xs:annotation>
+					<xs:documentation>Номер сертификата (от 1 до 7 цифр)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:normalizedString">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="7"/>
+						<xs:pattern value="\d{1,7}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ГрКраткиеСведенияСертификатаМСК">
+		<xs:annotation>
+			<xs:documentation>Группа элементов, представляющая сведения только о серии,номере и дате выдачи сертификата МСК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ГрСерияНомерСертификатаМСК">
+				<xs:annotation>
+					<xs:documentation>Серия и номер сертификата</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+			<xs:element name="ДатаВыдачи" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата выдачи сертификата</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ТипРеквизитыСертификатаМСК">
+		<xs:annotation>
+			<xs:documentation>Тип, отражающий сведения только о серии и номере сертификата МСК, а так же признаке дубликата</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ГрСерияНомерСертификатаМСК">
+				<xs:annotation>
+					<xs:documentation>Серия и номер сертификата</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+			<xs:element name="Дубликат" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Является ли указанный сертификат дубликатом или первично выданным сертификатом. Отсутствие элемента должно приравниваться к значению "не дубликат", т.е. первично выданный сертификат.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ТипТипРодства">
+		<xs:annotation>
+			<xs:documentation>Тип родства ребенка. Возможные значения:
+				1 - рождение
+				2 - усыновление</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedByte">
+			<xs:totalDigits value="1"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ТипРебенок">
+		<xs:annotation>
+			<xs:documentation>Тип, отражающий сведения о ребенке</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ОчередностьРождения" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Очередность рождения ребенка</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="АнкетныеДанные">
+				<xs:annotation>
+					<xs:documentation>Анкетные данные ребенка</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="УТ7:ФИО">
+							<xs:annotation>
+								<xs:documentation>Фамилия, имя, отчество ребенка</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:Пол">
+							<xs:annotation>
+								<xs:documentation>Пол ребенка</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:group ref="УТ7:ГрДатаРождения">
+							<xs:annotation>
+								<xs:documentation>Дата рождения ребенка</xs:documentation>
+							</xs:annotation>
+						</xs:group>
+						<xs:element ref="УТ7:МестоРождения">
+							<xs:annotation>
+								<xs:documentation>Место рождения</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:Гражданство">
+							<xs:annotation>
+								<xs:documentation>Гражданство ребенка</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="УдостоверяющийДокумент">
+							<xs:annotation>
+								<xs:documentation>Данные документа, удостоверяющего личность</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Код">
+										<xs:annotation>
+											<xs:documentation>Код типа документа, удостоверяющего личность ребенка: 
+												6	Свидетельство о рождении;
+												692	Свидетельство о рождении, выданное уполномоченным органом иностранного государства.
+											</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:integer">
+												<xs:enumeration value="6"/>
+												<xs:enumeration value="692"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:group ref="УТ7:ГрСведенияДокумента">
+										<xs:annotation>
+											<xs:documentation>Сведения о документе, удостоверяющем личность</xs:documentation>
+										</xs:annotation>
+									</xs:group>
+									<xs:element ref="УТ7:КемВыдан">
+										<xs:annotation>
+											<xs:documentation>Кем выдан документ</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element ref="УТ7:СрокДействия" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Срок действия документа, удостоверяющего личность</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="КодПодразделения" type="УТ7:ТипНепустаяСтрока"
+										minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Код подразделения, выдавшего документ, удостоверяющего личность</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="УТ7:СНИЛС">
+							<xs:annotation>
+								<xs:documentation>СНИЛС ребенка</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Акт" type="УТ7:ТипАктГС" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>№ и дата записи акта о рождении (из свидетельства о рождении)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="АктОбУсыновлении" type="УТ7:ТипАктГС" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>№ и дата акта об усыновлении</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ТипПричинаСнятияСРассмотрения">
+		<xs:annotation>
+			<xs:documentation>Тип для представления причины снятия с рассмотрения. Возможные значения:
+				1 - принятие решения о выдаче государственного сертификата на материнский (семейный) капитал на основании сведений о рождении ребенка, поступивших из федеральной государственной информационной системы «Единый государственный реестр записей актов гражданского состояния»;
+				2 - представление заявителем недостоверных сведений</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

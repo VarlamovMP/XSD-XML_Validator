@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:pkg="http://roskazna.ru/gisgmp/xsd/Package/2.0.1" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:smev="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/1.1" xmlns:basic="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/basic/1.1" targetNamespace="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<s:include schemaLocation="smev-message-exchange-types-1.1.xsd"/>
+	<s:import namespace="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/basic/1.1" schemaLocation="smev-message-exchange-basic-1.1.xsd"/>
+	<s:element name="RequestStatus">
+		<s:annotation>
+			<s:documentation>Статус обработки запроса.
+
+Элемент из протокола взаимодействия с ЕЭС СМЭВ3, в соответствии с МР 3.х</s:documentation>
+		</s:annotation>
+		<s:complexType>
+			<s:sequence>
+				<s:element name="StatusCode" type="s:int">
+					<s:annotation>
+						<s:documentation>Код бизнес статуса запроса.</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="StatusParameter" minOccurs="0" maxOccurs="unbounded">
+					<s:complexType>
+						<s:sequence>
+							<s:element name="Key" type="s:string" minOccurs="1"/>
+							<s:element name="Value" type="s:string" minOccurs="1"/>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+				<s:element name="StatusDescription" type="basic:string-4000">
+					<s:annotation>
+						<s:documentation>Бизнес статус запроса, в человекочитаемом виде.</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+	<s:element name="RequestRejected">
+		<s:annotation>
+			<s:documentation>Причина отклонения запроса.
+
+Элемент из протокола взаимодействия с ЕЭС СМЭВ3, в соответствии с МР 3.х</s:documentation>
+		</s:annotation>
+		<s:complexType>
+			<s:sequence>
+				<s:element name="RejectionReasonCode" type="smev:RejectCode">
+					<s:annotation>
+						<s:documentation>Код причины отклонения запроса.</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="RejectionReasonDescription" type="basic:string-4000">
+					<s:annotation>
+						<s:documentation>Причина отклонения запроса, в человекочитаемом виде.</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+</s:schema>

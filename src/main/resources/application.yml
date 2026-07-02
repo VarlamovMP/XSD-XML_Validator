@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+xml-validator:
+  schemas-directory: classpath:schemas
+  max-xml-size-bytes: 10485760
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

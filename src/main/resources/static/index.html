@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSD XML Validator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="container">
+    <header>
+        <h1>XSD XML Validator</h1>
+        <p class="subtitle">Проверка XML-документа против XSD-схемы</p>
+    </header>
+
+    <section class="panel">
+        <div class="schema-row">
+            <div class="schema-toolbar schema-half">
+                <div class="schema-select-wrap">
+                    <label for="schemaSelect">Схема (XSD)</label>
+                    <select id="schemaSelect">
+                        <option value="">Загрузка схем...</option>
+                    </select>
+                </div>
+                <div class="schema-actions">
+                    <input type="file" id="xsdFile" accept=".xsd,application/xml,text/xml" multiple hidden>
+                    <button type="button" id="addSchemaBtn" class="secondary">Добавить XSD</button>
+                </div>
+            </div>
+            <div class="xml-file-toolbar schema-half">
+                <div class="xml-file-wrap">
+                    <span class="xml-file-label">XML-файл</span>
+                    <p id="xmlFileName" class="xml-file-note is-placeholder">Документ для проверки</p>
+                </div>
+                <div class="schema-actions">
+                    <input type="file" id="xmlFile" accept=".xml,text/xml,application/xml" hidden>
+                    <button type="button" id="loadFileBtn" class="secondary">Загрузить файл</button>
+                </div>
+            </div>
+        </div>
+        <p class="hint">Схемы сгруппированы по пути: <strong>docs</strong> — документы для проверки XML; <strong>types</strong> — вспомогательные XSD. Свою XSD можно добавить кнопкой выше — перезапуск не нужен. Если в XSD есть <code>import</code>/<code>include</code>, выберите <strong>все связанные файлы</strong> (Ctrl+клик).</p>
+    </section>
+
+    <section class="panel">
+        <div class="toolbar">
+            <label for="xmlInput">XML-документ</label>
+            <div class="toolbar-actions">
+                <button type="button" id="loadSampleBtn" class="secondary">Валид</button>
+                <button type="button" id="clearXmlBtn" class="secondary">Очистить</button>
+                <button type="button" id="formatXmlBtn" class="secondary">Форматировать</button>
+                <button type="button" id="validateBtn">Проверить</button>
+                <button type="button" id="goToResultBtn" class="result-nav secondary" disabled title="К результату проверки">К результату</button>
+            </div>
+        </div>
+        <p id="statusText" class="status-text toolbar-status"></p>
+        <div class="xml-editor" id="xmlEditor">
+            <div class="line-numbers-gutter">
+                <div id="lineNumbers" class="line-numbers" aria-hidden="true"></div>
+            </div>
+            <div class="xml-input-area">
+                <div id="xmlHighlights" class="xml-highlights"></div>
+                <div id="xmlSyntax" class="xml-syntax" aria-hidden="true"></div>
+                <textarea id="xmlInput" class="xml-input" spellcheck="false" placeholder="Вставьте XML..."></textarea>
+            </div>
+        </div>
+    </section>
+
+    <section id="resultPanel" class="panel result hidden">
+        <div id="resultBanner" class="result-banner"></div>
+        <div id="errorsBlock" class="hidden">
+            <p class="errors-hint">Кликните по строке ошибки — в XML выше подсветится строка с проблемой.</p>
+            <table class="errors-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Где</th>
+                    <th>Фрагмент XML</th>
+                    <th>Суть ошибки</th>
+                    <th>Технически</th>
+                </tr>
+                </thead>
+                <tbody id="errorsBody"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

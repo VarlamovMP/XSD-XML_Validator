@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Private person (Private person) -->
+<xs:schema xmlns:x="RootExt_Ticket_VTB" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mq="MQMessage_VTB" targetNamespace="RootExt_Ticket_VTB">
+	<xs:complexType name="TicketType">
+		<xs:sequence>
+			<xs:element name="ErrorCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Код обработки:
+0 - успешно
+не 0 - ошибка</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErrorDescription" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Описание ошибки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErrorData" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Данные ошибки (для системного анализа)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RSMEVDocID">
+				<xs:annotation>
+					<xs:documentation>Идентификатор обрабатываемого сообщения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор электронного сервиса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SystemID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор электронного сервиса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RequestType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор типа запроса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Ticket" type="x:TicketType"/>
+	<xs:complexType name="MessageDataType">
+		<xs:annotation>
+			<xs:documentation>Тип для передачи XML данных входящего и исходящего документа СА.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##other"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

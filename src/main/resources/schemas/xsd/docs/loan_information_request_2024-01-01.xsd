@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://пф.рф/ВВ/МСК/МСКД/2024-01-01" xmlns:АФ7="http://пф.рф/АФ/2023-04-03" xmlns:УТ7="http://пф.рф/УТ/2023-04-03" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#" xmlns:sig="http://iis.ecp.ru/SignInfo/2023-01-10" targetNamespace="http://пф.рф/ВВ/МСК/МСКД/2024-01-01" elementFormDefault="qualified" version="2.0">
+	<xs:import namespace="http://пф.рф/УТ/2023-04-03" schemaLocation="../uni_types_2023-04-03.xsd"/>
+	<xs:import namespace="http://пф.рф/АФ/2023-04-03" schemaLocation="../format_album_types_2023-04-03.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
+	<xs:import namespace="http://iis.ecp.ru/SignInfo/2023-01-10" schemaLocation="../SignInfo_2023-01-10.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Формат Документа «Запрос сведений из кредитного договора (договора займа)»</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ЭДСФР">
+		<xs:annotation>
+			<xs:documentation>Корневой элемент. Электронный документ «Запрос сведений из кредитного договора (договора займа)». Содержит сведения самого документа и служебную информацию об электронном документе.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="МСКД">
+					<xs:annotation>
+						<xs:documentation>Документ «Запрос сведений из кредитного договора (договора займа)»</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ТОСФР" type="УТ7:ТипТОСФР">
+								<xs:annotation>
+									<xs:documentation>Наименование территориального органа Фонда пенсионного и социального страхования Российской Федерации, направившего запрос</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Реквизиты" type="УТ7:ТипРеквизитыДокумента">
+								<xs:annotation>
+									<xs:documentation>Блок сведений о реквизитах запроса сведений из кредитного договора (договора займа)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ВладелецСертификата">
+								<xs:annotation>
+									<xs:documentation>Блок сведений о владельце сертификата на материнский (семейный) капитал</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="УТ7:ФИО">
+											<xs:annotation>
+												<xs:documentation>Фамилия, имя, отчество</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="УТ7:СНИЛС">
+											<xs:annotation>
+												<xs:documentation>Страховой номер индивидуального лицевого счета</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Документ" type="УТ7:ТипУдостоверяющийДокумент">
+											<xs:annotation>
+												<xs:documentation>Сведения о документе удостоверяющем личность</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Супруг" type="УТ7:ТипФИО" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Фамилия, имя, отчество супруга(и) владельца сертификата. Заполняется, если договор заключен не владельцем сертификата</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Договор">
+								<xs:annotation>
+									<xs:documentation>Блок сведений о договоре</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Наименование">
+											<xs:annotation>
+												<xs:documentation>Наименование договора. Возможные значения:
+													1 – кредитный договор;
+													2 – договор займа
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:enumeration value="1"/>
+													<xs:enumeration value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Реквизиты">
+											<xs:annotation>
+												<xs:documentation>Блок сведений о реквизитах договора</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Дата" type="xs:date">
+														<xs:annotation>
+															<xs:documentation>Дата документа «ОТ»</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Номер" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Номер документа</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Организация">
+								<xs:annotation>
+									<xs:documentation>Блок сведений о реквизитах организации</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Наименование" type="УТ7:ТипНепустаяСтрока">
+											<xs:annotation>
+												<xs:documentation>Наименование банка или организации в которые направлен запрос</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:choice>
+											<xs:element name="БИК" type="УТ7:ТипБИК">
+												<xs:annotation>
+													<xs:documentation>Банковский идентификационный код (БИК)</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ИНН" type="УТ7:ТипИНН">
+												<xs:annotation>
+													<xs:documentation>ИНН организации</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:choice>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ПредметДоговора" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Блок сведений о предмете договора</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ЦельИспользования" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Цель использования кредита (займа). Возможные значения:
+													1 – кредит на приобретение жилья;
+													2 – кредит на строительство жилья;
+													3 – займ на строительство жилья;
+													4 – займ на приобретение жилья;
+													5 – погашение ранее предоставленного кредита на строительство жилья;
+													6 – погашение ранее предоставленного кредита на приобретение жилья
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:enumeration value="1"/>
+													<xs:enumeration value="2"/>
+													<xs:enumeration value="3"/>
+													<xs:enumeration value="4"/>
+													<xs:enumeration value="5"/>
+													<xs:enumeration value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ЦельПредоставления" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Цель предоставления кредита (займа). Возможные значения:
+													1 – уплата первоначального взноса при получении кредита на приобретение жилья;
+													2 - уплата первоначального взноса при получении кредита на строительство жилья;
+													3 - уплата первоначального взноса при получении займа на приобретение жилья;
+													4 - уплата первоначального взноса при получении займа на строительство жилья;
+													5 - погашение основного долга и уплата процентов по кредиту на приобретение жилья;
+													6 - погашение основного долга и уплата процентов по займу на приобретение жилья;
+													7 - погашение основного долга и уплата процентов по кредиту на строительство жилья;
+													8 - погашение основного долга и уплата процентов по займу на строительство жилья
+												</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:enumeration value="1"/>
+													<xs:enumeration value="2"/>
+													<xs:enumeration value="3"/>
+													<xs:enumeration value="4"/>
+													<xs:enumeration value="5"/>
+													<xs:enumeration value="6"/>
+													<xs:enumeration value="7"/>
+													<xs:enumeration value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ДокументОснование" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Блок сведений о документе, являющемся основанием для приобретения (строительства) объекта</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Наименование" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Наименование документа</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Реквизиты" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Блок сведений о реквизитах документа</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Дата" type="xs:date">
+																	<xs:annotation>
+																		<xs:documentation>Дата документа «ОТ»</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="Номер" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Номер документа</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="СлужебнаяИнформация" type="АФ7:ТипСлужебнаяИнформация" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Служебная информация об электронном документе</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ns1:Signature" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Электронная подпись (ЭП). Электронный документ, для которого законодательством Российской Федерации предусмотрена юридически значимая подпись, должен быть подписан усиленной квалифицированной электронной подписью в соответствии со спецификацией XMLDSig</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sig:SignInfo" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

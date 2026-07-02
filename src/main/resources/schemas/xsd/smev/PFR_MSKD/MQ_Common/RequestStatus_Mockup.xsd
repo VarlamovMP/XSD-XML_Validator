@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:sm="http://www.bssys.com/products/bss-egg/SMEV3_Mockup"
+          xmlns:jxb="http://java.sun.com/xml/ns/jaxb" targetNamespace="http://www.bssys.com/products/bss-egg/SMEV3_Mockup"
+          elementFormDefault="qualified" attributeFormDefault="unqualified" jxb:version="2.0">
+    <s:element name="AsyncProcessingStatus">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="OriginalMessageId" type="sm:UUID"/>
+                <s:element name="StatusCategory" type="sm:InteractionStatusType">
+                    <s:annotation>
+                        <s:documentation>Категория статуса.</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element name="StatusDetails" type="sm:string-500" minOccurs="0">
+                    <s:annotation>
+                        <s:documentation>Описание процессинга в человекочитаемом виде.</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element ref="sm:RoutingStatus" minOccurs="0">
+                    <s:annotation>
+                        <s:documentation>Статус маршрутизации сообщения</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element name="SmevFault" type="sm:SmevFault" minOccurs="0"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="RequestRejected">
+        <s:annotation>
+            <s:documentation>Причина отклонения запроса.
+                Элемент из протокола взаимодействия с ЕЭС СМЭВ3, в соответствии с МР 3.х
+            </s:documentation>
+        </s:annotation>
+        <s:complexType>
+            <s:sequence>
+                <s:element name="RejectionReasonCode" type="sm:RejectCode">
+                    <s:annotation>
+                        <s:documentation>Код причины отклонения запроса.</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element name="RejectionReasonDescription" type="sm:string-4000">
+                    <s:annotation>
+                        <s:documentation>Причина отклонения запроса, в человекочитаемом виде.</s:documentation>
+                    </s:annotation>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="RequestStatus">
+        <s:annotation>
+            <s:documentation>Статус обработки запроса.
+                Элемент из протокола взаимодействия с ЕЭС СМЭВ3, в соответствии с МР 3.х
+            </s:documentation>
+        </s:annotation>
+        <s:complexType>
+            <s:sequence>
+                <s:element name="StatusCode" type="s:int">
+                    <s:annotation>
+                        <s:documentation>Код бизнес статуса запроса.</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element name="StatusParameter" minOccurs="0" maxOccurs="unbounded">
+                    <s:complexType>
+                        <s:sequence>
+                            <s:element name="Key" type="s:string" minOccurs="1"/>
+                            <s:element name="Value" type="s:string" minOccurs="1"/>
+                        </s:sequence>
+                    </s:complexType>
+                </s:element>
+                <s:element name="StatusDescription" type="sm:string-4000">
+                    <s:annotation>
+                        <s:documentation>Бизнес статус запроса, в человекочитаемом виде.</s:documentation>
+                    </s:annotation>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:simpleType name="string-50">
+        <s:restriction base="s:string">
+            <s:maxLength value="50"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:simpleType name="string-100">
+        <s:restriction base="s:string">
+            <s:maxLength value="100"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:simpleType name="string-500">
+        <s:restriction base="s:string">
+            <s:maxLength value="500"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:simpleType name="string-4000">
+        <s:restriction base="s:string">
+            <s:maxLength value="4000"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:simpleType name="UUID">
+        <s:annotation>
+            <s:documentation>
+                Строковое представление UUID.
+                В СМЭВ UUID используются в качестве идентификаторов сообщений.
+                Идентификаторы присваиваются сообщеням отправителями.
+            </s:documentation>
+        </s:annotation>
+        <s:restriction base="s:string">
+            <s:pattern value="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:simpleType name="InteractionStatusType">
+        <s:restriction base="s:string">
+            <s:enumeration value="doesNotExist">
+                <s:annotation>
+                    <s:documentation>Запрос с таким Id не найден в БД СМЭВ.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="requestIsQueued">
+                <s:annotation>
+                    <s:documentation>Запрос находится в очереди на асинхронную валидацию.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="requestIsAcceptedBySmev">
+                <s:annotation>
+                    <s:documentation>Запрос прошел асинхронную валидацию.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="requestIsRejectedBySmev">
+                <s:annotation>
+                    <s:documentation>Запрос не прошёл асинхронную валидацию.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="requestIsProcessed">
+                <s:annotation>
+                    <s:documentation>Запрос обработан СМЭВ.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="underProcessing">
+                <s:annotation>
+                    <s:documentation>Обрабатывается поставщиком сервиса.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="responseIsQueued">
+                <s:annotation>
+                    <s:documentation>Ответ на запрос находится в очереди на асинхронную валидацию.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="responseIsAcceptedBySmev">
+                <s:annotation>
+                    <s:documentation>Ответ на запрос прошел асинхронную валидацию.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="responseIsRejectedBySmev">
+                <s:annotation>
+                    <s:documentation>Ответ на запрос не прошёл асинхронную валидацию.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="responseIsProcessed">
+                <s:annotation>
+                    <s:documentation>Ответ на запрос обработан СМЭВ.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="cancelled">
+                <s:annotation>
+                    <s:documentation>Запрос отменён сервисом.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="messageIsArchived">
+                <s:annotation>
+                    <s:documentation>Сообщение переведено в архив.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="messageIsDelivered">
+                <s:annotation>
+                    <s:documentation>Сообщение получено получателем.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="responseIsDelivered">
+                <s:annotation>
+                    <s:documentation>Ответ получен потребителем сервиса.</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+        </s:restriction>
+    </s:simpleType>
+    <s:complexType name="SmevFault">
+        <s:complexContent>
+            <s:extension base="sm:Void">
+                <s:sequence>
+                    <s:element name="Code" type="sm:string-100" minOccurs="0"/>
+                    <s:element name="Description" type="s:string" minOccurs="0"/>
+                </s:sequence>
+            </s:extension>
+        </s:complexContent>
+    </s:complexType>
+    <s:simpleType name="RejectCode">
+        <s:restriction base="sm:string-50">
+            <s:enumeration value="ACCESS_DENIED"/>
+            <s:enumeration value="NO_DATA"/>
+            <s:enumeration value="UNKNOWN_REQUEST_DESCRIPTION"/>
+            <s:enumeration value="FAILURE"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:complexType name="Void">
+        <s:annotation>
+            <s:documentation>Тип элемента, который передаёт информацию фактом своего наличия.</s:documentation>
+        </s:annotation>
+    </s:complexType>
+    <s:annotation>
+        <s:documentation>Маршрутизация сообщения</s:documentation>
+        <s:appinfo>
+            <jxb:schemaBindings>
+                <!-- Напишите здесь имя пакета, в который должны попасть классы, сгенерированные из этой схемы с помощью wsimport (для JAX-WS) -->
+                <jxb:package name="ru.it.smev.message_exchange.autogenerated.types.routing.v1_3"/>
+            </jxb:schemaBindings>
+        </s:appinfo>
+    </s:annotation>
+    <s:element name="Routing">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>Параметры маршрутизации сообщения</s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element ref="sm:RoutingInformation"/>
+                <s:element name="RoutingSignature" type="sm:XMLDSigSignatureType">
+                    <s:annotation>
+                        <s:documentation>ЭП-ОВ, подписан элемент //RoutingInformation.</s:documentation>
+                    </s:annotation>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="RoutingInformation">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>Параметры маршрутизации сообщения</s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element name="MessageID" type="sm:UUID"/>
+                <s:element ref="sm:DynamicRouting" minOccurs="0"/>
+                <s:element ref="sm:IdentifierRouting" minOccurs="0"/>
+                <s:element ref="sm:RegistryRouting" minOccurs="0"/>
+            </s:sequence>
+            <s:attribute name="Id" type="s:ID"/>
+        </s:complexType>
+    </s:element>
+    <s:element name="RegistryRouting">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>Параметры маршрутизации реестровых записей сообщения</s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element ref="sm:RegistryRecordRouting" maxOccurs="1000"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="RegistryRecordRouting">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>Параметры маршрутизации реестровой записи</s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element name="RecordId" type="s:int"/>
+                <s:element name="UseGeneralRouting" type="s:boolean"/>
+                <s:element ref="sm:DynamicRouting" minOccurs="0"/>
+                <s:element ref="sm:IdentifierRouting" minOccurs="0"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="DynamicRouting">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>Параметры динамической маршрутизации</s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element name="DynamicValue" type="sm:Value" maxOccurs="1000"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="IdentifierRouting">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>Параметры маршрутизации по идентификаторам</s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element name="IdentifierValue" type="sm:Value" maxOccurs="1000"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="RoutingStatus">
+        <s:complexType>
+            <s:annotation>
+                <s:documentation>
+                    Статус маршрутизации сообщения
+                </s:documentation>
+            </s:annotation>
+            <s:sequence>
+                <s:element ref="sm:DynamicRoutingStatus" minOccurs="0" maxOccurs="1000">
+                    <s:annotation>
+                        <s:documentation>Статусы динамической маршрутизации</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element ref="sm:IdentifierRoutingStatus" minOccurs="0" maxOccurs="1000">
+                    <s:annotation>
+                        <s:documentation>Статусы маршрутизации по идентификаторам</s:documentation>
+                    </s:annotation>
+                </s:element>
+                <s:element ref="sm:RegistryRoutingStatus" minOccurs="0" maxOccurs="1000">
+                    <s:annotation>
+                        <s:documentation>Статусы реестровой маршрутизации</s:documentation>
+                    </s:annotation>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="RegistryRoutingStatus">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="RecordId" type="s:int"/>
+                <s:element name="RoutingStatusCode" type="sm:RoutingStatusCodeType"/>
+                <s:element ref="sm:DynamicRoutingStatus" minOccurs="0" maxOccurs="1000"/>
+                <s:element ref="sm:IdentifierRoutingStatus" minOccurs="0" maxOccurs="1000"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="DynamicRoutingStatus">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="DynamicValue" type="sm:Value"/>
+                <s:element name="RoutingStatusCode" type="sm:RoutingStatusCodeType"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:element name="IdentifierRoutingStatus">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="IdentifierValue" type="sm:Value"/>
+                <s:element name="RoutingStatusCode" type="sm:RoutingStatusCodeType"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+    <s:simpleType name="RoutingStatusCodeType">
+        <s:restriction base="s:string">
+            <s:enumeration value="success">
+                <s:annotation>
+                    <s:documentation>Выполнено успешно</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="recipientNotFound">
+                <s:annotation>
+                    <s:documentation>Получатель сообщения не найден</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="invalidRegistryRecordId">
+                <s:annotation>
+                    <s:documentation>Некорректный идентификатор реестровой записи</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="certificateInvalid">
+                <s:annotation>
+                    <s:documentation>Некорректный сертификат</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="signatureInvalid">
+                <s:annotation>
+                    <s:documentation>Подпись реестровой записи невалидна</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="generalRoutingNotFound">
+                <s:annotation>
+                    <s:documentation>Не найден блок общей маршрутизации</s:documentation>
+                </s:annotation>
+            </s:enumeration>
+            <s:enumeration value="personalAccessDenied">
+                <s:annotation>
+                    <s:documentation>Указанному отправителю в записи реестра id=[RecordID] доступ к отправке запроса не
+                        предоставлен
+                    </s:documentation>
+                </s:annotation>
+            </s:enumeration>
+        </s:restriction>
+    </s:simpleType>
+    <s:simpleType name="Value">
+        <s:restriction base="s:string">
+            <s:maxLength value="500"/>
+        </s:restriction>
+    </s:simpleType>
+    <s:complexType name="XMLDSigSignatureType">
+        <s:annotation>
+            <s:documentation>
+                Элекронная подпись в формате XMLDSig.
+            </s:documentation>
+        </s:annotation>
+        <s:sequence>
+            <s:any namespace="http://www.w3.org/2000/09/xmldsig#" processContents="lax">
+                <s:annotation>
+                    <s:documentation>
+                        Собственно подпись, по спецификации XMLDSig.
+                        Объявлена как any для того, чтобы инструменты типа JAXB не генерировали классов для пространства имён
+                        http://www.w3.org/2000/09/xmldsig#.
+                        Это, в свою очередь, нужно потому, что инструменты, генерирующие и проверяющие ЭЦП (напр. Apache
+                        Santuario)
+                        работают с DOM-деревьями, а не с JAXB-объектами.
+                    </s:documentation>
+                </s:annotation>
+            </s:any>
+        </s:sequence>
+    </s:complexType>
+</s:schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Private person (Private person) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rtn="urn://www.bssys.com/products/bss-egg/SMEV3_Routing" targetNamespace="urn://www.bssys.com/products/bss-egg/SMEV3_Routing" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="SMEV3_Routing" type="rtn:SMEV3_Routing_Types">
+		<xs:annotation>
+			<xs:documentation>Блок передачи данных о маршрутизации сообщения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SMEV3_Routing_Types">
+		<xs:annotation>
+			<xs:documentation>Тип для "Блок передачи данных о маршрутизации сообщения"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="rtn:Recipient" maxOccurs="1000"/>
+		</xs:sequence>
+		<xs:attribute name="UseGeneralRouting" type="xs:boolean" default="false">
+			<xs:annotation>
+				<xs:documentation>Указывает о необходимость так же использовать общую маршрутизацию:
+- true - использовать
+- false - не использовать (значение по умолчанию)
+Если атрибут отсутствует, то используется значение из настройки сервиса EGG.
+Атрибут игнорируется, при отправке ответов в СМЭВ 3.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="GeneralRecipients" type="rtn:RecipientsTypes">
+		<xs:annotation>
+			<xs:documentation>Генеральный получатели</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DynamicRecipients" type="rtn:RecipientsTypes">
+		<xs:annotation>
+			<xs:documentation>Динамические получатели</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Recipient" type="rtn:Value">
+		<xs:annotation>
+			<xs:documentation>Получатель</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="Value">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="RecipientsTypes">
+		<xs:annotation>
+			<xs:documentation>Тип для "Генеральный получатели" и "Динамические получатели"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="rtn:Recipient" maxOccurs="1000"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:bss="http://www.bssys.com/products/bss-egg/SMEV3_SFR_MZRK" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rtn="urn://www.bssys.com/products/bss-egg/SMEV3_Routing_Mockup" xmlns:sfr="urn://iis.ecp.ru/mzrk/1.1.0" xmlns:sm="http://www.bssys.com/products/bss-egg/SMEV3_Mockup" xmlns:smev12="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/1.2" targetNamespace="http://www.bssys.com/products/bss-egg/SMEV3_SFR_MZRK" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1.0">
+    <xs:import namespace="http://www.bssys.com/products/bss-egg/SMEV3_Mockup" schemaLocation="../PFR_MSKD/MQ_Common/RequestStatus_Mockup.xsd"/>
+    <xs:import namespace="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/1.2" schemaLocation="../SMEV3_v1.2/RequestStatus.xsd"/>
+    <xs:include schemaLocation="../PFR_MSKD/MQ_Common/CheckSignatureResultType.xsd"/>
+    <xs:import namespace="urn://iis.ecp.ru/mzrk/1.1.0" schemaLocation="mzrk-1.1.0.xsd"/>
+    <xs:element name="ToSmev" type="bss:InputMessageType">
+        <xs:annotation>
+            <xs:documentation>Входящий документ СА (Запрос Банка)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="FromSmev" type="bss:OutputMessageType">
+        <xs:annotation>
+            <xs:documentation>Исходящий документ СА (Ответ Банку)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <!--Ниже приведённые типы, необходимо переопределить в конкретном сервисе.-->
+    <xs:complexType name="ContentToSmevType">
+        <xs:sequence>
+            <xs:element ref="sfr:Request"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentFromSmevType">
+        <xs:choice>
+            <xs:element ref="sm:AsyncProcessingStatus"/>
+            <xs:element ref="sm:RequestRejected"/>
+            <xs:any namespace="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/1.2" processContents="lax" minOccurs="0" maxOccurs="1">
+            </xs:any>
+            <xs:element ref="sm:RequestStatus"/>
+            <xs:element ref="sfr:Response"/>
+        </xs:choice>
+	</xs:complexType>
+	<!--Простые типы-->
+	<!--Комплексные типы-->
+	<xs:complexType name="OutputMessageType">
+		<xs:annotation>
+			<xs:documentation>Тип для передачи документов, полученных из СМЭВ 3.0</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="bss:CheckEPSMEVResult" minOccurs="0"/>
+			<xs:element ref="bss:CheckEPOVResult" minOccurs="0"/>
+			<xs:element ref="bss:CheckEPSPResult" minOccurs="0"/>
+			<xs:element ref="bss:ContentFromSmev" minOccurs="1"/>
+			<xs:element ref="bss:Attachments" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InputMessageType">
+		<xs:annotation>
+			<xs:documentation>Тип для передачи документов, отправляемых в СМЭВ 3.0</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="bss:ContentToSmev"/>
+			<xs:element ref="bss:Attachments" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="HEXCode" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Внимание, поддержка данного атрибута ещё не реализована.
+HEX отпечаток сертификата ЭЦП, который необходимо использовать для формирования подписи.
+При отсутствии атрибута используется значение, заданное в настройках EGG или в настройках Крипто сервера.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--Элементы-->
+	<xs:element name="ContentToSmev">
+		<xs:annotation>
+			<xs:documentation>Данные сообщения.</xs:documentation>
+			<xs:documentation>Необходимо задать строгое значение при реализации. Определяется при реализации конкретного ТЗ.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="bss:ContentToSmevType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ContentFromSmev" type="bss:ContentFromSmevType">
+		<xs:annotation>
+			<xs:documentation>Данные сообщения.</xs:documentation>
+			<xs:documentation>Необходимо задать строгое значение при реализации. Определяется при реализации конкретного ТЗ.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="UUID">
+		<xs:annotation>
+			<xs:documentation>Уникальный идентификатор.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Container" type="bss:ContainerType">
+		<xs:annotation>
+			<xs:documentation>Контейнер для передачи ответа ПГУ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ContainerType">
+		<xs:annotation>
+			<xs:documentation>Тип контейнер для ответов</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+		<xs:attribute name="InitialProcessID" use="required">
+			<xs:annotation>
+				<xs:documentation>Идентификатор запроса, в ответ на который был получен данный ответ.
+
+Значение идентификатора запроса берётся из транспортного конверта EGG, атрибут @processID</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="128"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="AnswerDate" type="xs:dateTime" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата и время получения ответа из СМЭВ3</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromCache" type="xs:boolean" default="false">
+			<xs:annotation>
+				<xs:documentation>Признак ответа из ХД.
+
+False – ответ получен из СМЭВ3
+True – ответ извлечён из ХД</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Вложения</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="AttachmentContent">
+		<xs:annotation>
+			<xs:documentation>Абстрактный тип, используемый для описания вложений.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="FileData" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Файл.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AttachmentID" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Идентификатор (имя файла) в файловом хранилище.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element ref="bss:CheckAttachmentSignatureResult" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Идентификатор приложенных данных.
+
+Совпадает со значением атрибута "bss:FromSmev/bss:ContentFromSmev/bss:Container/im:UserOrderResponse/im:AttachData/@attachmentId"</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MimeType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Тип контента.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FileName" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Имя передаваемого файла.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AttachmentContentList">
+		<xs:annotation>
+			<xs:documentation>Тип, используемый для передачи вложений.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="bss:Attachment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Attachments" type="bss:AttachmentContentList">
+		<xs:annotation>
+			<xs:documentation>Вложения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Attachment" type="bss:AttachmentContent">
+		<xs:annotation>
+			<xs:documentation>Вложение.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://пф.рф/МЗРК/2024-01-01" xmlns:МСК8="http://пф.рф/ВВ/МСК/2024-01-01" xmlns:АФ7="http://пф.рф/АФ/2023-04-03" xmlns:УТ7="http://пф.рф/УТ/2023-04-03" xmlns:ПР8="http://пф.рф/Представитель/2024-01-01" xmlns:МСКР8="http://пф.рф/ВВ/МСКР/2024-01-01" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#" xmlns:sig="http://iis.ecp.ru/SignInfo/2023-01-10" targetNamespace="http://пф.рф/МЗРК/2024-01-01" elementFormDefault="qualified" version="2.0">
+	<xs:import namespace="http://пф.рф/УТ/2023-04-03" schemaLocation="../uni_types_2023-04-03.xsd"/>
+	<xs:import namespace="http://пф.рф/Представитель/2024-01-01" schemaLocation="../legalAgentDetailsType_2024-01-01.xsd"/>
+	<xs:import namespace="http://пф.рф/ВВ/МСК/2024-01-01" schemaLocation="../mat_cap_types_2024-01-01.xsd"/>
+	<xs:import namespace="http://пф.рф/ВВ/МСКР/2024-01-01" schemaLocation="../mat_cap_order_types_2024-01-01.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../xmldsig_core_schema.xsd"/>
+	<xs:import namespace="http://iis.ecp.ru/SignInfo/2023-01-10" schemaLocation="../SignInfo_2023-01-10.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Формат Документа «Заявление о распоряжении средствами (частью средств) материнского (семейного) капитала»</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ЭДСФР">
+		<xs:annotation>
+			<xs:documentation>Корневой элемент. Содержит сведения самого документа и служебную информацию об электронном документе.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="МЗРК">
+					<xs:annotation>
+						<xs:documentation>Документ «Заявление о распоряжении средствами (частью средств) материнского (семейного) капитала»</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Заявитель">
+								<xs:annotation>
+									<xs:documentation>Анкетные данные заявителя. При подаче заявления Ребенком, являющимся владельцем сертификата, должна быть указана дата рождения.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="УТ7:ФИО">
+											<xs:annotation>
+												<xs:documentation>Фамилия, имя, отчество заявителя</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="МСК8:СтатусПоМСК">
+											<xs:annotation>
+												<xs:documentation>Статус заявителя по МСК</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:group ref="УТ7:ГрДатаРождения">
+											<xs:annotation>
+												<xs:documentation>Дата рождения заявителя</xs:documentation>
+											</xs:annotation>
+										</xs:group>
+										<xs:element ref="УТ7:СНИЛС">
+											<xs:annotation>
+												<xs:documentation>Страховой номер индивидуального лицевого счета заявителя</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="УТ7:УдостоверяющийДокумент">
+											<xs:annotation>
+												<xs:documentation>Документ, удостоверяющий личность</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="УТ7:Телефон">
+											<xs:annotation>
+												<xs:documentation>Контактный номер телефона</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="УТ7:АдресЭлПочты" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Адрес электронной почты</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Представитель" type="ПР8:ТипПредставитель_ЮЛ_ФЛ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Сведения о законном представителе, заполняются, если заявление подается представителем заявителя. Блок ПР8:ЮридическоеЛицо не используется для блока /ЭДСФР/МЗРК/Представитель</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Распоряжение">
+								<xs:annotation>
+									<xs:documentation>Сведения о направлении средств (части средств) материнского (семейного) капитала.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="УЖУ">
+											<xs:annotation>
+												<xs:documentation>Сведения о направлении средств (части средств) материнского (семейного) капитала на улучшение жилищных условий</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ВидРасходов" type="МСКР8:ТипКодВидаРасходовУЖУ">
+														<xs:annotation>
+															<xs:documentation>Указывается код вида расходов при направлении средств на УЖУ</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+														<xs:annotation>
+															<xs:documentation>Сумма средств, направляемая на улучшение жилищных условий в рублях и копейках.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="НомерПриложения">
+														<xs:annotation>
+															<xs:documentation>Номер приложения, в котором приведена подробная информация по направлению средств на улучшение жилищных условий</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="2"/>
+																<xs:enumeration value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:choice>
+														<xs:annotation>
+															<xs:documentation>При направлении средств МСК на УЖУ средства могу быть перечислены либо юридическому лицу, либо физическому лицу (физическим лицам). В случае перечисления юридическому лицу средства могут направляться в виде ежемесячного платежа</xs:documentation>
+														</xs:annotation>
+														<xs:element name="СведенияЮрЛицо">
+															<xs:annotation>
+																<xs:documentation>Сведения к заявлению о распоряжении средствами (частью средств) материнского (семейного) капитала при направлении средств (части средств) материнского (семейного) капитала на улучшение жилищных условий (при их перечислении юридическому лицу) (Приложение №1)</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:group ref="МСКР8:ГрРеквизитыПеречисленияЮрЛицо">
+																		<xs:annotation>
+																			<xs:documentation>Реквизиты организации-получателя</xs:documentation>
+																		</xs:annotation>
+																	</xs:group>
+																	<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+																		<xs:annotation>
+																			<xs:documentation>Сумма к перечислению</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="РеквизитыДоговора">
+																		<xs:annotation>
+																			<xs:documentation>Реквизиты договора</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:complexContent>
+																				<xs:extension base="МСКР8:ТипРеквизитыДоговора">
+																					<xs:sequence>
+																						<xs:element name="ДатаПолученияСредств" type="xs:date" minOccurs="0">
+																							<xs:annotation>
+																								<xs:documentation>Дата получения средств по договору займа</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:extension>
+																			</xs:complexContent>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="НомерДоговораДС" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер государственной регистрации договора участия в долевом строительстве или договора уступки прав по договору участия в долевом строительстве</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:group ref="МСКР8:ГрПеречислениеУЖУ">
+																		<xs:annotation>
+																			<xs:documentation>Группа элементов, общая при перечислении средств МСК на улучшение жилищных условий</xs:documentation>
+																		</xs:annotation>
+																	</xs:group>
+																	<xs:element name="НомерЗакладной" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер закладной</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="НомерСсудногоСчета" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер ссудного счета</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="Кредитор" type="МСКР8:ТипКредитор" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Банк/организация, предоставившая кредит/займ</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="СведенияФизЛицо">
+															<xs:annotation>
+																<xs:documentation>Сведения к заявлению о распоряжении средствами (частью средств) материнского (семейного) капитала при направлении средств (части средств) материнского (семейного) капитала на улучшение жилищных условий (при их перечислении физическому лицу) (Приложение №2)</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="РеквизитыПеречисленияУЖУ" maxOccurs="unbounded">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:group ref="МСКР8:ГрРеквизитыПеречисленияФизЛицо">
+																					<xs:annotation>
+																						<xs:documentation>Реквизиты получателя-физического лица</xs:documentation>
+																					</xs:annotation>
+																				</xs:group>
+																				<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+																					<xs:annotation>
+																						<xs:documentation>Сумма к перечислению</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="РеквизитыДоговора" type="МСКР8:ТипРеквизитыДоговора">
+																		<xs:annotation>
+																			<xs:documentation>Реквизиты договора</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="НомерДоговораДС" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер государственной регистрации договора участия в долевом строительстве или договора уступки прав по договору участия в долевом строительстве</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:group ref="МСКР8:ГрПеречислениеУЖУ">
+																		<xs:annotation>
+																			<xs:documentation>Группа элементов, общая при перечислении средств МСК на улучшение жилищных условий</xs:documentation>
+																		</xs:annotation>
+																	</xs:group>
+																	<xs:element name="АктОсвидетельствования" type="МСКР8:ТипРеквизитыДоговора" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Акт освидетельствования выполненных работ</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="Кредитор" type="МСКР8:ТипКредитор" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Банк/организация, предоставившая кредит/займ</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="СведенияЮрЛицоЕП">
+															<xs:annotation>
+																<xs:documentation>Сведения к заявлению о распоряжении средствами (частью средств) материнского (семейного) капитала при направлении средств (части средств) материнского (семейного) капитала на улучшение жилищных условий (при их перечислении юридическому лицу в виде ежемесячного платежа) (Приложение №3)</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:group ref="МСКР8:ГрРеквизитыПеречисленияЮрЛицо">
+																		<xs:annotation>
+																			<xs:documentation>Реквизиты организации-получателя</xs:documentation>
+																		</xs:annotation>
+																	</xs:group>
+																	<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+																		<xs:annotation>
+																			<xs:documentation>Сумма к перечислению</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="РеквизитыДоговора" type="МСКР8:ТипРеквизитыДоговора">
+																		<xs:annotation>
+																			<xs:documentation>Реквизиты договора</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="НомерДоговораДС" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер государственной регистрации договора участия в долевом строительстве или договора уступки прав по договору участия в долевом строительстве</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:group ref="МСКР8:ГрПеречислениеУЖУ">
+																		<xs:annotation>
+																			<xs:documentation>Группа элементов, общая при перечислении средств МСК на улучшение жилищных условий</xs:documentation>
+																		</xs:annotation>
+																	</xs:group>
+																	<xs:element name="КоличествоМесяцев" type="xs:positiveInteger">
+																		<xs:annotation>
+																			<xs:documentation>Порядок перечисления средств. Указывается период оплаты: количество оплачиваемых месяцев</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="ДополнительныеСведения" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Дополнительные сведения (заполняется информация, необходимая для перечисления средств)</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="НомерЗакладной" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер закладной</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="НомерСсудногоСчета" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Номер ссудного счета</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="Кредитор" type="МСКР8:ТипКредитор" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Банк/организация, предоставившая кредит/займ</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:choice>
+													<xs:element name="СпособУЖУ">
+														<xs:annotation>
+															<xs:documentation>Способ УЖУ по ОЦС. Возможные значения: 
+																	1- ПРИОБРЕТЕНИЕ, 
+																	2 -СТРОИТЕЛЬСТВО.
+																</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="2"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Образование">
+											<xs:annotation>
+												<xs:documentation>Сведения о направлении средств (части средств) материнского (семейного) капитала на получение образования ребенком (детьми) и осуществление иных, связанных с получением образования ребенком (детьми) расходов</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ВидРасходов" type="МСКР8:ТипКодВидаРасходовОбр">
+														<xs:annotation>
+															<xs:documentation>Указывается код вида расходов при направлении средств на образование</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+														<xs:annotation>
+															<xs:documentation>Сумма средств МСК, направляемая на получение образования ребенком (детьми) и осуществление иных, связанных с получением образования ребенком (детьми) расходов</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="НомерПриложения" type="УТ7:ТипНепустаяСтрока">
+														<xs:annotation>
+															<xs:documentation>Номер приложения, в котором приведена подробная информация по направлению средств на получение образования ребенком (детьми) и осуществление иных, связанных с получением образования ребенком (детьми) расходов</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Сведения">
+														<xs:annotation>
+															<xs:documentation>Сведения к заявлению о распоряжении средствами (частью средств) материнского (семейного) капитала при направлении средств (части средств) материнского (семейного) капитала на получение образования ребенком (детьми) и осуществление иных связанных с получением образования ребенком (детьми) расходов  (Приложение №4)</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:group ref="МСКР8:ГрРеквизитыПеречисленияЮрЛицоОбр">
+																	<xs:annotation>
+																		<xs:documentation>Реквизиты получателя</xs:documentation>
+																	</xs:annotation>
+																</xs:group>
+																<xs:element name="НомерЛицевогоСчета" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Номер лицевого счета получателя</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="РеквизитыДоговора" type="МСКР8:ТипРеквизитыДоговора">
+																	<xs:annotation>
+																		<xs:documentation>Реквизиты договора. Перечень возможных значений элемента "УТ7:Наименование" - см. Наименования договоров при направлении средств МСК на Образование (столбец "Наименование договора")</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="ОбучающийсяРебенок">
+																	<xs:annotation>
+																		<xs:documentation>ФИО и СНИЛС (если есть) обучающегося ребенка</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element ref="УТ7:ФИО">
+																				<xs:annotation>
+																					<xs:documentation>ФИО обучающегося ребенка.</xs:documentation>
+																				</xs:annotation>
+																			</xs:element>
+																			<xs:element ref="УТ7:СНИЛС">
+																				<xs:annotation>
+																					<xs:documentation>СНИЛС ребенка</xs:documentation>
+																				</xs:annotation>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="ПорядокПеречисленияСредств">
+																	<xs:annotation>
+																		<xs:documentation>Порядок перечисления средств</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:complexContent>
+																			<xs:extension base="МСКР8:ТипПорядокПеречисленияСредствОбразование">
+																				<xs:sequence>
+																					<xs:element name="ПериодПеречисления">
+																						<xs:annotation>
+																							<xs:documentation>Период перечисления средств. Возможные значения:
+																								1 - ежемесячно
+																								2 - ежеквартально
+																								3 - раз в полугодие
+																								4 - ежегодно
+																								5 - единовременно
+																							</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:integer">
+																								<xs:minInclusive value="1"/>
+																								<xs:maxInclusive value="5"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:extension>
+																		</xs:complexContent>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="ДополнительныеСведения" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Дополнительные сведения (информация, необходимая для перечисления средств)</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="НП">
+											<xs:annotation>
+												<xs:documentation>Сведения о направлении средств (части средств) материнского (семейного) капитала на формирование накопительной пенсии</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+														<xs:annotation>
+															<xs:documentation>Сумма средств МСК, направляемая  на формирование накопительной пенсии</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="САДИ">
+											<xs:annotation>
+												<xs:documentation>Сведения о направлении средств (части средств) материнского (семейного) капитала на компенсацию затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ВидРасходов" type="МСКР8:ТипКодВидаРасходовСАДИ">
+														<xs:annotation>
+															<xs:documentation>Код вида расходов направления распоряжения средствами МСК на на компенсацию затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов:
+																57 - УСЛУГА - На компенсацию затрат по предоставлению услуг для детей-инвалидов;
+																58 - ТОВАР - На компенсацию затрат по приобретению товаров, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+														<xs:annotation>
+															<xs:documentation>Сумма средств, направляемая на компенсацию затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов в рублях и копейках</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="НомерПриложения" type="УТ7:ТипНепустаяСтрока">
+														<xs:annotation>
+															<xs:documentation>Номер приложения, в котором приведена подробная информация по направлению средств на компенсацию затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Сведения">
+														<xs:annotation>
+															<xs:documentation>Сведения к заявлению о распоряжении средствами (частью средств) материнского (семейного) капитала при направлении средств (части средств) материнского (семейного) капитала на компенсацию затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов (Приложение №5)</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:group ref="МСКР8:ГрРеквизитыПеречисленияФизЛицо">
+																	<xs:annotation>
+																		<xs:documentation>Реквизиты получателя средств (владельца сертификата)</xs:documentation>
+																	</xs:annotation>
+																</xs:group>
+																<xs:element name="Сумма" type="УТ7:ТипДеньгиКопПоложительный">
+																	<xs:annotation>
+																		<xs:documentation>Сумма средств к перечислению в рублях и копейках</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="ПодтверждающиеДокументы">
+																	<xs:annotation>
+																		<xs:documentation>Список сведений о документах, подтверждающих приобретение товаров (услуг)</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ПодтверждающийДокумент" maxOccurs="unbounded">
+																				<xs:annotation>
+																					<xs:documentation>Сведения о документе, подтверждающие приобретение товара (услуги), предназначенного для социальной адаптации и интеграции в общество детей-инвалидов</xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Код">
+																							<xs:annotation>
+																								<xs:documentation>Код типа документа</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																						<xs:element ref="УТ7:Наименование">
+																							<xs:annotation>
+																								<xs:documentation>Наименование документа</xs:documentation>
+																							</xs:annotation>
+																						</xs:element>
+																						<xs:choice minOccurs="0">
+																							<xs:annotation>
+																								<xs:documentation>Сведения не заполняются в случае выбора вида документа "ЧЕК"</xs:documentation>
+																							</xs:annotation>
+																							<xs:element name="Реквизиты" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>Реквизиты договора купли-продажи товара или договора возмездного оказания услуг. 
+																								Сведения не заполняются в случае выбора вида документа "ЧЕК"</xs:documentation>
+																								</xs:annotation>
+																								<xs:complexType>
+																									<xs:sequence>
+																										<xs:element name="Дата" type="xs:date"/>
+																										<xs:choice>
+																											<xs:element name="Номер" type="УТ7:ТипНепустаяСтрока"/>
+																											<xs:element name="БезНомера" type="xs:boolean" fixed="1">
+																												<xs:annotation>
+																													<xs:documentation>Признак договора без номера</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																										</xs:choice>
+																									</xs:sequence>
+																								</xs:complexType>
+																							</xs:element>
+																							<xs:element name="Наименование" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+																								<xs:annotation>
+																									<xs:documentation>Наименование иного документа. Заполняется в случае выбора вида документа "ИНОЕ"</xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																						</xs:choice>
+																						<xs:element name="СписокТоваровУслуг">
+																							<xs:annotation>
+																								<xs:documentation>Список сведений о товарах (услугах), приобретенных по этому документу</xs:documentation>
+																							</xs:annotation>
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="ТоварУслуга" maxOccurs="unbounded">
+																										<xs:annotation>
+																											<xs:documentation>Сведения об одном товаре или услуге. Тип (товар или услуга) определяется, исходя из указанного в заявлении вида расходов</xs:documentation>
+																										</xs:annotation>
+																										<xs:complexType>
+																											<xs:sequence>
+																												<xs:element name="Наименование" type="УТ7:ТипНепустаяСтрока">
+																													<xs:annotation>
+																														<xs:documentation>Наименование товара (услуги)</xs:documentation>
+																													</xs:annotation>
+																												</xs:element>
+																												<xs:element name="Код" type="xs:normalizedString" minOccurs="0">
+																													<xs:annotation>
+																														<xs:documentation>Код национального стандарта Российской Федерации ГОСТ Р ИСО 9999-2019 Вспомогательные «средства для людей с ограничениями жизнедеятельности. Классификация и терминология».
+																															Заполняется только для товаров</xs:documentation>
+																													</xs:annotation>
+																												</xs:element>
+																												<xs:element name="Стоимость" type="УТ7:ТипДеньгиКопПоложительный">
+																													<xs:annotation>
+																														<xs:documentation>Стоимость товара(услуги). Элемент обязателен для заполнения</xs:documentation>
+																													</xs:annotation>
+																												</xs:element>
+																											</xs:sequence>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="ИПРА" type="МСКР8:ТипРеквизитыДоговора">
+																	<xs:annotation>
+																		<xs:documentation>Реквизиты индивидуальной программы реабилитации или абилитации (ИПРА) ребенка-инвалида</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="ФБМСЭ">
+																	<xs:annotation>
+																		<xs:documentation>Наименование федерального государственного учреждения медико-социальной экспертизы</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Код" type="xs:integer">
+																				<xs:annotation>
+																					<xs:documentation>Код  учреждения ФБМСЭ</xs:documentation>
+																				</xs:annotation>
+																			</xs:element>
+																			<xs:element ref="УТ7:Наименование">
+																				<xs:annotation>
+																					<xs:documentation>Наименование учреждения ФБМСЭ</xs:documentation>
+																				</xs:annotation>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="РебенокИнвалид">
+																	<xs:annotation>
+																		<xs:documentation>Сведения о ребенке-инвалиде</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element ref="УТ7:ФИО">
+																				<xs:annotation>
+																					<xs:documentation>Фамилия, имя, отчество ребенка-инвалида</xs:documentation>
+																				</xs:annotation>
+																			</xs:element>
+																			<xs:element ref="УТ7:СНИЛС">
+																				<xs:annotation>
+																					<xs:documentation>СНИЛС ребенка</xs:documentation>
+																				</xs:annotation>
+																			</xs:element>
+																			<xs:group ref="УТ7:ГрДатаРождения">
+																				<xs:annotation>
+																					<xs:documentation>Сведения о дате рождения ребенка-инвалида</xs:documentation>
+																				</xs:annotation>
+																			</xs:group>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="РеквизитыАкта" type="МСКР8:ТипРеквизитыДоговора">
+																	<xs:annotation>
+																		<xs:documentation>Реквизиты акта о проверке наличия товара и его соответствии перечню товаров и услуг и индивидуальной программе реабилитации или документ о соответствии оказанной услуги перечню товаров и услуг и индивидуальной программе реабилитации</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="ОрганСО" type="УТ7:ТипНепустаяСтрока">
+																	<xs:annotation>
+																		<xs:documentation>Наименование уполномоченного органа исполнительной власти субъекта Российской Федерации в сфере социального обслуживания</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="СписокОзнакомлений" type="УТ7:ТипСписокОзнакомленийЗаявителя">
+								<xs:annotation>
+									<xs:documentation>Список может содержать информацию об ознакомлении заявителя С Правилами направления средств (части средств) материнского (семейного) капитала на улучшение жилищных условий, утвержденными постановлением Правительства Российской Федерации от 12 декабря 2007 г. № 862, c Правилами направления средств (части средств) материнского (семейного) капитала на получение образования ребенком (детьми) и осуществление иных связанных с получением образования ребенком (детьми) расходов, утвержденными постановлением Правительства Российской Федерации от 24 декабря 2007 г. № 926 (Собрание законодательства Российской Федерации, 2007, № 53, ст. 6622; 2011, № 47, ст. 6658; 2012, № 18, ст. 2236), c Правилами отказа от направления средств (части средств) материнского (семейного) капитала на формирование накопительной пенсии, утвержденными приказом Министерства труда и социальной защиты Российской Федерации от 11 марта 2016 г. N 100н, с   Правилами   направления   средств   (части   средств)  материнского (семейного)  капитала  на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов, утвержденными постановлением  Правительства  Российской  Федерации  от  30 апреля 2016 г.N 380</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ИнформированиеОбОбязанности" type="xs:boolean" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Отметка о том, что заявитель проинформирован об обязанности оформления жилого помещения, приобретенного (построенного, реконструированного) с использованием средств материнского (семейного) капитала, в общую собственность владельца государственного сертификата, его супруга (супруги), детей (в том числе первого, второго и последующих детей) с определением размера долей по соглашению. 1 - проинформирован(а), 0 - не проинформирован(а).</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ПредупреждениеОбОтветственности" type="xs:boolean" fixed="1">
+								<xs:annotation>
+									<xs:documentation>Отметка о том, что заявитель предупрежден об ответственности за достоверность представленных сведений, указанных в заявлении о распоряжении средствами (частью средств) материнского (семейного) капитала.  Возможные значения: 1 – предупрежден(а)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ПрилагаемыеДокументы" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Перечень прилагаемых к заявлению документов</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ПрилагаемыйДокумент" type="УТ7:ТипПрилагаемыйДокумент" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Сведения о прилагаемом документе</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ДатаЗаполнения">
+								<xs:annotation>
+									<xs:documentation>Дата заполнения заявления. Дата не может быть ранее 01.01.2009</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:date">
+										<xs:minInclusive value="2009-01-01"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="СоответствиеДанных" type="xs:boolean" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Отметка специалиста, принявшего заявление о том, что данные, указанные в заявлении, соответствуют представленным документам. 1 - соответствуют, 0 - не соответствуют. Не указывается, если заявление подается через ЕПГУ</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Специалист" type="УТ7:ТипФИО" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>ФИО специалиста, принявшего заявление</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="СлужебнаяИнформация" type="МСК8:ТипСлужебнаяИнформацияЗМСК" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Служебная информация об электронном документе</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ns1:Signature" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Электронная подпись (ЭП). Электронный документ, для которого законодательством Российской Федерации предусмотрена юридически значимая подпись, должен быть подписан усиленной квалифицированной электронной подписью в соответствии со спецификацией XMLDSig</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sig:SignInfo" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

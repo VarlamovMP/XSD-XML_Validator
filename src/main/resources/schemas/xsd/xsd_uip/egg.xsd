@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.bssys/egg" xmlns:tns="http://com.bssys/egg" elementFormDefault="qualified">
+	<xsd:complexType name="BaseType">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="parameters" >
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="parameter" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:attribute name="key" type="xsd:string" use="required"/>
+								<xsd:attribute name="value" type="xsd:string" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="processId" type="xsd:string" use="required"/>
+		<xsd:attribute name="serviceId" type="xsd:string" use="required"/>
+		<xsd:attribute name="adapterId" type="xsd:string" use="required"/>
+		<xsd:attribute name="processName" type="xsd:string" use="required"/>
+		<xsd:attribute name="systemId" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="RequestType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:BaseType">
+				<xsd:sequence>
+				<xsd:element minOccurs="1" name="request" type="xsd:base64Binary"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AnswerType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:BaseType">
+				<xsd:sequence>
+				<xsd:element minOccurs="0" name="request" type="xsd:base64Binary"/>
+				<xsd:element minOccurs="1" name="response" type="xsd:base64Binary"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ErrorType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:BaseType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="request" type="xsd:base64Binary"/>
+					<xsd:element minOccurs="0" name="errorDescription" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>РћРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="errorData" type="xsd:base64Binary">
+						<xsd:annotation>
+							<xsd:documentation>Р”Р°РЅРЅС‹Рµ РѕС€РёР±РєРё (РґР»СЏ СЃРёСЃС‚РµРјРЅРѕРіРѕ Р°РЅР°Р»РёР·Р°)
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="errorCode" type="xsd:string" use="required"/>				
+				<xsd:attribute name="errorType" type="xsd:string" use="required"/>				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TicketType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:BaseType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="request" type="xsd:base64Binary"/>
+					<xsd:element minOccurs="1" name="ticketDescription" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="errorCode" type="xsd:string" use="required"/>				
+				<xsd:attribute name="ticketType" type="xsd:string" use="required"/>				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="Request" type="tns:RequestType"/>
+	<xsd:element name="Answer" type="tns:AnswerType"/>
+	<xsd:element name="Error" type="tns:ErrorType"/>
+	<xsd:element name="Ticket" type="tns:TicketType"/>
+</xsd:schema>

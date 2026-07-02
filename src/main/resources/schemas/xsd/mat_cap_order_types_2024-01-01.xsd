@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://пф.рф/ВВ/МСКР/2024-01-01"
+	xmlns:УТ7="http://пф.рф/УТ/2023-04-03" xmlns:АФ7="http://пф.рф/АФ/2023-04-03"
+	targetNamespace="http://пф.рф/ВВ/МСКР/2024-01-01" elementFormDefault="qualified" version="2.0">
+	<xs:import namespace="http://пф.рф/УТ/2023-04-03" schemaLocation="uni_types_2023-04-03.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="ru">Типы данных для xml-файлов группы документов МСКР. Рекомендуемый префикс - МСКР8</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ТипНаправлениеРаспоряженияМСК">
+		<xs:annotation>
+			<xs:documentation>Общие сведения о направлении распоряжения средствами МСК</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="КатегорияНаправления">
+				<xs:annotation>
+					<xs:documentation>Указывается направление распоряжения средствами МСК: улучшение жилищных условий, получение образования ребенком (детьми) и осуществление иных, связанных с получением образования ребенком (детьми) расходов, формирование накопительной пенсии</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Код категории направления распоряжения средствами МСК:
+							УЖУ - улучшение жилищных условий,
+							ОБРАЗОВАНИЕ - получение образования ребенком (детьми) и осуществление иных, связанных с получением образования ребенком (детьми) расходов,
+							НП - формирование накопительной пенсии
+							САДИ - компенсация затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов
+							ОСТАТОК - единовременная выплата из остатка средств МСК
+						</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="УЖУ"/>
+						<xs:enumeration value="ОБРАЗОВАНИЕ"/>
+						<xs:enumeration value="НП"/>
+						<xs:enumeration value="САДИ"/>
+						<xs:enumeration value="ОСТАТОК"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ВидРасходов">
+				<xs:annotation>
+					<xs:documentation>Код вида расходов.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Код вида расходов направления распоряжения средствами МСК</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ПРИОБРЕТЕНИЕ"/>
+						<xs:enumeration value="ДОЛЕВОЕ СТРОИТ-ВО"/>
+						<xs:enumeration value="ИНДИВИД СТРОИТ-ВО"/>
+						<xs:enumeration value="КООП ВСТУПИТ ВЗНОС"/>
+						<xs:enumeration value="КООП ПАЕВОЙ ВЗНОС"/>
+						<xs:enumeration value="ПЕРВ ВЗНОС ПРИОБ-ИЕ"/>
+						<xs:enumeration value="ПЕРВ ВЗНОС СТРОИТ-ВО"/>
+						<xs:enumeration value="КРЕДИТ ПРИОБРЕТЕНИЕ"/>
+						<xs:enumeration value="КРЕДИТ СТРОИТ-ВО"/>
+						<xs:enumeration value="ИЖС 50"/>
+						<xs:enumeration value="ИЖР 50"/>
+						<xs:enumeration value="ИЖС 6 МЕС"/>
+						<xs:enumeration value="ИЖР 6 МЕС"/>
+						<xs:enumeration value="ИЖСР КОМП"/>
+						<xs:enumeration value="ЗАЙМ ПРИОБ ИНАЯ"/>
+						<xs:enumeration value="ЗАЙМ ПРИОБ КООП"/>
+						<xs:enumeration value="ЗАЙМ ПРИОБ КРЕДИТ"/>
+						<xs:enumeration value="ЗАЙМ СТРОИТ ИНАЯ"/>
+						<xs:enumeration value="ЗАЙМ СТРОИТ КООП"/>
+						<xs:enumeration value="ЗАЙМ СТРОИТ КРЕДИТ"/>
+						<xs:enumeration value="РЕФИН КРЕДИТ ПРИОБ"/>
+						<xs:enumeration value="РЕФИН КРЕДИТ СТРОИТ-ВО"/>
+						<xs:enumeration value="НАКОП КООП ВСТУПИТ ВЗНОС"/>
+						<xs:enumeration value="НАКОП КООП ПАЙ ВЗНОС"/>
+						<xs:enumeration value="ЗАЙМ ПРИОБ СКПК"/>
+						<xs:enumeration value="ЗАЙМ ПРИОБ ОИРЖС"/>
+						<xs:enumeration value="ЗАЙМ СТРОИТ СКПК"/>
+						<xs:enumeration value="ЗАЙМ СТРОИТ ОИРЖС"/>
+						<xs:enumeration value="ПЕРВ ВЗНОС ПРИОБ ЛЬГОТ"/>
+						<xs:enumeration value="ПЕРВ ВЗНОС СТРОИТ ЛЬГОТ"/>
+						<xs:enumeration value="КРЕДИТ ПРИОБ ЛЬГОТ"/>
+						<xs:enumeration value="ЗАЙМ ПРИОБ ОИРЖС ЛЬГОТ"/>
+						<xs:enumeration value="ЗАЙМ ПЕРВ ПРИОБ ОИРЖС ЛЬГОТ"/>
+						<xs:enumeration value="КРЕДИТ СТРОИТ ЛЬГОТ"/>
+						<xs:enumeration value="ЗАЙМ СТРОИТ ОИРЖС ЛЬГОТ"/>
+						<xs:enumeration value="ЗАЙМ ПЕРВ СТРОИТ ОИРЖС ЛЬГОТ"/>
+						<xs:enumeration value="ПРОЖИВАНИЕ"/>
+						<xs:enumeration value="СОДЕРЖАНИЕ"/>
+						<xs:enumeration value="ПРИСМОТР И УХОД"/>
+						<xs:enumeration value="ОБУЧЕНИЕ"/>
+						<xs:enumeration value="ДОШК ОБУЧ"/>
+						<xs:enumeration value="НЧ"/>
+						<xs:enumeration value="НП"/>
+						<xs:enumeration value="ТОВАР"/>
+						<xs:enumeration value="УСЛУГА"/>
+						<xs:enumeration value="ОСТАТОК"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Сумма" type="УТ7:ТипДеньги">
+				<xs:annotation>
+					<xs:documentation>Сумма средств МСК, направляемая по указанному виду расходов</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипКодВидаРасходовУЖУ">
+		<xs:annotation>
+			<xs:documentation>Код вида расходов направления распоряжения средствами МСК на УЖУ. См. Виды расходов при направлении средств МСК на УЖУ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Код">
+				<xs:annotation>
+					<xs:documentation>Код вида расходов</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="УТ7:Наименование">
+				<xs:annotation>
+					<xs:documentation>Наименование вида расходов</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипКодВидаРасходовОбр">
+		<xs:annotation>
+			<xs:documentation>Код вида расходов направления распоряжения средствами МСК на образование</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Код">
+				<xs:annotation>
+					<xs:documentation>Код вида расходов</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="УТ7:Наименование">
+				<xs:annotation>
+					<xs:documentation>Наименование вида расходов</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ТипУсловныйНомер">
+		<xs:annotation>
+			<xs:documentation>Тип для представления условного номера объекта</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+			<xs:pattern value="\d{2}-\d{2}-\d{2}/\d{3}/\d{4}-\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ТипКодВидаРасходовСАДИ">
+		<xs:annotation>
+			<xs:documentation>Код вида расходов направления распоряжения средствами МСК на на компенсацию затрат на приобретение товаров и услуг, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов:
+			57 - УСЛУГА - На компенсацию затрат по предоставлению услуг для детей-инвалидов;
+			58 - ТОВАР - На компенсацию затрат по приобретению товаров, предназначенных для социальной адаптации и интеграции в общество детей-инвалидов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="57"/>
+			<xs:enumeration value="58"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Получатель">
+		<xs:annotation>
+			<xs:documentation>Сведения об организации-получателе</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="Код" type="УТ7:ТипНепустаяСтрока">
+					<xs:annotation>
+						<xs:documentation>Код получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:Наименование">
+					<xs:annotation>
+						<xs:documentation>Наименование получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:ИНН">
+					<xs:annotation>
+						<xs:documentation>ИНН организации-получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:КПП" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>КПП организации-получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:РСчет" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Расчетный счет организации-получателя (не обязателен для заполнения, если Банк является получателем)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:ОКТМО" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>ОКТМО организации-получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:КБК" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>КБК организации-получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ОГРН" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Основной государственный регистрационный номер организации получателя</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="ГрСведенияБанк">
+		<xs:annotation>
+			<xs:documentation>Основные сведения о банке организации-получателя</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="УТ7:Наименование">
+				<xs:annotation>
+					<xs:documentation>Наименование банка получателя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="УТ7:БИК">
+				<xs:annotation>
+					<xs:documentation>БИК Банка получателя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ГрРеквизитыПеречисленияЮрЛицо">
+		<xs:annotation>
+			<xs:documentation>Общие сведения о получателе средств (только юридическое лицо) и его реквизитах для перечисления</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Получатель">
+				<xs:annotation>
+					<xs:documentation>Сведения об организации-получателе</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Банк">
+				<xs:annotation>
+					<xs:documentation>Банк организации-получателя</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:group ref="ГрСведенияБанк">
+							<xs:annotation>
+								<xs:documentation>Наименование и БИК банка организации-получателя</xs:documentation>
+							</xs:annotation>
+						</xs:group>
+						<xs:element ref="УТ7:КСчет">
+							<xs:annotation>
+								<xs:documentation>Корреспондентский счет банка организации-получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ГрРеквизитыПеречисленияЮрЛицоОбр">
+		<xs:annotation>
+			<xs:documentation>Общие сведения о получателе средств и его реквизитах для перечисления</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Получатель">
+				<xs:annotation>
+					<xs:documentation>Сведения о получателе</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Банк">
+				<xs:annotation>
+					<xs:documentation>Банк получателя</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:group ref="ГрСведенияБанк">
+							<xs:annotation>
+								<xs:documentation>Наименование и БИК банка организации-получателя</xs:documentation>
+							</xs:annotation>
+						</xs:group>
+						<xs:element ref="УТ7:КСчет" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Корреспондентский счет банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ГрРеквизитыПеречисленияФизЛицо">
+		<xs:annotation>
+			<xs:documentation>Общие сведения о получателе средств (только физическое лицо) и его реквизитах для перечисления</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Получатель">
+				<xs:annotation>
+					<xs:documentation>Сведения о получателе средств - физическом лице</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="УТ7:ФИО">
+							<xs:annotation>
+								<xs:documentation>Фамилия, имя, отчество (при наличии) получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="НомерБанковскогоСчета" type="УТ7:ТипБанковскийСчет">
+							<xs:annotation>
+								<xs:documentation>Номер банковского счета получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Банк">
+				<xs:annotation>
+					<xs:documentation>Банк организации-получателя</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="УТ7:Наименование">
+							<xs:annotation>
+								<xs:documentation>Наименование банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:ИНН">
+							<xs:annotation>
+								<xs:documentation>ИНН Банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:БИК">
+							<xs:annotation>
+								<xs:documentation>БИК Банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:КПП">
+							<xs:annotation>
+								<xs:documentation>КПП Банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:КСчет">
+							<xs:annotation>
+								<xs:documentation>Корреспондентский счет банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ГрРеквизитыПеречисленияФизЛицоМСП">
+		<xs:annotation>
+			<xs:documentation>Общие сведения о получателе средств (только физическое лицо) и его реквизитах для перечисления</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Получатель">
+				<xs:annotation>
+					<xs:documentation>Сведения о получателе средств - физическом лице</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="НомерБанковскогоСчета" type="УТ7:ТипБанковскийСчет">
+							<xs:annotation>
+								<xs:documentation>Номер банковского счета получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Банк">
+				<xs:annotation>
+					<xs:documentation>Банк организации-получателя</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="УТ7:Наименование">
+							<xs:annotation>
+								<xs:documentation>Наименование банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:ИНН" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>ИНН Банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:БИК">
+							<xs:annotation>
+								<xs:documentation>БИК Банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:КПП" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>КПП Банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="УТ7:КСчет" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Корреспондентский счет банка получателя</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ТипПорядокПеречисленияСредств">
+		<xs:annotation>
+			<xs:documentation>Порядок перечисления средств</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Перечисление" type="ТипПеречисление" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Сведения о перечислении средств: дата и сумма</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипПеречисление">
+		<xs:annotation>
+			<xs:documentation>Тип, отражающий общие сведения о единичном перечислении средств</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Дата" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата перечисления (не позднее)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Сумма" type="УТ7:ТипДеньги">
+				<xs:annotation>
+					<xs:documentation>Сумма по сроку перечисления</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипПорядокПеречисленияСредствОбразование">
+		<xs:annotation>
+			<xs:documentation>Порядок перечисления средств по образованию</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Перечисление" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Сведения о перечислении средств: дата и сумма, период оплаты</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="ТипПеречисление">
+							<xs:sequence>
+								<xs:element name="ПериодОплаты" type="УТ7:ТипНепустаяСтрока">
+									<xs:annotation>
+										<xs:documentation>Период оплаты. Указывается за какой период осуществляется (за январь, за 3 семестр и т.д.).</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипДопСведенияДляПеречисления">
+		<xs:annotation>
+			<xs:documentation>Тип, отражающий дополнительные сведения, необходимые при осуществлении перечисления на образование или УЖУ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="РеквизитыДоговора" type="УТ7:ТипРеквизитыДоговора" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Наименование, дата и номер договора. Должны быть указаны при направлении средств МСК на образование или УЖУ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>При направлении средств МСК на образование должны быть указаны ФИО обучающегося, периоды оплаты,
+							при направлении средств МСК на УЖУ: ФИО лица, заключившего договор</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:annotation>
+						<xs:documentation>При направлении средств МСК на образование должны быть указаны ФИО обучающегося, периоды оплаты</xs:documentation>
+					</xs:annotation>
+					<xs:element name="ФИОРебенка" type="УТ7:ТипФИО">
+						<xs:annotation>
+							<xs:documentation>ФИО обучающегося ребенка.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ПериодОплаты" type="УТ7:ТипНепустаяСтрока" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Период оплаты. Указывается за какой период осуществляется (за январь, за 3 семестр и т.д.).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="ФИОДоговор" type="УТ7:ТипФИО">
+					<xs:annotation>
+						<xs:documentation>ФИО лица, заключившего договор: указывается при направлении средств МСК на УЖУ</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипДокументПодтверждающийПраво">
+		<xs:annotation>
+			<xs:documentation>Реквизиты документа, подтверждающего право владения</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Код" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:documentation>Код типа документа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Наименование" type="УТ7:ТипНепустаяСтрока">
+				<xs:annotation>
+					<xs:documentation>Наименование документа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Дата" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата документа "ОТ"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="Номер" type="УТ7:ТипНепустаяСтрока">
+					<xs:annotation>
+						<xs:documentation>Номер документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="БезНомера" type="xs:boolean" fixed="1">
+					<xs:annotation>
+						<xs:documentation>Призна документа без номера</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:group name="ГрПеречислениеУЖУ">
+		<xs:annotation>
+			<xs:documentation>Группа элементов, общая для заполнения при перечислении средств МКС на улучшение жилищных условий</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Объект" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Информация об объекте</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ДокументПодтверждающийПраво"
+							type="ТипДокументПодтверждающийПраво">
+							<xs:annotation>
+								<xs:documentation>Реквизиты документа, подтверждающего право на объект</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="КадастровыйНомер">
+							<xs:annotation>
+								<xs:documentation>Кадастровый номер</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="УТ7:ТипНепустаяСтрока">
+									<xs:pattern value="\d{2}:\d{2}:\d{6,7}:\d{1,7}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Вид">
+							<xs:annotation>
+								<xs:documentation>Вид объекта. Возможные значения:
+								1 - жилой дом,
+								2 - часть жилого дома,
+								3 - квартира,
+								4 - часть квартиры,
+								5 - комната</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:minInclusive value="1"/>
+									<xs:maxInclusive value="5"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Адрес" type="УТ7:ТипАдресОбщий">
+							<xs:annotation>
+								<xs:documentation>Адрес объекта</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="РазрешениеНаСтроительство" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Документ, подтверждающий право на проведение работ по строительству (реконструкции) объекта</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Код" type="xs:unsignedInt"/>
+						<xs:element name="Наименование" type="УТ7:ТипНепустаяСтрока">
+							<xs:annotation>
+								<xs:documentation>Наименование документа</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Дата" type="xs:date">
+							<xs:annotation>
+								<xs:documentation>Дата документа "ОТ"</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Номер" type="УТ7:ТипНепустаяСтрока">
+							<xs:annotation>
+								<xs:documentation>Номер документа</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ЗемельныйУчасток" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Информация об земельном участке</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ДокументПодтверждающийПраво"
+							type="ТипДокументПодтверждающийПраво">
+							<xs:annotation>
+								<xs:documentation>Реквизиты документа, подтверждающего право на земельный участок</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="КадастровыйНомер">
+							<xs:annotation>
+								<xs:documentation>Кадастровый номер</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="УТ7:ТипНепустаяСтрока">
+									<xs:pattern value="\d{2}:\d{2}:\d{6,7}:\d{1,7}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="КатегорияЗемель">
+							<xs:annotation>
+								<xs:documentation>Категория земель</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Код"/>
+									<xs:element ref="УТ7:Наименование">
+										<xs:annotation>
+											<xs:documentation>Наименование категории земель</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Площадь">
+							<xs:annotation>
+								<xs:documentation>Площадь земельного участка</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:pattern value="\d+\.\d{1,2}"/>
+									<xs:pattern value="\d+"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Адрес" type="УТ7:ТипАдресОбщий">
+							<xs:annotation>
+								<xs:documentation>Адрес земельного участка</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ФИОСупруга" type="УТ7:ТипФИО" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Фамилия, имя, отчество (при наличии) супруга(и) владельца сертификата</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ТипКредитор">
+		<xs:annotation>
+			<xs:documentation>Сведения об организации, предоставившей займ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="УТ7:Наименование">
+				<xs:annotation>
+					<xs:documentation>Наименование банка/организации, предоставившей кредит</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Указывается ИНН организации или БИК банка, предоставившего кредит</xs:documentation>
+				</xs:annotation>
+				<xs:element ref="УТ7:БИК">
+					<xs:annotation>
+						<xs:documentation>БИК банка, предоставившего кредит</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="УТ7:ИНН">
+					<xs:annotation>
+						<xs:documentation>ИНН организации, предоставившей кредит</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="РеквизитыДоговора" type="ТипРеквизитыДоговора">
+				<xs:annotation>
+					<xs:documentation>Дата и номер договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ДоговорРанее" type="ТипРеквизитыДоговора" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ранее оформленный кредитный договор/договор займа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипРеквизитыДоговора">
+		<xs:sequence>
+			<xs:element name="Дата" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="Номер" type="УТ7:ТипНепустаяСтрока">
+					<xs:annotation>
+						<xs:documentation>Номер документа</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="БезНомера" type="xs:boolean" fixed="1">
+					<xs:annotation>
+						<xs:documentation>Призна документа без номера</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="Код" type="xs:unsignedInt">
+				<xs:annotation>
+					<xs:documentation>Код типа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="УТ7:Наименование">
+				<xs:annotation>
+					<xs:documentation>Наименование договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

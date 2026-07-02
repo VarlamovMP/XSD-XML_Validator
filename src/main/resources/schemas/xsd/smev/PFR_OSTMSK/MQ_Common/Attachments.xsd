@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Private person (Private person) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../../PFR_MSKD/MQ_Common/CheckSignatureResultType.xsd"/>
+	<xs:complexType name="AttachmentContent">
+		<xs:annotation>
+			<xs:documentation>Абстрактный тип, используемый для описания вложений.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="FileData">
+					<xs:annotation>
+						<xs:documentation>Файл.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="37"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="AttachmentID" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Идентификатор (имя файла) в файловом хранилище.
+
+Рекомендуется использовать значение, аналогичное значению атрибута "bss:ToSmev/bss:Attachments/bss:Attachment/@Id"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element ref="CheckAttachmentSignatureResult" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Идентификатор приложенных данных.
+
+Совпадает со значением атрибута "bss:FromSmev/bss:ContentFromSmev/bss:Container/im:UserOrderResponse/im:AttachData/@attachmentId"</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MimeType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Тип контента.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FileName" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Имя передаваемого файла.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AttachmentContentList">
+		<xs:annotation>
+			<xs:documentation>Тип, используемый для передачи вложений.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Attachment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Attachments" type="AttachmentContentList">
+		<xs:annotation>
+			<xs:documentation>Вложения</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Attachment" type="AttachmentContent">
+		<xs:annotation>
+			<xs:documentation>Вложение.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>
