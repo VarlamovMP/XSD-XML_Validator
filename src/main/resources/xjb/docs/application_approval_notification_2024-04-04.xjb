@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../../xsd/docs/application_approval_notification_2024-04-04.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.docs.application_approval_notification_2024"/>
+        </jaxb:schemaBindings>
+
+        <jaxb:bindings node="xs:element[@name='ЭД']">
+            <jaxb:bindings node="xs:complexType">
+                <jaxb:class name="LoanAgreementDetailRequest"/>
+                <jaxb:bindings node="xs:all">
+                    <jaxb:bindings node="xs:element[@name='МУБЗ']">
+                        <jaxb:property name="applicationApprovalNotification"/>
+                        <jaxb:bindings node="xs:complexType">
+                            <jaxb:class name="ApplicationApprovalNotification"/>
+                            <jaxb:bindings node="xs:sequence">
+                                <jaxb:bindings node="xs:element[@name='РеквизитыУведомления']">
+                                    <jaxb:property name="notificationAttrs"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="NotificationAttrs"/>
+                                        <jaxb:bindings node="xs:sequence">
+                                            <jaxb:bindings node="xs:element[@name='Дата']">
+                                                <jaxb:property name="date"/>
+                                            </jaxb:bindings>
+                                            <jaxb:bindings node="xs:element[@name='Номер']">
+                                                <jaxb:property name="number"/>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='Организация']">
+                                    <jaxb:property name="creditOrganization"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="CreditOrganizationAttrs"/>
+                                        <jaxb:bindings node="xs:sequence">
+                                            <jaxb:bindings node="xs:element[@name='Наименование']">
+                                                <jaxb:property name="title"/>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='Владелец']">
+                                    <jaxb:property name="certificateHolder"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="CertificateHolder"/>
+                                        <jaxb:bindings node="xs:sequence">
+                                            <jaxb:bindings node="xs:element[@name='УдостоверяющийДокумент']">
+                                                <jaxb:property name="identityDocumentDetails"/>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='РеквизитыСертификата']">
+                                    <jaxb:property name="certificateRequisites"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='Получатель']">
+                                    <jaxb:property name="loanTaker"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='СупругВладельца']">
+                                    <jaxb:property name="certificateHolderSpouse"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="CertificateHolderSpouse"/>
+                                        <jaxb:bindings node="xs:sequence">
+                                            <jaxb:bindings node="xs:element[@name='УдостоверяющийДокумент']">
+                                                <jaxb:property name="identityDocumentDetails"/>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='Согласие']">
+                                    <jaxb:property name="personalDataProcessingAgreement"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='ЦельОбращения']">
+                                    <jaxb:property name="requestPurpose"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='ЦельКредитаЗайма']">
+                                    <jaxb:property name="fundsUsingPurpose"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                    <jaxb:bindings node="xs:element[@name='СлужебнаяИнформация']">
+                        <jaxb:class name="ServiceInformationType"/>
+                        <jaxb:property name="serviceInformationType"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>

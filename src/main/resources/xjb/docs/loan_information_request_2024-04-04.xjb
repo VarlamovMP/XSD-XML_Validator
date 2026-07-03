@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+		version="2.1"
+		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<jaxb:bindings schemaLocation="../../xsd/docs/loan_information_request_2024-04-04.xsd" node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="ru.vtb.msa.smkp.model.external.pf.docs.loan_information_request_2024"/>
+		</jaxb:schemaBindings>
+
+		<jaxb:bindings node="xs:element[@name='ЭД']">
+			<jaxb:bindings node="xs:complexType">
+				<jaxb:class name="LoanAgreementDetailRequest"/>
+				<jaxb:bindings node="xs:all">
+					<jaxb:bindings node="xs:element[@name='МСКД']">
+						<jaxb:property name="loanInformationRequest"/>
+						<jaxb:bindings node="xs:complexType">
+							<jaxb:class name="LoanInformationRequest"/>
+							<jaxb:bindings node="xs:sequence">
+								<jaxb:bindings node="xs:element[@name='Реквизиты']">
+									<jaxb:property name="requisites"/>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:element[@name='НаименованиеТОСФР']">
+									<jaxb:property name="territorialPensionFundName"/>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:element[@name='ВладелецСертификата']">
+									<jaxb:property name="certificateHolder"/>
+									<jaxb:bindings node="xs:complexType">
+										<jaxb:class name="CertificateHolder"/>
+										<jaxb:bindings node="xs:sequence">
+											<jaxb:bindings node="xs:element[@name='Документ']">
+												<jaxb:property name="document"/>
+											</jaxb:bindings>
+										</jaxb:bindings>
+									</jaxb:bindings>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:element[@name='Супруг']">
+									<jaxb:property name="spouse"/>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:element[@name='Договор']">
+									<jaxb:property name="contract"/>
+									<jaxb:bindings node="xs:complexType">
+										<jaxb:class name="Contract"/>
+										<jaxb:bindings node="xs:sequence">
+											<jaxb:bindings node="xs:element[@name='Наименование']">
+												<jaxb:property name="title"/>
+											</jaxb:bindings>
+											<jaxb:bindings node="xs:element[@name='Реквизиты']">
+												<jaxb:property name="requisites"/>
+												<jaxb:bindings node="xs:complexType">
+													<jaxb:class name="Requisites"/>
+													<jaxb:bindings node="xs:sequence">
+														<jaxb:bindings node="xs:element[@name='Дата']">
+															<jaxb:property name="date"/>
+														</jaxb:bindings>
+														<jaxb:bindings node="xs:element[@name='Номер']">
+															<jaxb:property name="number"/>
+														</jaxb:bindings>
+													</jaxb:bindings>
+												</jaxb:bindings>
+											</jaxb:bindings>
+										</jaxb:bindings>
+									</jaxb:bindings>
+								</jaxb:bindings>
+							</jaxb:bindings>
+						</jaxb:bindings>
+					</jaxb:bindings>
+					<jaxb:bindings node="xs:element[@name='СлужебнаяИнформация']">
+						<jaxb:property name="electronicDocumentServiceInformation"/>
+					</jaxb:bindings>
+				</jaxb:bindings>
+			</jaxb:bindings>
+		</jaxb:bindings>
+
+	</jaxb:bindings>
+</jaxb:bindings>

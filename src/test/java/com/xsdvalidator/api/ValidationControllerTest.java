@@ -147,6 +147,29 @@ class ValidationControllerTest {
     }
 
     @Test
+    void generateXjbForLoanSchemaUsesVocabulary() throws Exception {
+        mockMvc.perform(get("/api/schemas/xjb")
+                        .param("schemaId", "xsd/docs/loan_information_request_2024-01-01"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.schemaId").value("xsd/docs/loan_information_request_2024-01-01"))
+                .andExpect(jsonPath("$.rootElement").value("ЭДСФР"))
+                .andExpect(jsonPath("$.packageName").value("ru.vtb.msa.smkp.model.external.pf.docs.loan_information_request_20240101"))
+                .andExpect(jsonPath("$.xjb", containsString("certificateHolder")))
+                .andExpect(jsonPath("$.xjb", containsString("loanInformationRequest")))
+                .andExpect(jsonPath("$.vocabularyHits").value(greaterThan(0)));
+    }
+
+    @Test
+    void generateXjbForUniTypesSchemaUsesGlobalBindings() throws Exception {
+        mockMvc.perform(get("/api/schemas/xjb")
+                        .param("schemaId", "xsd/uni_types_2023-04-03"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.xjb", containsString("xs:complexType[@name='ТипФИО']")))
+                .andExpect(jsonPath("$.xjb", containsString("FullNameType")))
+                .andExpect(jsonPath("$.xjb", containsString("individualInsuranceNumber")));
+    }
+
+    @Test
     void formatXmlWithCyrillicNamespaces() throws Exception {
         String xml = """
                 <?xml version="1.0" encoding="UTF-8"?>

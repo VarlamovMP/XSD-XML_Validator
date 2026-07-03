@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../../xsd/docs/loan_agreement_information_2024-01-01.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.docs.loan_agreement_information_20240101"/>
+        </jaxb:schemaBindings>
+
+        <!-- Root document -->
+        <jaxb:bindings node="xs:element[@name='ЭДСФР']">
+            <jaxb:bindings node="xs:complexType">
+                <jaxb:class name="LoanAgreementDetailRequest"/>
+            </jaxb:bindings>
+            <!-- МВКД (основной документ) -->
+            <jaxb:bindings node="xs:complexType/xs:sequence/xs:element[@name='МВКД']">
+                <jaxb:property name="loanAgreementInformation"/>
+                <jaxb:bindings node="xs:complexType">
+                    <jaxb:class name="LoanAgreementInformation"/>
+                    <jaxb:bindings node="xs:sequence">
+                        <!-- Реквизиты -->
+                        <jaxb:bindings node="xs:element[@name='Реквизиты']">
+                            <jaxb:property name="requisites"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="DocumentRequisites"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Дата']">
+                                    <jaxb:property name="date"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Номер']">
+                                    <jaxb:property name="number"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+
+                        <jaxb:bindings node="xs:element[@name='Номер']">
+                            <jaxb:property name="requestNumber"/>
+                        </jaxb:bindings>
+                        <jaxb:bindings node="xs:element[@name='НаименованиеБанкаОрганизации']">
+                            <jaxb:property name="bankName"/>
+                        </jaxb:bindings>
+                        <jaxb:bindings node="xs:element[@name='ТОСФР']">
+                            <jaxb:property name="territorialSocialFund"/>
+                        </jaxb:bindings>
+
+                        <!-- ВладелецСертификата -->
+                        <jaxb:bindings node="xs:element[@name='ВладелецСертификата']">
+                            <jaxb:property name="certificateHolder"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="CertificateHolder"/>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+
+                        <!-- Договор -->
+                        <jaxb:bindings node="xs:element[@name='Договор']">
+                            <jaxb:property name="contract"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="Contract"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Наименование']">
+                                    <jaxb:property name="title"/>
+                                    <jaxb:bindings node="xs:simpleType">
+                                        <jaxb:typesafeEnumClass name="ContractTitle">
+                                            <jaxb:typesafeEnumMember value="1" name="CREDIT_CONTRACT"/>
+                                            <jaxb:typesafeEnumMember value="2" name="LOAN_CONTRACT"/>
+                                        </jaxb:typesafeEnumClass>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Реквизиты']">
+                                    <jaxb:property name="requisites"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="ContractRequisites"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Дата']">
+                                            <jaxb:property name="date"/>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Номер']">
+                                            <jaxb:property name="number"/>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+
+                        <!-- СтороныДоговора -->
+                        <jaxb:bindings node="xs:element[@name='СтороныДоговора']">
+                            <jaxb:property name="agreementParties"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="AgreementParties"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Сторона']">
+                                    <jaxb:property name="agreementParty"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="AgreementParty"/>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+
+                        <!-- ПредметДоговора -->
+                        <jaxb:bindings node="xs:element[@name='ПредметДоговора']">
+                            <jaxb:property name="contractSubject"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="ContractSubject"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Сумма']">
+                                    <jaxb:property name="amount"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:choice/xs:element[@name='СрокПредоставления']">
+                                    <jaxb:property name="term"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="ProvisionTerm"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='ДатаС']">
+                                            <jaxb:property name="dateFrom"/>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='ДатаПо']">
+                                            <jaxb:property name="dateTo"/>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:choice/xs:element[@name='КоличествоМесяцев']">
+                                    <jaxb:property name="monthNumber"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='ЦельИспользования']">
+                                    <jaxb:property name="loanPurpose"/>
+                                    <jaxb:bindings node="xs:simpleType">
+                                        <jaxb:typesafeEnumClass name="LoanPurpose">
+                                            <jaxb:typesafeEnumMember value="1" name="CREDIT_PURCHASE_HOUSING"/>
+                                            <jaxb:typesafeEnumMember value="2" name="CREDIT_CONSTRUCTION_HOUSING"/>
+                                            <jaxb:typesafeEnumMember value="3" name="LOAN_CONSTRUCTION_HOUSING"/>
+                                            <jaxb:typesafeEnumMember value="4" name="LOAN_PURCHASE_HOUSING"/>
+                                            <jaxb:typesafeEnumMember value="5" name="REPAY_CREDIT_CONSTRUCTION"/>
+                                            <jaxb:typesafeEnumMember value="6" name="REPAY_CREDIT_PURCHASE"/>
+                                        </jaxb:typesafeEnumClass>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='ЦельПредоставления']">
+                                    <jaxb:property name="fundsLoanUsingPurpose"/>
+                                    <jaxb:bindings node="xs:simpleType">
+                                        <jaxb:typesafeEnumClass name="FundsUsingPurpose">
+                                            <jaxb:typesafeEnumMember value="1" name="INITIAL_PAYMENT_PURCHASE_CREDIT"/>
+                                            <jaxb:typesafeEnumMember value="2" name="INITIAL_PAYMENT_CONSTRUCTION_CREDIT"/>
+                                            <jaxb:typesafeEnumMember value="3" name="INITIAL_PAYMENT_PURCHASE_LOAN"/>
+                                            <jaxb:typesafeEnumMember value="4" name="INITIAL_PAYMENT_CONSTRUCTION_LOAN"/>
+                                            <jaxb:typesafeEnumMember value="5" name="REPAY_CREDIT_PURCHASE"/>
+                                            <jaxb:typesafeEnumMember value="6" name="REPAY_LOAN_PURCHASE"/>
+                                            <jaxb:typesafeEnumMember value="7" name="REPAY_CREDIT_CONSTRUCTION"/>
+                                            <jaxb:typesafeEnumMember value="8" name="REPAY_LOAN_CONSTRUCTION"/>
+                                        </jaxb:typesafeEnumClass>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Объект']">
+                                    <jaxb:property name="object"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="Object"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Вид']">
+                                            <jaxb:property name="type"/>
+                                            <jaxb:bindings node="xs:simpleType">
+                                                <jaxb:typesafeEnumClass name="ObjectType">
+                                                    <jaxb:typesafeEnumMember value="1" name="HOUSE"/>
+                                                    <jaxb:typesafeEnumMember value="2" name="HOUSE_PART"/>
+                                                    <jaxb:typesafeEnumMember value="3" name="APARTMENT"/>
+                                                    <jaxb:typesafeEnumMember value="4" name="APARTMENT_PART"/>
+                                                    <jaxb:typesafeEnumMember value="5" name="ROOM"/>
+                                                </jaxb:typesafeEnumClass>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Адрес']">
+                                            <jaxb:property name="address"/>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='ДокументОснование']">
+                                    <jaxb:property name="baseDocument"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="BaseDocument"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Наименование']">
+                                            <jaxb:property name="title"/>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Реквизиты']">
+                                            <jaxb:property name="requisites"/>
+                                            <jaxb:bindings node="xs:complexType">
+                                                <jaxb:class name="BaseDocumentRequisites"/>
+                                                <jaxb:bindings node="xs:sequence/xs:element[@name='Дата']">
+                                                    <jaxb:property name="date"/>
+                                                </jaxb:bindings>
+                                                <jaxb:bindings node="xs:sequence/xs:element[@name='Номер']">
+                                                    <jaxb:property name="number"/>
+                                                </jaxb:bindings>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='ВидСобственности']">
+                                    <jaxb:property name="propertyType"/>
+                                    <jaxb:bindings node="xs:simpleType">
+                                        <jaxb:typesafeEnumClass name="PropertyType">
+                                            <jaxb:typesafeEnumMember value="1" name="PRIVATE"/>
+                                            <jaxb:typesafeEnumMember value="2" name="JOINT"/>
+                                            <jaxb:typesafeEnumMember value="3" name="SHARED"/>
+                                        </jaxb:typesafeEnumClass>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Обременение']">
+                                    <jaxb:property name="encumbrance"/>
+                                    <jaxb:bindings node="xs:simpleType">
+                                        <jaxb:typesafeEnumClass name="EncumbranceType">
+                                            <jaxb:typesafeEnumMember value="1" name="MORTGAGE_BY_LAW"/>
+                                            <jaxb:typesafeEnumMember value="2" name="MORTGAGE_CONTRACT"/>
+                                            <jaxb:typesafeEnumMember value="3" name="MORTGAGE_NOTE"/>
+                                        </jaxb:typesafeEnumClass>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='ДоговорИпотеки']">
+                                    <jaxb:property name="mortgageContract"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='НомерЗакладной']">
+                                    <jaxb:property name="mortgageNumber"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+
+                        <!-- Кредит -->
+                        <jaxb:bindings node="xs:element[@name='Кредит']">
+                            <jaxb:property name="credit"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="Credit"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='ДатаВыдачи']">
+                                    <jaxb:property name="issueDate"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Задолженность']">
+                                    <jaxb:property name="debtAmount"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='СрокПогашения']">
+                                    <jaxb:property name="maturityTerm"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='РазмерПлатежа']">
+                                    <jaxb:property name="paymentAmount"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+
+                        <!-- РеквизитыПеречисления -->
+                        <jaxb:bindings node="xs:element[@name='РеквизитыПеречисления']">
+                            <jaxb:property name="transferRequisites"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="TransferRequisites"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='РеквизитыБанка']">
+                                    <jaxb:property name="bankRequisites"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="BankRequisites"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='Наименование']">
+                                            <jaxb:property name="title"/>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:БИК']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:КСчет']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='СсудныйСчет']">
+                                            <jaxb:property name="loanAccount"/>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='РеквизитыОрганизации']">
+                                    <jaxb:property name="organizationRequisites"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="OrganizationRequisites"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='НаименованиеОрганизации']">
+                                            <jaxb:property name="organizationName"/>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:ИНН']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:КПП']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:РСчет']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:КБК']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:ОКТМО']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@name='НаименованиеБанка']">
+                                            <jaxb:property name="bankName"/>
+                                        </jaxb:bindings>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:БИК']"/>
+                                        <jaxb:bindings node="xs:sequence/xs:element[@ref='УТ7:КСчет']"/>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+
+            <!-- Служебная информация -->
+            <jaxb:bindings node="xs:complexType/xs:sequence/xs:element[@name='СлужебнаяИнформация']">
+                <jaxb:property name="electronicDocumentServiceInformation"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

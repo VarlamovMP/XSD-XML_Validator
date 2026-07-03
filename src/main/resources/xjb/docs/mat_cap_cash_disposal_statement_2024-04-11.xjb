@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../../xsd/docs/mat_cap_cash_disposal_statement_2024-04-11.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.docs.mat_cap_cash_disposal_statement_2024"/>
+        </jaxb:schemaBindings>
+
+        <jaxb:bindings node="xs:element[@name='ЭД']">
+            <jaxb:bindings node="xs:complexType">
+                <jaxb:class name="LoanAgreementDetailRequest"/>
+                <jaxb:bindings node="xs:all">
+                    <jaxb:bindings node="xs:element[@name='МЗРК']">
+                        <jaxb:property name="maternalFamilyCapitalDisposalStatement"/>
+                        <jaxb:bindings node="xs:complexType">
+                            <jaxb:class name="maternalFamilyCapitalDisposalStatement"/>
+                            <jaxb:bindings node="xs:sequence">
+
+                                <jaxb:bindings node="xs:element[@name='Заявитель']">
+                                    <jaxb:property name="applicant"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="Applicant"/>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='Представитель']">
+                                    <jaxb:property name="applicantDelegate"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="ApplicantDelegate"/>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='Распоряжение']">
+                                    <jaxb:property name="maternalFamilyCapitalUsingOrder"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="MaternalFamilyCapitalUsingOrder"/>
+                                        <jaxb:bindings node="xs:sequence">
+                                            <jaxb:bindings node="xs:choice">
+
+                                                <jaxb:bindings node="xs:element[@name='УЖУ']">
+                                                    <jaxb:property name="housingImprovementMaternalFamilyCapitalUsing"/>
+                                                    <jaxb:bindings node="xs:complexType">
+                                                        <jaxb:class name="HousingImprovementMaternalFamilyCapitalUsing"/>
+                                                        <jaxb:bindings node="xs:sequence">
+
+                                                            <jaxb:bindings node="xs:element[@name='ВидРасходов']">
+                                                                <jaxb:property name="expensesType"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                <jaxb:property name="amount"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='НомерПриложения']">
+                                                                <jaxb:property name="appendixNumber"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:choice">
+                                                                <jaxb:bindings node="xs:element[@name='СведенияЮрЛицо']">
+                                                                    <jaxb:property name="legalEntityMaternalFamilyCapitalSendingDetails"/>
+                                                                    <jaxb:bindings node="xs:complexType">
+                                                                        <jaxb:class name="LegalEntityMaternalFamilyCapitalSendingDetails"/>
+                                                                        <jaxb:bindings node="xs:sequence">
+
+                                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                                <jaxb:property name="amount"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='РеквизитыДоговора']">
+                                                                                <jaxb:property name="contractRequisites"/>
+                                                                                <jaxb:bindings node="xs:complexType">
+                                                                                    <jaxb:class name="ContractRequisites"/>
+                                                                                    <jaxb:bindings node="xs:sequence">
+                                                                                        <jaxb:bindings node="xs:element[@name='Дата']">
+                                                                                            <jaxb:property name="date"/>
+                                                                                        </jaxb:bindings>
+                                                                                        <jaxb:bindings node="xs:choice">
+                                                                                            <jaxb:bindings node="xs:element[@name='Номер']">
+                                                                                                <jaxb:property name="number"/>
+                                                                                            </jaxb:bindings>
+                                                                                            <jaxb:bindings node="xs:element[@name='НетНомера']">
+                                                                                                <jaxb:property name="noNumber"/>
+                                                                                            </jaxb:bindings>
+                                                                                        </jaxb:bindings>
+                                                                                    </jaxb:bindings>
+                                                                                </jaxb:bindings>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерДоговораДС']">
+                                                                                <jaxb:property name="dsContractNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерЗакладной']">
+                                                                                <jaxb:property name="mortgageNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерСсудногоСчета']">
+                                                                                <jaxb:property name="loanAccountNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='Кредитор']">
+                                                                                <jaxb:property name="creditor"/>
+                                                                            </jaxb:bindings>
+
+                                                                        </jaxb:bindings>
+                                                                    </jaxb:bindings>
+                                                                </jaxb:bindings>
+
+                                                                <jaxb:bindings node="xs:element[@name='СведенияФизЛицо']">
+                                                                    <jaxb:property name="physicalPersonMaternalFamilyCapitalSendingDetails"/>
+                                                                    <jaxb:bindings node="xs:complexType">
+                                                                        <jaxb:class name="PhysicalPersonMaternalFamilyCapitalSendingDetails"/>
+                                                                        <jaxb:bindings node="xs:sequence">
+
+                                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                                <jaxb:property name="amount"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='РеквизитыДоговора']">
+                                                                                <jaxb:property name="contractRequisites"/>
+                                                                                <jaxb:bindings node="xs:complexType">
+                                                                                    <jaxb:class name="ContractRequisites"/>
+                                                                                    <jaxb:bindings node="xs:sequence">
+                                                                                        <jaxb:bindings node="xs:element[@name='Дата']">
+                                                                                            <jaxb:property name="date"/>
+                                                                                        </jaxb:bindings>
+                                                                                        <jaxb:bindings node="xs:choice">
+                                                                                            <jaxb:bindings node="xs:element[@name='Номер']">
+                                                                                                <jaxb:property name="number"/>
+                                                                                            </jaxb:bindings>
+                                                                                            <jaxb:bindings node="xs:element[@name='НетНомера']">
+                                                                                                <jaxb:property name="noNumber"/>
+                                                                                            </jaxb:bindings>
+                                                                                        </jaxb:bindings>
+                                                                                    </jaxb:bindings>
+                                                                                </jaxb:bindings>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерДоговораДС']">
+                                                                                <jaxb:property name="dsContractNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='АктОсвидетельствования']">
+                                                                                <jaxb:property name="completedWorksInspectionCertificate"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='Кредитор']">
+                                                                                <jaxb:property name="creditor"/>
+                                                                            </jaxb:bindings>
+
+                                                                        </jaxb:bindings>
+                                                                    </jaxb:bindings>
+                                                                </jaxb:bindings>
+
+                                                                <jaxb:bindings node="xs:element[@name='СведенияЮрЛицоЕП']">
+                                                                    <jaxb:property name="monthlyPaymentLegalEntityMaternalFamilyCapitalSendingDetails"/>
+                                                                    <jaxb:bindings node="xs:complexType">
+                                                                        <jaxb:class name="MonthlyPaymentLegalEntityMaternalFamilyCapitalSendingDetails"/>
+                                                                        <jaxb:bindings node="xs:sequence">
+
+                                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                                <jaxb:property name="amount"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='РеквизитыДоговора']">
+                                                                                <jaxb:property name="contractRequisites"/>
+                                                                                <jaxb:bindings node="xs:complexType">
+                                                                                    <jaxb:class name="ContractRequisites"/>
+                                                                                    <jaxb:bindings node="xs:sequence">
+                                                                                        <jaxb:bindings node="xs:element[@name='Дата']">
+                                                                                            <jaxb:property name="date"/>
+                                                                                        </jaxb:bindings>
+                                                                                        <jaxb:bindings node="xs:choice">
+                                                                                            <jaxb:bindings node="xs:element[@name='Номер']">
+                                                                                                <jaxb:property name="number"/>
+                                                                                            </jaxb:bindings>
+                                                                                            <jaxb:bindings node="xs:element[@name='НетНомера']">
+                                                                                                <jaxb:property name="noNumber"/>
+                                                                                            </jaxb:bindings>
+                                                                                        </jaxb:bindings>
+                                                                                    </jaxb:bindings>
+                                                                                </jaxb:bindings>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерДоговораДС']">
+                                                                                <jaxb:property name="dsContractNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='КоличествоМесяцев']">
+                                                                                <jaxb:property name="monthNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='ДополнительныеСведения']">
+                                                                                <jaxb:property name="additionalDetails"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерЗакладной']">
+                                                                                <jaxb:property name="mortgageNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='НомерСсудногоСчета']">
+                                                                                <jaxb:property name="loanAccountNumber"/>
+                                                                            </jaxb:bindings>
+
+                                                                            <jaxb:bindings node="xs:element[@name='Кредитор']">
+                                                                                <jaxb:property name="creditor"/>
+                                                                            </jaxb:bindings>
+                                                                        </jaxb:bindings>
+                                                                    </jaxb:bindings>
+                                                                </jaxb:bindings>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='СпособУЖУ']">
+                                                                <jaxb:property name="housingImprovementMaternalFamilyCapitalUsingWay"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='СпособУЖУ']/xs:simpleType">
+                                                                <jaxb:typesafeEnumClass name="HousingImprovementMaternalFamilyCapitalUsingWay">
+                                                                    <jaxb:typesafeEnumMember value="ПРИОБРЕТЕНИЕ" name="PURCHASE"/>
+                                                                    <jaxb:typesafeEnumMember value="СТРОИТЕЛЬСТВО" name="CONSTRUCTION"/>
+                                                                </jaxb:typesafeEnumClass>
+                                                            </jaxb:bindings>
+
+                                                        </jaxb:bindings>
+                                                    </jaxb:bindings>
+                                                </jaxb:bindings>
+
+                                                <jaxb:bindings node="xs:element[@name='Образование']">
+                                                    <jaxb:property name="educationMaternalFamilyCapitalUsing"/>
+                                                    <jaxb:bindings node="xs:complexType">
+                                                        <jaxb:class name="EducationMaternalFamilyCapitalUsing"/>
+                                                        <jaxb:bindings node="xs:sequence">
+
+                                                            <jaxb:bindings node="xs:element[@name='ВидРасходов']">
+                                                                <jaxb:property name="expensesType"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                <jaxb:property name="amount"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='НомерПриложения']">
+                                                                <jaxb:property name="appendixNumber"/>
+                                                            </jaxb:bindings>
+
+                                                            <jaxb:bindings node="xs:element[@name='Сведения']">
+                                                                <jaxb:property name="educationMaternalFamilyCapitalUsingStatementDetails"/>
+                                                                <jaxb:bindings node="xs:complexType">
+                                                                    <jaxb:class name="EducationMaternalFamilyCapitalUsingStatementDetails"/>
+                                                                    <jaxb:bindings node="xs:sequence">
+                                                                        <jaxb:bindings node="xs:element[@name='НомерЛицевогоСчета']">
+                                                                            <jaxb:property name="accountNumber"/>
+                                                                        </jaxb:bindings>
+
+                                                                        <jaxb:bindings node="xs:element[@name='РеквизитыДоговора']">
+                                                                            <jaxb:property name="contractRequisites"/>
+                                                                            <jaxb:bindings node="xs:complexType">
+                                                                                <jaxb:class name="ContractRequisites"/>
+                                                                            </jaxb:bindings>
+                                                                        </jaxb:bindings>
+
+                                                                        <jaxb:bindings node="xs:element[@name='ОбучающийсяРебенок']">
+                                                                            <jaxb:property name="studyingChild"/>
+                                                                            <jaxb:bindings node="xs:complexType">
+                                                                                <jaxb:class name="StudyingChild"/>
+                                                                            </jaxb:bindings>
+                                                                        </jaxb:bindings>
+
+                                                                        <jaxb:bindings node="xs:element[@name='ПорядокПеречисленияСредств']">
+                                                                            <jaxb:property name="maternalFamilyCapitalTransferringProcedure"/>
+                                                                            <jaxb:bindings node="xs:complexType">
+                                                                                <jaxb:class name="MaternalFamilyCapitalTransferringProcedure"/>
+                                                                                <jaxb:bindings node="xs:complexContent">
+                                                                                    <jaxb:bindings node="xs:extension">
+                                                                                        <jaxb:bindings node="xs:sequence">
+                                                                                            <jaxb:bindings node="xs:element[@name='ПериодПеречисления']">
+                                                                                                <jaxb:property name="transferPeriod"/>
+                                                                                            </jaxb:bindings>
+                                                                                        </jaxb:bindings>
+                                                                                    </jaxb:bindings>
+                                                                                </jaxb:bindings>
+                                                                            </jaxb:bindings>
+                                                                        </jaxb:bindings>
+
+                                                                        <jaxb:bindings node="xs:element[@name='ДополнительныеСведения']">
+                                                                            <jaxb:property name="additionalInformation"/>
+                                                                        </jaxb:bindings>
+                                                                    </jaxb:bindings>
+                                                                </jaxb:bindings>
+                                                            </jaxb:bindings>
+                                                        </jaxb:bindings>
+                                                    </jaxb:bindings>
+                                                </jaxb:bindings>
+
+                                                <jaxb:bindings node="xs:element[@name='НП']">
+                                                    <jaxb:property name="fundedPensionMaternalFamilyCapitalUsing"/>
+                                                    <jaxb:bindings node="xs:complexType">
+                                                        <jaxb:class name="FundedPensionMaternalFamilyCapitalUsing"/>
+                                                        <jaxb:bindings node="xs:sequence">
+                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                <jaxb:property name="amount"/>
+                                                            </jaxb:bindings>
+                                                        </jaxb:bindings>
+                                                    </jaxb:bindings>
+                                                </jaxb:bindings>
+
+                                                <jaxb:bindings node="xs:element[@name='САДИ']">
+                                                    <jaxb:property name="disableChildGoodsMaternalFamilyCapitalUsing"/>
+                                                    <jaxb:bindings node="xs:complexType">
+                                                        <jaxb:class name="DisableChildGoodsMaternalFamilyCapitalUsing"/>
+                                                        <jaxb:bindings node="xs:sequence">
+                                                            <jaxb:bindings node="xs:element[@name='ВидРасходов']">
+                                                                <jaxb:property name="expensesType"/>
+                                                            </jaxb:bindings>
+                                                            <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                <jaxb:property name="amount"/>
+                                                            </jaxb:bindings>
+                                                            <jaxb:bindings node="xs:element[@name='НомерПриложения']">
+                                                                <jaxb:property name="appendixNumber"/>
+                                                            </jaxb:bindings>
+                                                            <jaxb:bindings node="xs:element[@name='Сведения']">
+                                                                <jaxb:property name="disableChildGoodsMaternalFamilyCapitalUsingStatement"/>
+                                                                <jaxb:bindings node="xs:complexType">
+                                                                    <jaxb:class name="DisableChildGoodsMaternalFamilyCapitalUsingStatement"/>
+                                                                    <jaxb:bindings node="xs:sequence">
+                                                                        <jaxb:bindings node="xs:element[@name='Сумма']">
+                                                                            <jaxb:property name="amount"/>
+                                                                        </jaxb:bindings>
+                                                                        <jaxb:bindings node="xs:element[@name='ПодтверждающиеДокументы']">
+                                                                            <jaxb:property name="confirmingDocuments"/>
+                                                                            <jaxb:bindings node="xs:complexType">
+                                                                                <jaxb:class name="ConfirmingDocuments"/>
+                                                                                <jaxb:bindings node="xs:sequence">
+                                                                                    <jaxb:bindings node="xs:element[@name='ПодтверждающийДокумент']">
+                                                                                        <jaxb:property name="confirmingDocument"/>
+                                                                                        <jaxb:bindings node="xs:complexType">
+                                                                                            <jaxb:class name="ConfirmingDocument"/>
+                                                                                            <jaxb:bindings node="xs:sequence">
+                                                                                                <jaxb:bindings node="xs:element[@name='Вид']">
+                                                                                                    <jaxb:property name="documentType"/>
+                                                                                                </jaxb:bindings>
+                                                                                                <jaxb:bindings node="xs:choice">
+                                                                                                    <jaxb:bindings node="xs:element[@name='Реквизиты']">
+                                                                                                        <jaxb:property name="requisites"/>
+                                                                                                    </jaxb:bindings>
+                                                                                                    <jaxb:bindings node="xs:element[@name='Наименование']">
+                                                                                                        <jaxb:property name="documentTitle"/>
+                                                                                                    </jaxb:bindings>
+                                                                                                </jaxb:bindings>
+                                                                                                <jaxb:bindings node="xs:element[@name='СписокТоваровУслуг']">
+                                                                                                    <jaxb:property name="goodsList"/>
+                                                                                                    <jaxb:bindings node="xs:complexType">
+                                                                                                        <jaxb:class name="GoodsList"/>
+                                                                                                        <jaxb:bindings node="xs:sequence">
+                                                                                                            <jaxb:bindings node="xs:element[@name='ТоварУслуга']">
+                                                                                                                <jaxb:property name="goods"/>
+                                                                                                                <jaxb:bindings node="xs:complexType">
+                                                                                                                    <jaxb:class name="Goods"/>
+                                                                                                                    <jaxb:bindings node="xs:sequence">
+                                                                                                                        <jaxb:bindings node="xs:element[@name='Наименование']">
+                                                                                                                            <jaxb:property name="title"/>
+                                                                                                                        </jaxb:bindings>
+                                                                                                                        <jaxb:bindings node="xs:element[@name='Код']">
+                                                                                                                            <jaxb:property name="code"/>
+                                                                                                                        </jaxb:bindings>
+                                                                                                                        <jaxb:bindings node="xs:element[@name='Стоимость']">
+                                                                                                                            <jaxb:property name="amount"/>
+                                                                                                                        </jaxb:bindings>
+                                                                                                                    </jaxb:bindings>
+                                                                                                                </jaxb:bindings>
+                                                                                                            </jaxb:bindings>
+                                                                                                        </jaxb:bindings>
+                                                                                                    </jaxb:bindings>
+                                                                                                </jaxb:bindings>
+                                                                                            </jaxb:bindings>
+                                                                                        </jaxb:bindings>
+                                                                                    </jaxb:bindings>
+                                                                                </jaxb:bindings>
+                                                                            </jaxb:bindings>
+                                                                        </jaxb:bindings>
+                                                                        <jaxb:bindings node="xs:element[@name='ИПРА']">
+                                                                            <jaxb:property name="disableChildrenIndividualRehabilitationProgramRequisites"/>
+                                                                        </jaxb:bindings>
+                                                                        <jaxb:bindings node="xs:element[@name='ФБМСЭ']">
+                                                                            <jaxb:property name="medicalSocialExpertiseFederalStateInstitutionName"/>
+                                                                        </jaxb:bindings>
+                                                                        <jaxb:bindings node="xs:element[@name='РебенокИнвалид']">
+                                                                            <jaxb:property name="disableChild"/>
+                                                                            <jaxb:bindings node="xs:complexType">
+                                                                                <jaxb:class name="DisableChild"/>
+                                                                                <jaxb:bindings node="xs:sequence">
+
+                                                                                </jaxb:bindings>
+                                                                            </jaxb:bindings>
+                                                                        </jaxb:bindings>
+                                                                        <jaxb:bindings node="xs:element[@name='РеквизитыАкта']">
+                                                                            <jaxb:property name="goodsConformityVerificationActRequisites"/>
+                                                                        </jaxb:bindings>
+                                                                        <jaxb:bindings node="xs:element[@name='ОрганСО']">
+                                                                            <jaxb:property name="socialServiceAuthority"/>
+                                                                        </jaxb:bindings>
+                                                                    </jaxb:bindings>
+                                                                </jaxb:bindings>
+                                                            </jaxb:bindings>
+                                                        </jaxb:bindings>
+                                                    </jaxb:bindings>
+                                                </jaxb:bindings>
+
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='СписокОзнакомлений']">
+                                    <jaxb:property name="introductionsList"/>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='ИнформированиеОбОбязанности']">
+                                    <jaxb:property name="informedAboutObligation"/>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='ПредупреждениеОбОтветственности']">
+                                    <jaxb:property name="liabilityDisclaimer"/>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='ПрилагаемыеДокументы']">
+                                    <jaxb:property name="attachedDocuments"/>
+                                    <jaxb:bindings node="xs:complexType">
+                                        <jaxb:class name="AttachedDocuments"/>
+                                        <jaxb:bindings node="xs:sequence">
+                                            <jaxb:bindings node="xs:element[@name='ПрилагаемыйДокумент']">
+                                                <jaxb:property name="attachedDocument"/>
+                                            </jaxb:bindings>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='ДатаЗаполнения']">
+                                    <jaxb:property name="fillingDate"/>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='СоответствиеДанных']">
+                                    <jaxb:property name="matchingDataMark"/>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='Реквизиты']">
+                                    <jaxb:property name="requisites"/>
+                                </jaxb:bindings>
+
+                                <jaxb:bindings node="xs:element[@name='Специалист']">
+                                    <jaxb:property name="specialist"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+
+                    <jaxb:bindings node="xs:element[@name='СлужебнаяИнформация']">
+                        <jaxb:property name="electronicDocumentServiceInformation"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипДокументПодтверждающийПраво']">
+            <jaxb:class name="possessionRightConfirmingDocumentType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Наименование']">
+                    <jaxb:property name="title"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Дата']">
+                    <jaxb:property name="date"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Номер']">
+                    <jaxb:property name="number"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрПеречислениеУЖУ']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Объект']">
+                    <jaxb:property name="object"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="Object"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='ДокументПодтверждающийПраво']">
+                                <jaxb:property name="rightConfirmingDocument"/>
+                            </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='КадастровыйНомер']">
+                                    <jaxb:property name="cadastralNumber"/>
+                                </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='Вид']">
+                                <jaxb:property name="objectType"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='Адрес']">
+                                <jaxb:property name="objectAddress"/>
+                                <jaxb:bindings node="xs:complexType">
+                                    <jaxb:class name="Address"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='РазрешениеНаСтроительство']">
+                    <jaxb:property name="buildingPermit"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="BuildingPermit"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='Наименование']">
+                                <jaxb:property name="permissionTitle"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='Дата']">
+                                <jaxb:property name="issueDate"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='Номер']">
+                                <jaxb:property name="documentNumber"/>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='ЗемельныйУчасток']">
+                    <jaxb:property name="landPlot"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="LandPlot"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='ДокументПодтверждающийПраво']">
+                                <jaxb:property name="landPlotRightConfirmingDocument"/>
+                            </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='КадастровыйНомер']">
+                                    <jaxb:property name="cadastralNumber"/>
+                                </jaxb:bindings>
+
+                            <jaxb:bindings node="xs:element[@name='КатегорияЗемель']">
+                                <jaxb:property name="landPlotCategory"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='Площадь']">
+                                <jaxb:property name="landPlotArea"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='Адрес']">
+                                <jaxb:property name="landPlotAddress"/>
+                                <jaxb:bindings node="xs:complexType">
+                                    <jaxb:class name="Address"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='ФИОСупруга']">
+                    <jaxb:property name="spouseFullName"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипКредитор']">
+            <jaxb:class name="CreditorType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='РеквизитыДоговора']">
+                    <jaxb:property name="requisites"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="Requisites"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='Дата']">
+                                <jaxb:property name="date"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:choice">
+                                <jaxb:bindings node="xs:element[@name='Номер']">
+                                    <jaxb:property name="number"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='НетНомера']">
+                                    <jaxb:property name="noNumber"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='ДоговорРанее']">
+                    <jaxb:property name="loanAgreementEarlier"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="LoanAgreementEarlier"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='Дата']">
+                                <jaxb:property name="date"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:choice">
+                                <jaxb:bindings node="xs:element[@name='Номер']">
+                                    <jaxb:property name="number"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:element[@name='НетНомера']">
+                                    <jaxb:property name="noNumber"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>

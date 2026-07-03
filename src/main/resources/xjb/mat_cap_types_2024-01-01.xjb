@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../xsd/mat_cap_types_2024-01-01.xsd" node="//xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.mat_cap_types._2024_01_01"/>
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияМСК']">
+            <jaxb:class name="MaternalFamilyCapitalServiceInformationType"/>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:choice/xs:element[@name='Составитель']">
+                <jaxb:property name="notSocialFundDrafter"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:choice/xs:element[@name='СоставительСФР']">
+                <jaxb:property name="socialFundDrafter"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:element[@name='ТипФормы']">
+                <jaxb:property name="formType"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:element[@name='ТипФормы']/xs:simpleType">
+                <jaxb:typesafeEnumClass name="FormType">
+                    <jaxb:typesafeEnumMember value="1" name="INITIAL"/>
+                    <jaxb:typesafeEnumMember value="2" name="CORRECTIVE"/>
+                    <jaxb:typesafeEnumMember value="3" name="CANCELING"/>
+                </jaxb:typesafeEnumClass>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияМСК-ЭП']">
+            <jaxb:class name="MaternalFamilyCapitalServiceInformationEPType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияЗМСК']">
+            <jaxb:class name="MaternalFamilyCapitalApplicationServiceInformationType"/>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:element[@name='ДатаПодачи']">
+                <jaxb:property name="applicationDate"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:element[@name='ТипОбращения']">
+                <jaxb:property name="applicationType"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:element[@name='ТипОбращения']/xs:simpleType">
+                <jaxb:typesafeEnumClass name="ApplicationType">
+                    <jaxb:typesafeEnumMember value="1" name="PAPER"/>
+                    <jaxb:typesafeEnumMember value="2" name="ELECTRONIC"/>
+                </jaxb:typesafeEnumClass>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexContent/xs:extension/xs:sequence/xs:element[@name='Реквизиты']">
+                <jaxb:property name="requisites"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияЗМСК-ЭП']">
+            <jaxb:class name="MaternalFamilyCapitalApplicationServiceInformationEPType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСтатусПоМСК']">
+            <jaxb:class name="MaternalFamilyCapitalStatusType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Код']">
+                    <jaxb:property name="code"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@ref='УТ7:Наименование']">
+                    <jaxb:property name="name"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСертифицируемыйРебенок']">
+            <jaxb:class name="CertifiedChildType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ТипРодства']">
+                    <jaxb:property name="relationshipType"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ОчередностьРождения']">
+                    <jaxb:property name="birthOrder"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ФИО']">
+                    <jaxb:property name="fullName"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@ref='УТ7:СНИЛС']">
+                    <jaxb:property name="individualInsuranceNumber"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ДатаВозникновенияПраваНаДМГП']">
+                    <jaxb:property name="additionalStateRightSupportOccurrenceDate"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипДатаВозникновенияПраваНаДМГП']">
+            <jaxb:class name="AdditionalStateRightSupportOccurrenceDateType"/>
+            <jaxb:bindings node="xs:sequence/xs:choice/xs:element[@name='ДатаУсыновления']">
+                <jaxb:property name="adoptionDate"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипОснованияОтказа']">
+            <jaxb:class name="RefusalReasonType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Основание']">
+                    <jaxb:property name="refusalReason"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="RefusalReason"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='ПунктНормативногоДокумента']">
+                                <jaxb:property name="normativeDocumentParagraph"/>
+                            </jaxb:bindings>
+                            <jaxb:bindings node="xs:element[@name='ПричинаОтказа']">
+                                <jaxb:property name="reason"/>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСведенияОСертификатеМСК']">
+            <jaxb:class name="MaternalFamilyCapitalCertificateType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='КемВыдан']">
+                    <jaxb:property name="issuedBy"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Дубликат']">
+                    <jaxb:property name="duplicate"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипРеквизитыСертификатаМСК']">
+            <jaxb:class name="MaternalFamilyCapitalCertificateRequisitesType"/>
+            <jaxb:bindings node="xs:sequence/xs:element[@name='Дубликат']">
+                <jaxb:property name="duplicate"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипРебенок']">
+            <jaxb:class name="ChildType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ОчередностьРождения']">
+                    <jaxb:property name="birthOrder"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='АнкетныеДанные']">
+                    <jaxb:property name="personalData"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="PersonalData"/>
+                        <jaxb:bindings node="xs:sequence/xs:element[@name='УдостоверяющийДокумент']">
+                            <jaxb:property name="identityDocument"/>
+                            <jaxb:bindings node="xs:complexType">
+                                <jaxb:class name="IdentityDocument"/>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='Код']">
+                                    <jaxb:property name="code"/>
+                                </jaxb:bindings>
+                                <jaxb:bindings node="xs:sequence/xs:element[@name='КодПодразделения']">
+                                    <jaxb:property name="departmentCode"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Акт']">
+                    <jaxb:property name="act"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='АктОбУсыновлении']">
+                    <jaxb:property name="adoptionAct"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипТипРодства']">
+            <jaxb:typesafeEnumClass name="RelationshipType">
+                <jaxb:typesafeEnumMember value="1" name="BIRTH"/>
+                <jaxb:typesafeEnumMember value="2" name="ADOPTION"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипПричинаСнятияСРассмотрения']">
+            <jaxb:typesafeEnumClass name="RemovalReasonType">
+                <jaxb:typesafeEnumMember value="1" name="CERTIFICATE_ISSUED_BASED_ON_FZ_CHILD_BIRTH_DATA"/>
+                <jaxb:typesafeEnumMember value="2" name="FALSE_INFORMATION_PROVIDED"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <!-- Groups used within certificate types -->
+        <jaxb:bindings node="xs:group[@name='ГрСерияНомерСертификатаМСК']">
+            <jaxb:bindings node="xs:sequence/xs:element[@name='Серия']">
+                <jaxb:property name="series"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:sequence/xs:element[@name='Номер']">
+                <jaxb:property name="number"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:group[@name='ГрКраткиеСведенияСертификатаМСК']">
+            <jaxb:bindings node="xs:sequence/xs:element[@name='ДатаВыдачи']">
+                <jaxb:property name="issueDate"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>
+

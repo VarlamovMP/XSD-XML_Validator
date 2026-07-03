@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+		version="2.1"
+		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<jaxb:bindings schemaLocation="../xsd/format_album_types_2017-08-21.xsd" node="//xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="ru.vtb.msa.smkp.model.external.pf.format_album_types._2017_08_21"/>
+		</jaxb:schemaBindings>
+
+		<jaxb:bindings node="xs:element[@name='GUID']">
+			<jaxb:property name="GUID"/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:element[@name='ВОтветНа']">
+			<jaxb:property name="electronicDocumentGlobalIdentifier"/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:element[@name='ДатаВремя']">
+			<jaxb:property name="timeDate"/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:element[@name='ПрограммаПодготовки']">
+			<jaxb:property name="documentPreparationProgram"/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформация']">
+			<jaxb:class name="ServiceInformationType"/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияППЭД']">
+			<jaxb:class name="ElectronicDocumentPreparationServiceInformationType"/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:complexType[@name='ТипОписаниеПеременной']">
+			<jaxb:class name="VariableDescriptionType"/>
+			<jaxb:bindings node="xs:sequence">
+				<jaxb:bindings node="xs:element[@name='Описание']">
+					<jaxb:property name="description"/>
+				</jaxb:bindings>
+				<jaxb:bindings node="xs:element[@name='Декларация']">
+					<jaxb:property name="value"/>
+				</jaxb:bindings>
+			</jaxb:bindings>
+		</jaxb:bindings>
+
+	</jaxb:bindings>
+</jaxb:bindings>

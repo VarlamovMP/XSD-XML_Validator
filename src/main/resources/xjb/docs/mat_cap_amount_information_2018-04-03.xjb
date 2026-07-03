@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+		version="2.1"
+		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<jaxb:bindings schemaLocation="../../xsd/docs/mat_cap_amount_information_2018-04-03.xsd" node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="ru.vtb.msa.smkp.model.external.pf.docs.mat_cap_amount_information"/>
+		</jaxb:schemaBindings>
+
+		<jaxb:bindings node="xs:element[@name='ЭДПФР']">
+			<jaxb:bindings node="xs:complexType">
+				<jaxb:class name="LoanAgreementDetailRequest"/>
+				<jaxb:bindings node="xs:all">
+					<jaxb:bindings node="xs:element[@name='МСОС']">
+						<jaxb:property name="maternalFamilyCapitalAmountInformation"/>
+						<jaxb:bindings node="xs:complexType">
+							<jaxb:class name="MaternalFamilyCapitalAmountInformation"/>
+							<jaxb:bindings node="xs:sequence">
+								<jaxb:bindings node="xs:element[@name='ДатаФормирования']">
+									<jaxb:property name="referenceDate"/>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:element[@name='ВладелецСертификата']">
+									<jaxb:property name="certificateHolder"/>
+									<jaxb:bindings node="xs:complexType">
+										<jaxb:class name="CertificateHolder"/>
+									</jaxb:bindings>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:choice">
+									<jaxb:bindings node="xs:element[@name='РазмерМСК']">
+										<jaxb:property name="maternalFamilyCapitalAmount"/>
+									</jaxb:bindings>
+									<jaxb:bindings node="xs:element[@name='ОстатокЛС']">
+										<jaxb:property name="maternalFamilyCapitalRemains"/>
+									</jaxb:bindings>
+								</jaxb:bindings>
+								<jaxb:bindings node="xs:element[@name='РуководительТОПФР']">
+									<jaxb:property name="territorialPensionFundHead"/>
+								</jaxb:bindings>
+							</jaxb:bindings>
+						</jaxb:bindings>
+					</jaxb:bindings>
+					<jaxb:bindings node="xs:element[@name='СлужебнаяИнформация']">
+						<jaxb:property name="electronicDocumentServiceInformation"/>
+					</jaxb:bindings>
+				</jaxb:bindings>
+			</jaxb:bindings>
+		</jaxb:bindings>
+
+	</jaxb:bindings>
+</jaxb:bindings>

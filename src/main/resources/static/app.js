@@ -10,6 +10,7 @@ const validateBtn = document.getElementById("validateBtn");
 const goToResultBtn = document.getElementById("goToResultBtn");
 const loadFileBtn = document.getElementById("loadFileBtn");
 const loadSampleBtn = document.getElementById("loadSampleBtn");
+const generateXjbBtn = document.getElementById("generateXjbBtn");
 const clearXmlBtn = document.getElementById("clearXmlBtn");
 const formatXmlBtn = document.getElementById("formatXmlBtn");
 const xmlFile = document.getElementById("xmlFile");
@@ -19,10 +20,13 @@ const resultPanel = document.getElementById("resultPanel");
 const resultBanner = document.getElementById("resultBanner");
 const errorsBlock = document.getElementById("errorsBlock");
 const errorsBody = document.getElementById("errorsBody");
+const xjbWarningsBlock = document.getElementById("xjbWarningsBlock");
+const xjbWarningsBody = document.getElementById("xjbWarningsBody");
 
 let errorLines = new Set();
 let activeErrorLine = null;
 let syntaxRefreshTimer = null;
+let editorViewMode = null;
 
 const STORAGE_SCHEMA_KEY = "xsd-validator-last-schema-id";
 const XML_FILE_PLACEHOLDER = "Документ для проверки";
@@ -124,11 +128,94 @@ async function loadSampleXml() {
         applyLoadedXml(payload.xml);
         setXmlFileLabel("");
         statusText.textContent = `Шаблон для схемы «${payload.schemaId}» (корень: ${payload.rootElement})`;
+        setEditorViewMode("template");
     } catch (error) {
         showApiError(error.message);
         statusText.textContent = "";
     } finally {
-        loadSampleBtn.disabled = false;
+        if (editorViewMode !== "template") {
+            loadSampleBtn.disabled = false;
+        }
+        applyEditorViewMode();
+    }
+}
+
+function setEditorViewMode(mode) {
+    editorViewMode = mode;
+    applyEditorViewMode();
+}
+
+function applyEditorViewMode() {
+    const isTemplate = editorViewMode === "template";
+    const isXjb = editorViewMode === "xjb";
+    const isFile = editorViewMode === "file";
+    const isValidated = editorViewMode === "validated";
+
+    generateXjbBtn.disabled = isTemplate || isXjb || isFile || isValidated;
+    loadSampleBtn.disabled = isFile || isXjb || isValidated;
+
+    if (isXjb) {
+        addSchemaBtn.disabled = true;
+        loadFileBtn.disabled = true;
+        schemaSelect.disabled = true;
+    } else {
+        addSchemaBtn.disabled = false;
+        loadFileBtn.disabled = false;
+        schemaSelect.disabled = false;
+    }
+
+    clearXmlBtn.disabled = false;
+    updateEditorActionButtons();
+}
+
+function hasEditorContent() {
+    return xmlInput.value.trim().length > 0;
+}
+
+function updateEditorActionButtons() {
+    const hasContent = hasEditorContent();
+    const hasSchema = Boolean(schemaSelect.value);
+
+    formatXmlBtn.disabled = !hasContent;
+
+    if (editorViewMode === "xjb") {
+        validateBtn.disabled = true;
+        return;
+    }
+
+    validateBtn.disabled = !hasContent || !hasSchema;
+}
+
+async function generateXjb() {
+    const schemaId = schemaSelect.value;
+    if (!schemaId) {
+        showApiError("Выберите XSD-схему");
+        updateResultNav("invalid");
+        return;
+    }
+
+    generateXjbBtn.disabled = true;
+    statusText.textContent = "Генерация XJB...";
+
+    try {
+        const response = await fetch(`/api/schemas/xjb?schemaId=${encodeURIComponent(schemaId)}`);
+        const payload = await readJsonResponse(response);
+        if (!response.ok) {
+            throw new Error(payload.message || "Не удалось сгенерировать XJB");
+        }
+
+        applyLoadedXml(payload.xjb);
+        setXmlFileLabel("");
+        showXjbResult(payload);
+        setEditorViewMode("xjb");
+    } catch (error) {
+        showApiError(error.message);
+        statusText.textContent = "";
+    } finally {
+        if (editorViewMode !== "xjb") {
+            generateXjbBtn.disabled = false;
+        }
+        applyEditorViewMode();
     }
 }
 
@@ -157,7 +244,7 @@ async function loadSchemas(selectedId) {
             option.value = "";
             option.textContent = "Схемы не найдены";
             schemaSelect.appendChild(option);
-            validateBtn.disabled = true;
+            updateEditorActionButtons();
             return;
         }
         populateSchemaSelect(schemas);
@@ -165,11 +252,11 @@ async function loadSchemas(selectedId) {
         if (preferredId && schemas.some((schema) => schema.id === preferredId)) {
             schemaSelect.value = preferredId;
         }
-        validateBtn.disabled = false;
+        updateEditorActionButtons();
     } catch (error) {
         schemaSelect.innerHTML = "<option value=\"\">Ошибка загрузки схем</option>";
         statusText.textContent = error.message;
-        validateBtn.disabled = true;
+        updateEditorActionButtons();
     }
 }
 
@@ -250,8 +337,11 @@ function showResult(data) {
         resultBanner.textContent = `Документ валиден (схема: ${data.schemaId}, ${data.durationMs} мс)`;
         errorsBlock.classList.add("hidden");
         errorsBody.innerHTML = "";
+        xjbWarningsBlock.classList.add("hidden");
+        xjbWarningsBody.innerHTML = "";
         updateResultNav("valid");
         scheduleEditorLayout(() => resetEditorScroll());
+        setEditorViewMode("validated");
         return;
     }
 
@@ -265,6 +355,8 @@ function showResult(data) {
 
     errorsBlock.classList.remove("hidden");
     errorsBody.innerHTML = "";
+    xjbWarningsBlock.classList.add("hidden");
+    xjbWarningsBody.innerHTML = "";
 
     const resolvedErrors = data.errors.map((error) => ({
         error,
@@ -305,25 +397,12 @@ function showResult(data) {
         errorsBody.appendChild(row);
     });
 
-    const firstResolved = resolvedErrors
-        .filter((item) => item.location.line > 0)
-        .sort((left, right) => left.location.line - right.location.line)[0];
-
     updateResultNav("invalid");
 
     scheduleEditorLayout(() => {
-        if (firstResolved) {
-            focusXmlLocation(firstResolved.location.line, firstResolved.location.column);
-            resolvedErrors.forEach((item, index) => {
-                if (item.location.line === firstResolved.location.line
-                    && item.error.message === firstResolved.error.message) {
-                    errorsBody.children[index]?.classList.add("active");
-                }
-            });
-        } else {
-            refreshXmlEditorChrome();
-        }
+        refreshXmlEditorChrome();
     });
+    setEditorViewMode("validated");
 }
 
 function clearErrorHighlights() {
@@ -334,11 +413,70 @@ function clearErrorHighlights() {
 
 function clearValidationResult() {
     resultPanel.classList.add("hidden");
-    resultBanner.classList.remove("valid", "invalid");
+    resultBanner.classList.remove("valid", "invalid", "warning");
     resultBanner.textContent = "";
     errorsBlock.classList.add("hidden");
     errorsBody.innerHTML = "";
+    xjbWarningsBlock.classList.add("hidden");
+    xjbWarningsBody.innerHTML = "";
     updateResultNav(null);
+}
+
+function pluralizeImya(count) {
+    const mod100 = count % 100;
+    const mod10 = mod100 % 10;
+    if (mod10 === 1 && mod100 !== 11) {
+        return "имя";
+    }
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) {
+        return "имени";
+    }
+    return "имён";
+}
+
+function showXjbResult(payload) {
+    const fallbackNames = Array.isArray(payload.fallbackNames) ? payload.fallbackNames : [];
+    const unknownCount = fallbackNames.length > 0
+        ? fallbackNames.length
+        : (Array.isArray(payload.unknownNames) ? payload.unknownNames.length : 0);
+
+    resultPanel.classList.remove("hidden");
+    resultBanner.classList.remove("valid", "invalid", "warning");
+    errorsBlock.classList.add("hidden");
+    errorsBody.innerHTML = "";
+    xjbWarningsBlock.classList.add("hidden");
+    xjbWarningsBody.innerHTML = "";
+    clearErrorHighlights();
+
+    if (unknownCount === 0) {
+        resultBanner.classList.add("valid");
+        resultBanner.textContent = `XJB сгенерирован (схема: ${payload.schemaId}, package: ${payload.packageName}). Все имена взяты из словаря (${payload.vocabularyHits}).`;
+        statusText.textContent = "";
+        updateResultNav("valid");
+        return;
+    }
+
+    resultBanner.classList.add("warning");
+    resultBanner.textContent = `XJB сгенерирован (схема: ${payload.schemaId}): ${unknownCount} ${pluralizeImya(unknownCount)} нет в словаре — подставлены автоматически. Словарь: ${payload.vocabularyHits}, fallback: ${payload.fallbackHits}.`;
+    statusText.textContent = "";
+
+    xjbWarningsBlock.classList.remove("hidden");
+    const rows = fallbackNames.length > 0
+        ? fallbackNames
+        : (payload.unknownNames || []).map((xsdName) => ({ xsdName, javaName: "—", bindingKind: "property" }));
+
+    rows.forEach((item, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td class="summary">${escapeHtml(item.xsdName || "")}</td>
+            <td><code>${escapeHtml(item.javaName || "")}</code></td>
+            <td class="technical">${escapeHtml(item.bindingKind || "")}</td>
+        `;
+        xjbWarningsBody.appendChild(row);
+    });
+
+    updateResultNav("invalid");
 }
 
 function getEditorLineHeight() {
@@ -417,6 +555,7 @@ function applyLoadedXml(xml) {
     errorLines = new Set();
     activeErrorLine = null;
     scheduleEditorLayout(() => resetEditorScroll());
+    updateEditorActionButtons();
 }
 
 async function requestXmlFormat(xml) {
@@ -453,6 +592,8 @@ async function loadXmlFromFile(file) {
             statusText.textContent += " (автоформатирование не выполнено)";
         }
     }
+
+    setEditorViewMode("file");
 }
 
 function updateEditorOverlayHeight() {
@@ -898,10 +1039,11 @@ function explainError(message) {
 
 function showApiError(message) {
     resultPanel.classList.remove("hidden");
-    resultBanner.classList.remove("valid");
+    resultBanner.classList.remove("valid", "warning");
     resultBanner.classList.add("invalid");
     resultBanner.textContent = message;
     errorsBlock.classList.add("hidden");
+    xjbWarningsBlock.classList.add("hidden");
 }
 
 function escapeHtml(text) {
@@ -953,7 +1095,7 @@ async function validateXml() {
         updateResultNav("invalid");
         statusText.textContent = "";
     } finally {
-        validateBtn.disabled = false;
+        updateEditorActionButtons();
     }
 }
 
@@ -1006,7 +1148,7 @@ async function formatCurrentXml(successMessage = "XML отформатирова
         statusText.textContent = "";
         throw error;
     } finally {
-        formatXmlBtn.disabled = false;
+        updateEditorActionButtons();
     }
 }
 
@@ -1019,6 +1161,7 @@ async function formatXmlInput() {
 }
 
 loadSampleBtn.addEventListener("click", loadSampleXml);
+generateXjbBtn.addEventListener("click", generateXjb);
 
 clearXmlBtn.addEventListener("click", () => {
     xmlInput.value = "";
@@ -1031,6 +1174,7 @@ clearXmlBtn.addEventListener("click", () => {
     clearTimeout(syntaxRefreshTimer);
     refreshXmlSyntax();
     statusText.textContent = "";
+    setEditorViewMode(null);
 });
 
 formatXmlBtn.addEventListener("click", formatXmlInput);
@@ -1046,6 +1190,7 @@ xmlInput.addEventListener("input", () => {
         }
     }
     refreshXmlEditorChrome();
+    updateEditorActionButtons();
 });
 
 xmlInput.addEventListener("scroll", syncEditorScroll);
@@ -1063,7 +1208,9 @@ goToResultBtn.addEventListener("click", () => {
 
 schemaSelect.addEventListener("change", () => {
     saveLastSchema(schemaSelect.value);
+    updateEditorActionButtons();
 });
 
 refreshXmlEditorChrome();
+updateEditorActionButtons();
 loadSchemas();

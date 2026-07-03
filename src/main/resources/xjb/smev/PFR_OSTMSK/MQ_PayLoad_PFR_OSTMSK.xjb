@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../../../xsd/smev/PFR_OSTMSK/MQ_PayLoad_PFR_OSTMSK.xsd" node="//xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.smev.ostmsk"/>
+        </jaxb:schemaBindings>
+
+        <jaxb:bindings node="xs:element[@name='ToSmev']">
+            <jaxb:class name="ToSmev"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='FromSmev']">
+            <jaxb:class name="FromSmev"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

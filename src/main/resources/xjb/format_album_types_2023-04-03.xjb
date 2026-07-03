@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../xsd/format_album_types_2023-04-03.xsd" node="//xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.format_album_types._2023_04_03"/>
+        </jaxb:schemaBindings>
+
+        <!-- Глобальные элементы -->
+        <jaxb:bindings node="xs:element[@name='GUID']">
+            <jaxb:property name="GUID"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ВОтветНа']">
+            <jaxb:property name="electronicDocumentGlobalIdentifier"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ДатаВремя']">
+            <jaxb:property name="documentPreparationTimeDate"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ПрограммаПодготовки']">
+            <jaxb:property name="documentPreparationProgram"/>
+        </jaxb:bindings>
+
+        <!-- Тип ОписаниеПеременной -->
+        <jaxb:bindings node="xs:complexType[@name='ТипОписаниеПеременной']">
+            <jaxb:class name="VariableDescriptionType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Описание']">
+                    <jaxb:property name="description"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Декларация']">
+                    <jaxb:property name="value"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <!-- Тип ВременнойПериод -->
+        <jaxb:bindings node="xs:complexType[@name='ТипВременнойПериод']">
+            <jaxb:class name="TimePeriodType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='С']">
+                    <jaxb:property name="from"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='По']">
+                    <jaxb:property name="to"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <!-- Тип СлужебнаяИнформацияЭП -->
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияЭП']">
+            <jaxb:class name="ElectronicSignatureServiceInformationType"/>
+        </jaxb:bindings>
+
+        <!-- Тип СлужебнаяИнформация -->
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформация']">
+            <jaxb:class name="ElectronicDocumentServiceInformationType"/>
+        </jaxb:bindings>
+
+        <!-- Тип СлужебнаяИнформацияППЭД -->
+        <jaxb:bindings node="xs:complexType[@name='ТипСлужебнаяИнформацияППЭД']">
+            <jaxb:class name="ElectronicDocumentPreparationServiceInformationType"/>
+        </jaxb:bindings>
+
+        <!-- Тип РеквизитыЭП -->
+        <jaxb:bindings node="xs:complexType[@name='ТипРеквизитыЭП']">
+            <jaxb:class name="ElectronicSignatureRequisitesType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ОсновноеНазвание']">
+                    <jaxb:property name="mainTitle"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Владелец']">
+                    <jaxb:property name="owner"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Издатель']">
+                    <jaxb:property name="publisher"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Идентификатор']">
+                    <jaxb:property name="id"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='СрокДействия']">
+                    <jaxb:property name="validity"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='СрокДействияЗакрытогоКлюча']">
+                    <jaxb:property name="privateKeyValidity"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <!-- Привязка глобального элемента к типу -->
+        <jaxb:bindings node="xs:element[@name='РеквизитыЭП']">
+            <jaxb:property name="electronicSignatureRequisitesType"/>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <jaxb:bindings schemaLocation="../../xsd/docs/mat_cap_rights_availability_notification_2024-04-04.xsd"
+                 node="/xs:schema">
+    <jaxb:schemaBindings>
+      <jaxb:package
+              name="ru.vtb.msa.smkp.model.external.pf.docs.mat_cap_rights_availability_notification_2024"/>
+    </jaxb:schemaBindings>
+
+    <jaxb:bindings node="xs:element[@name='ЭД']">
+      <jaxb:bindings node="xs:complexType">
+        <jaxb:class name="LoanAgreementDetailRequest"/>
+        <jaxb:bindings node="xs:all">
+          <jaxb:bindings node="xs:element[@name='МУБП']">
+            <jaxb:property name="maternalFamilyCapitalRightsAvailabilityNotification"/>
+            <jaxb:bindings node="xs:complexType">
+              <jaxb:class name="MaternalFamilyCapitalRightsAvailabilityNotification"/>
+              <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Номер']">
+                  <jaxb:property name="number"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ТОСФР']">
+                  <jaxb:property name="territorialSocialFundAuthority"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Наименование']">
+                  <jaxb:property name="bankName"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Владелец']">
+                  <jaxb:property name="certificateHolder"/>
+                  <jaxb:bindings node="xs:complexType">
+                    <jaxb:class name="CertificateHolder"/>
+                  </jaxb:bindings>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='НаличиеПрава']">
+                  <jaxb:property name="rightAvailability"/>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='ОснованиеОтказа']">
+                  <jaxb:property name="refusalGrounds"/>
+                  <jaxb:bindings node="xs:complexType">
+                    <jaxb:class name="RefusalGrounds"/>
+                    <jaxb:bindings node="xs:sequence">
+                      <jaxb:bindings node="xs:element[@name='ПричинаОтклонения']">
+                        <jaxb:property name="rejectionReason"/>
+                      </jaxb:bindings>
+                      <jaxb:bindings node="xs:element[@name='Примечание']">
+                        <jaxb:property name="note"/>
+                      </jaxb:bindings>
+                    </jaxb:bindings>
+                  </jaxb:bindings>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='РазмерМСК']">
+                  <jaxb:property name="maternalFamilyCapitalAmount"/>
+                </jaxb:bindings>
+              </jaxb:bindings>
+            </jaxb:bindings>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='СлужебнаяИнформация']">
+            <jaxb:property name="electronicDocumentServiceInformation"/>
+          </jaxb:bindings>
+        </jaxb:bindings>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+  </jaxb:bindings>
+</jaxb:bindings>

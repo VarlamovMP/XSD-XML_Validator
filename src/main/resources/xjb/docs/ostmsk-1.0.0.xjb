@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <jaxb:bindings schemaLocation="../../xsd/docs/ostmsk-1.0.0.xsd"
+                 node="/xs:schema">
+    <jaxb:schemaBindings>
+      <jaxb:package
+              name="ru.vtb.msa.smkp.model.external.pf.docs.ostmsk_1_0_0"/>
+    </jaxb:schemaBindings>
+
+    <jaxb:bindings node="xs:element[@name='Request']">
+      <jaxb:bindings node="xs:complexType">
+        <jaxb:class name="OSTMSKRequest"/>
+        <jaxb:bindings node="xs:sequence">
+          <jaxb:bindings node="xs:element[@name='RequestId']">
+            <jaxb:property name="requestId"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='RequestDate']">
+            <jaxb:property name="requestDate"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='FIO']">
+            <jaxb:property name="fullName"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='SNILS']">
+            <jaxb:property name="individualInsuranceNumber"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='BirthDay']">
+            <jaxb:property name="birthDay"/>
+          </jaxb:bindings>
+        </jaxb:bindings>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="xs:element[@name='Response']">
+      <jaxb:bindings node="xs:complexType">
+        <jaxb:class name="OSTMSKResponse"/>
+        <jaxb:bindings node="xs:sequence">
+          <jaxb:bindings node="xs:element[@name='RequestId']">
+            <jaxb:property name="requestId"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='MSKRight']">
+            <jaxb:property name="rightAvailability"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='CertMSK']">
+            <jaxb:property name="certificateRequisites"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='ProcessingStatusCode']">
+            <jaxb:property name="processingStatusCode"/>
+          </jaxb:bindings>
+          <jaxb:bindings node="xs:element[@name='ProcessingStatusComment']">
+            <jaxb:property name="processingStatusComment"/>
+          </jaxb:bindings>
+        </jaxb:bindings>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="xs:complexType[@name='FIOType']">
+      <jaxb:class name="FIOType"/>
+      <jaxb:bindings node="xs:sequence">
+        <jaxb:bindings node="xs:element[@name='Surname']">
+          <jaxb:property name="lastName"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='FirstName']">
+          <jaxb:property name="firstName"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='Patronymic']">
+          <jaxb:property name="middleName"/>
+        </jaxb:bindings>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="xs:complexType[@name='CertMSKType']">
+      <jaxb:class name="CertMSKType"/>
+      <jaxb:bindings node="xs:sequence">
+        <jaxb:bindings node="xs:element[@name='Serial']">
+          <jaxb:property name="serial"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='Number']">
+          <jaxb:property name="number"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='Issued']">
+          <jaxb:property name="issued"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='Owner']">
+          <jaxb:property name="owner"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='Ostatok']">
+          <jaxb:property name="maternalFamilyCapitalAmount"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="xs:element[@name='MSKR']">
+          <jaxb:property name="mskr"/>
+          <jaxb:bindings node="xs:complexType">
+            <jaxb:class name="MSKRType"/>
+            <jaxb:bindings node="xs:sequence">
+              <jaxb:bindings node="xs:element[@name='Type']">
+                <jaxb:property name="type"/>
+              </jaxb:bindings>
+              <jaxb:bindings node="xs:element[@name='Comment']">
+                <jaxb:property name="comment"/>
+              </jaxb:bindings>
+            </jaxb:bindings>
+          </jaxb:bindings>
+        </jaxb:bindings>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+  </jaxb:bindings>
+</jaxb:bindings>

@@ -7,11 +7,15 @@ import com.xsdvalidator.core.SchemaRegistry;
 import com.xsdvalidator.core.TemplateGenerationException;
 import com.xsdvalidator.core.XmlFormatException;
 import com.xsdvalidator.core.XmlFormatter;
+import com.xsdvalidator.core.XjbBindingGenerator;
+import com.xsdvalidator.core.XjbGenerationException;
 import com.xsdvalidator.core.XsdTemplateGenerator;
 import com.xsdvalidator.core.XsdValidator;
 import com.xsdvalidator.core.model.ValidationResult;
 import com.xsdvalidator.api.dto.ErrorResponse;
 import com.xsdvalidator.api.dto.SchemaTemplateResponse;
+import com.xsdvalidator.api.dto.SchemaXjbResponse;
+import com.xsdvalidator.api.dto.XjbFallbackNameDto;
 import com.xsdvalidator.api.dto.SchemaUploadResponse;
 import com.xsdvalidator.api.dto.ValidationResponse;
 import com.xsdvalidator.core.model.SchemaInfo;
@@ -45,6 +49,7 @@ public class ValidationController {
     private final SchemaRegistry schemaRegistry;
     private final XsdValidator xsdValidator;
     private final XsdTemplateGenerator templateGenerator;
+    private final XjbBindingGenerator xjbBindingGenerator;
     private final XmlFormatter xmlFormatter;
     private final XmlValidatorProperties properties;
 
@@ -52,12 +57,14 @@ public class ValidationController {
             SchemaRegistry schemaRegistry,
             XsdValidator xsdValidator,
             XsdTemplateGenerator templateGenerator,
+            XjbBindingGenerator xjbBindingGenerator,
             XmlFormatter xmlFormatter,
             XmlValidatorProperties properties
     ) {
         this.schemaRegistry = schemaRegistry;
         this.xsdValidator = xsdValidator;
         this.templateGenerator = templateGenerator;
+        this.xjbBindingGenerator = xjbBindingGenerator;
         this.xmlFormatter = xmlFormatter;
         this.properties = properties;
     }
@@ -71,6 +78,24 @@ public class ValidationController {
     public SchemaTemplateResponse generateTemplate(@RequestParam("schemaId") String schemaId) {
         XsdTemplateGenerator.GeneratedTemplate template = templateGenerator.generate(schemaId);
         return new SchemaTemplateResponse(template.schemaId(), template.rootElement(), template.xml());
+    }
+
+    @GetMapping("/schemas/xjb")
+    public SchemaXjbResponse generateXjb(
+            @RequestParam("schemaId") String schemaId,
+            @RequestParam(value = "package", required = false) String packageName
+    ) {
+        XjbBindingGenerator.GeneratedXjb generated = xjbBindingGenerator.generate(schemaId, packageName);
+        return new SchemaXjbResponse(
+                generated.schemaId(),
+                generated.packageName(),
+                generated.rootElement(),
+                generated.xjb(),
+                generated.vocabularyHits(),
+                generated.fallbackHits(),
+                generated.unknownNames(),
+                generated.fallbackNames()
+        );
     }
 
     @PostMapping(
@@ -178,6 +203,12 @@ public class ValidationController {
     public ResponseEntity<ErrorResponse> handleTemplateGeneration(TemplateGenerationException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorResponse("TEMPLATE_GENERATION_FAILED", exception.getMessage()));
+    }
+
+    @ExceptionHandler(XjbGenerationException.class)
+    public ResponseEntity<ErrorResponse> handleXjbGeneration(XjbGenerationException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ErrorResponse("XJB_GENERATION_FAILED", exception.getMessage()));
     }
 
     @ExceptionHandler(SchemaNotFoundException.class)

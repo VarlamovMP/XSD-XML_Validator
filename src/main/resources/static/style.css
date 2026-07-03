@@ -406,6 +406,12 @@ button.result-nav.invalid:hover {
     color: var(--error-text);
 }
 
+.result-banner.warning {
+    background: #fff7e6;
+    color: #9a6700;
+    border: 1px solid #f0d78c;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

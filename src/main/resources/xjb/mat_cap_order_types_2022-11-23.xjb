@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../xsd/mat_cap_order_types_2022-11-23.xsd" node="//xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.mat_cap_order_types._2022_11_23"/>
+        </jaxb:schemaBindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипНаправлениеРаспоряженияМСК']">
+            <jaxb:class name="MaternalFamilyCapitalUsingDirectionType"/>
+            <jaxb:bindings node="xs:sequence">
+
+                <jaxb:bindings node="xs:element[@name='КатегорияНаправления']">
+                    <jaxb:property name="usingDirectionCategory"/>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='КатегорияНаправления']/xs:simpleType">
+                    <jaxb:typesafeEnumClass name="UsingDirectionCategory">
+                        <jaxb:typesafeEnumMember value="УЖУ" name="HOUSING_IMPROVEMENT"/>
+                        <jaxb:typesafeEnumMember value="ОБРАЗОВАНИЕ" name="EDUCATION"/>
+                        <jaxb:typesafeEnumMember value="НП" name="ACCUMULATED_PENSION"/>
+                        <jaxb:typesafeEnumMember value="САДИ" name="CHILD_SOCIAL_ADAPTATION"/>
+                    </jaxb:typesafeEnumClass>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='ВидРасходов']">
+                    <jaxb:property name="expensesKind"/>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='ВидРасходов']/xs:simpleType">
+                    <jaxb:typesafeEnumClass name="ExpensesKind">
+                        <jaxb:typesafeEnumMember value="ПРИОБРЕТЕНИЕ" name="PURCHASE"/>
+                        <jaxb:typesafeEnumMember value="ДОЛЕВОЕ СТРОИТ-ВО" name="SHARED_CONSTRUCTION"/>
+                        <jaxb:typesafeEnumMember value="ИНДИВИД СТРОИТ-ВО" name="INDIVIDUAL_CONSTRUCTION"/>
+                        <jaxb:typesafeEnumMember value="КООП ВСТУПИТ ВЗНОС" name="COOPERATIVE_ENTRY_FEE"/>
+                        <jaxb:typesafeEnumMember value="КООП ПАЕВОЙ ВЗНОС" name="COOPERATIVE_SHARE_PREMIUM"/>
+                        <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС ПРИОБ-ИЕ" name="PURCHASE_INITIAL_PAYMENT"/>
+                        <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС СТРОИТ-ВО" name="CONSTRUCTION_INITIAL_PAYMENT"/>
+                        <jaxb:typesafeEnumMember value="КРЕДИТ ПРИОБРЕТЕНИЕ" name="ACQUIREMENT_CREDIT"/>
+                        <jaxb:typesafeEnumMember value="КРЕДИТ СТРОИТ-ВО" name="CONSTRUCTION_CREDIT"/>
+                        <jaxb:typesafeEnumMember value="ИЖС 50" name="INDIVIDUAL_HOUSING_CONSTRUCTION_50"/>
+                        <jaxb:typesafeEnumMember value="ИЖР 50" name="INDIVIDUAL_HOUSING_50"/>
+                        <jaxb:typesafeEnumMember value="ИЖС 6 МЕС" name="INDIVIDUAL_HOUSING_CONSTRUCTION_6"/>
+                        <jaxb:typesafeEnumMember value="ИЖР 6 МЕС" name="INDIVIDUAL_HOUSING_6"/>
+                        <jaxb:typesafeEnumMember value="ИЖСР КОМП" name="IZSR"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ИНАЯ" name="LOAN_PURCHASE_ELSE"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ КООП" name="LOAN_PURCHASE_COOPERATIVE"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ КРЕДИТ" name="LOAN_PURCHASE_CREDIT"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ИНАЯ" name="LOAN_CONSTRUCTION_ELSE"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ КООП" name="LOAN_CONSTRUCTION_COOPERATIVE"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ КРЕДИТ" name="LOAN_CONSTRUCTION_CREDIT"/>
+                        <jaxb:typesafeEnumMember value="РЕФИН КРЕДИТ ПРИОБ" name="REFINANCING_CREDIT_PURCHASE"/>
+                        <jaxb:typesafeEnumMember value="РЕФИН КРЕДИТ СТРОИТ-ВО" name="REFINANCING_CREDIT_CONSTRUCTION"/>
+                        <jaxb:typesafeEnumMember value="НАКОП КООП ВСТУПИТ ВЗНОС" name="ACCUMULATIVE_COOPERATIVE_ENTRY_FEE"/>
+                        <jaxb:typesafeEnumMember value="НАКОП КООП ПАЙ ВЗНОС" name="ACCUMULATIVE_COOPERATIVE_PAYMENT_CONTRIBUTION"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ СКПК" name="SKPK_PURCHASING_LOAN"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ОИРЖС" name="OIRJ_PURCHASING_LOAN"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ СКПК" name="SKPK_CONSTRUCTION_LOAN"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ОИРЖС" name="OIRJ_CONSTRUCTION_LOAN"/>
+                        <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС ПРИОБ ЛЬГОТ" name="INITIAL_PAYMENT_PURCHASE_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС СТРОИТ ЛЬГОТ" name="INITIAL_PAYMENT_CONSTRUCTION_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="КРЕДИТ ПРИОБ ЛЬГОТ" name="CREDIT_PURCHASE_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ОИРЖС ЛЬГОТ" name="LOAN_PURCHASE_OIRZS_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ ПРИОБ ОИРЖС ЛЬГОТ" name="LOAN_INITIAL_PURCHASE_OIRZS_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="КРЕДИТ СТРОИТ ЛЬГОТ" name="CREDIT_CONSTRUCTION_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ОИРЖС ЛЬГОТ" name="LOAN_CONSTRUCTION_OIRZS_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ СТРОИТ ОИРЖС ЛЬГОТ" name="LOAN_INITIAL_CONSTRUCTION_OIRZS_FACILITIES_BENEFIT"/>
+                        <jaxb:typesafeEnumMember value="ПРОЖИВАНИЕ" name="ACCOMMODATION"/>
+                        <jaxb:typesafeEnumMember value="СОДЕРЖАНИЕ" name="CONTENT"/>
+                        <jaxb:typesafeEnumMember value="ПРИСМОТР И УХОД" name="SUPERVISION_AND_CARE"/>
+                        <jaxb:typesafeEnumMember value="ОБУЧЕНИЕ" name="EDUCATION"/>
+                        <jaxb:typesafeEnumMember value="ДОШК ОБУЧ" name="PRESCHOOL_EDUCATION"/>
+                        <jaxb:typesafeEnumMember value="НЧ" name="NCH"/>
+                        <jaxb:typesafeEnumMember value="ТОВАР" name="PRODUCT"/>
+                        <jaxb:typesafeEnumMember value="УСЛУГА" name="SERVICE"/>
+                    </jaxb:typesafeEnumClass>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='Сумма']">
+                    <jaxb:property name="amount"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипКодВидаРасходовУЖУ']">
+            <jaxb:typesafeEnumClass name="HousingImprovementExpensesKindCodeType">
+                <jaxb:typesafeEnumMember value="ПРИОБРЕТЕНИЕ" name="PURCHASE"/>
+                <jaxb:typesafeEnumMember value="ДОЛЕВОЕ СТРОИТ-ВО" name="SHARED_CONSTRUCTION"/>
+                <jaxb:typesafeEnumMember value="ИНДИВИД СТРОИТ-ВО" name="INDIVIDUAL_CONSTRUCTION"/>
+                <jaxb:typesafeEnumMember value="КООП ВСТУПИТ ВЗНОС" name="COOPERATIVE_ENTRY_FEE"/>
+                <jaxb:typesafeEnumMember value="КООП ПАЕВОЙ ВЗНОС" name="COOPERATIVE_SHARE_PREMIUM"/>
+                <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС ПРИОБ-ИЕ" name="PURCHASE_INITIAL_PAYMENT"/>
+                <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС СТРОИТ-ВО" name="CONSTRUCTION_INITIAL_PAYMENT"/>
+                <jaxb:typesafeEnumMember value="КРЕДИТ ПРИОБРЕТЕНИЕ" name="ACQUIREMENT_CREDIT"/>
+                <jaxb:typesafeEnumMember value="КРЕДИТ СТРОИТ-ВО" name="CONSTRUCTION_CREDIT"/>
+                <jaxb:typesafeEnumMember value="ИЖС 50" name="INDIVIDUAL_HOUSING_CONSTRUCTION_50"/>
+                <jaxb:typesafeEnumMember value="ИЖР 50" name="INDIVIDUAL_HOUSING_50"/>
+                <jaxb:typesafeEnumMember value="ИЖС 6 МЕС" name="INDIVIDUAL_HOUSING_CONSTRUCTION_6"/>
+                <jaxb:typesafeEnumMember value="ИЖР 6 МЕС" name="INDIVIDUAL_HOUSING_6"/>
+                <jaxb:typesafeEnumMember value="ИЖСР КОМП" name="IZSR"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ИНАЯ" name="LOAN_PURCHASE_ELSE"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ КООП" name="LOAN_PURCHASE_COOPERATIVE"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ КРЕДИТ" name="LOAN_PURCHASE_CREDIT"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ИНАЯ" name="LOAN_CONSTRUCTION_ELSE"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ КООП" name="LOAN_CONSTRUCTION_COOPERATIVE"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ КРЕДИТ" name="LOAN_CONSTRUCTION_CREDIT"/>
+                <jaxb:typesafeEnumMember value="РЕФИН КРЕДИТ ПРИОБ" name="REFINANCING_CREDIT_PURCHASE"/>
+                <jaxb:typesafeEnumMember value="РЕФИН КРЕДИТ СТРОИТ-ВО" name="REFINANCING_CREDIT_CONSTRUCTION"/>
+                <jaxb:typesafeEnumMember value="НАКОП КООП ВСТУПИТ ВЗНОС" name="ACCUMULATIVE_COOPERATIVE_ENTRY_FEE"/>
+                <jaxb:typesafeEnumMember value="НАКОП КООП ПАЙ ВЗНОС" name="ACCUMULATIVE_COOPERATIVE_PAYMENT_CONTRIBUTION"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ СКПК" name="SKPK_PURCHASING_LOAN"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ОИРЖС" name="OIRJ_PURCHASING_LOAN"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ СКПК" name="SKPK_CONSTRUCTION_LOAN"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ОИРЖС" name="OIRJ_CONSTRUCTION_LOAN"/>
+                <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС ПРИОБ БАНК" name="INITIAL_PAYMENT_PURCHASE_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="ПЕРВ ВЗНОС СТРОИТ БАНК" name="INITIAL_PAYMENT_CONSTRUCTION_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="КРЕДИТ ПРИОБ БАНК" name="CREDIT_PURCHASE_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ОИРЖС БАНК" name="LOAN_PURCHASE_OIRZS_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ ПРИОБ ОИРЖС БАНК" name="LOAN_INITIAL_PURCHASE_OIRZS_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="КРЕДИТ СТРОИТ БАНК" name="CREDIT_CONSTRUCTION_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ОИРЖС БАНК" name="LOAN_CONSTRUCTION_OIRZS_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ СТРОИТ ОИРЖС БАНК" name="LOAN_INITIAL_CONSTRUCTION_OIRZS_FACILITIES_BANK"/>
+                <jaxb:typesafeEnumMember value="РЕФИН КРЕДИТ ПРИОБ БАНК" name="REFINANCING_CREDIT_PURCHASE_BANK"/>
+                <jaxb:typesafeEnumMember value="РЕФИН КРЕДИТ СТРОИТ-ВО БАНК" name="REFINANCING_CREDIT_CONSTRUCTION_BANK"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ВОЕНН" name="PURCHASING_LOAN_MILITARY"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ВОЕНН" name="CONSTRUCTION_LOAN_MILITARY"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ ПРИОБ ВОЕНН" name="LOAN_INITIAL_PURCHASE_FACILITIES_MILITARY"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ СТРОИТ ВОЕНН" name="LOAN_INITIAL_CONSTRUCTION_FACILITIES_MILITARY"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ СТРОИТ ОРГ ОИРЖС" name="LOAN_INITIAL_CONSTRUCTION_ORG_OIRZS_FACILITIES"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ ПРИОБ ОРГ ОИРЖС" name="LOAN_INITIAL_PURCHASE_ORG_OIRZS_FACILITIES"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ ПРИОБ ОИРЖС" name="LOAN_INITIAL_PURCHASE_OIRZS_FACILITIES"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПРИОБ ОРГ ОИРЖС" name="PURCHASING_LOAN_ORG_OIRZS"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ СТРОИТ ОРГ ОИРЖС" name="CONSTRUCTION_LOAN_ORG_OIRZS"/>
+                <jaxb:typesafeEnumMember value="ЗАЙМ ПЕРВ СТРОИТ ОИРЖС" name="LOAN_INITIAL_CONSTRUCTION_OIRZS_FACILITIES"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипКодВидаРасходовОбр']">
+            <jaxb:typesafeEnumClass name="EducationExpensesKindCodeType">
+                <jaxb:typesafeEnumMember value="ПРОЖИВАНИЕ" name="LIVING"/>
+                <jaxb:typesafeEnumMember value="СОДЕРЖАНИЕ" name="MAINTENANCE"/>
+                <jaxb:typesafeEnumMember value="ПРИСМОТР И УХОД" name="SUPERVISION_AND_CARE"/>
+                <jaxb:typesafeEnumMember value="ОБУЧЕНИЕ" name="LEARNING"/>
+                <jaxb:typesafeEnumMember value="ДОШК ОБУЧ" name="PRESCHOOLS"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипКодВидаРасходовСАДИ']">
+            <jaxb:typesafeEnumClass name="DisableChildGoodsExpensesKindCodeType">
+                <jaxb:typesafeEnumMember value="ТОВАР" name="GOODS"/>
+                <jaxb:typesafeEnumMember value="УСЛУГА" name="SERVICE"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Получатель']">
+            <jaxb:property name="recipientOrganization"/>
+            <jaxb:bindings node="xs:complexType">
+                <jaxb:class name="RecipientOrganization"/>
+                <jaxb:bindings node="xs:sequence">
+                    <jaxb:bindings node="xs:element[@name='ОГРН']">
+                        <jaxb:property name="mainStateRegistrationNumber"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрРеквизитыПеречисленияЮрЛицо']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Банк']">
+                    <jaxb:property name="recipientOrganizationBank"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="RecipientOrganizationBank"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрРеквизитыПеречисленияЮрЛицоОбр']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Банк']">
+                    <jaxb:property name="recipientOrganizationBank"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="RecipientOrganizationBank"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрРеквизитыПеречисленияФизЛицо']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Получатель']">
+                    <jaxb:property name="recipientPerson"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="RecipientPerson"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='НомерБанковскогоСчета']">
+                                <jaxb:property name="bankAccountNumber"/>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Банк']">
+                    <jaxb:property name="recipientPersonBank"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="RecipientPersonBank"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПорядокПеречисленияСредств']">
+            <jaxb:class name="TransferringFundsProcedureType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Перечисление']">
+                    <jaxb:property name="transferringDetails"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПеречисление']">
+            <jaxb:class name="TransferringType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Дата']">
+                    <jaxb:property name="transferringDate"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Сумма']">
+                    <jaxb:property name="transferringAmount"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПорядокПеречисленияСредствОбразование']">
+            <jaxb:class name="EducationTransferringFundsProcedureType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Перечисление']">
+                    <jaxb:property name="transferringDetails"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="TransferringDetails"/>
+                        <jaxb:bindings node="xs:complexContent">
+                            <jaxb:bindings node="xs:extension/xs:sequence">
+                                <jaxb:bindings node="xs:element[@name='ПериодОплаты']">
+                                    <jaxb:property name="paymentPeriod"/>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипДопСведенияДляПеречисления']">
+            <jaxb:class name="TransferringAdditionalDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='РеквизитыДоговора']">
+                    <jaxb:property name="ContractRequisites"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:choice">
+                    <jaxb:bindings node="xs:sequence">
+                        <jaxb:bindings node="xs:element[@name='ФИОРебенка']">
+                            <jaxb:property name="childFullName"/>
+                        </jaxb:bindings>
+                        <jaxb:bindings node="xs:element[@name='ПериодОплаты']">
+                            <jaxb:property name="paymentPeriod"/>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                    <jaxb:bindings node="xs:element[@name='ФИОДоговор']">
+                        <jaxb:property name="contractPersonFullName"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>

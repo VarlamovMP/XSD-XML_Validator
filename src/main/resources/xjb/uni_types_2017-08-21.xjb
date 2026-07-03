@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        version="2.1"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <jaxb:bindings schemaLocation="../xsd/uni_types_2017-08-21.xsd" node="//xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.vtb.msa.smkp.model.external.pf.uni_types._2017_08_21"/>
+        </jaxb:schemaBindings>
+
+        <jaxb:bindings node="xs:element[@name='Наименование']">
+            <jaxb:property name="title"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='НаименованиеКраткое']">
+            <jaxb:property name="shortTitle"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипВременнойПериод']">
+            <jaxb:class name="TimePeriodType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='С']">
+                    <jaxb:property name="from"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='По']">
+                    <jaxb:property name="to"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипЧасовойПериод']">
+            <jaxb:class name="HourPeriodType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='С']">
+                    <jaxb:property name="from"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='По']">
+                    <jaxb:property name="to"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипОткрытыйВременнойПериод']">
+            <jaxb:class name="OpenTimePeriodType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='С']">
+                    <jaxb:property name="from"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='По']">
+                    <jaxb:property name="to"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипРеквизитыДокумента']">
+            <jaxb:class name="DocumentDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Дата']">
+                    <jaxb:property name="date"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Номер']">
+                    <jaxb:property name="number"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипРеквизитыДоговора']">
+            <jaxb:class name="ContractDetailsType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрСведенияДокумента']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Серия']">
+                    <jaxb:property name="series"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Номер']">
+                    <jaxb:property name="number"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ДатаВыдачи']">
+                    <jaxb:property name="issueDate"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='СНИЛС']">
+            <jaxb:property name="individualInsuranceNumber"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипПол']">
+            <jaxb:typesafeEnumClass name="SexType">
+                <jaxb:typesafeEnumMember value="М" name="MALE"/>
+                <jaxb:typesafeEnumMember value="Ж" name="FEMALE"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Пол']">
+            <jaxb:property name="sex"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ДатаРождения']">
+            <jaxb:property name="birthDate"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ДатаРожденияОсобая']">
+            <jaxb:property name="specialBirthDate"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипМестоРождения']">
+            <jaxb:class name="BirthPlaceType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Тип']">
+                    <jaxb:property name="type"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Город']">
+                    <jaxb:property name="city"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Район']">
+                    <jaxb:property name="area"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Регион']">
+                    <jaxb:property name="region"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Страна']">
+                    <jaxb:property name="country"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='МестоРождения']">
+            <jaxb:property name="birthPlace"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипГражданство']">
+            <jaxb:class name="NationalityType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Тип']">
+                    <jaxb:property name="type"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Государство']">
+                    <jaxb:property name="state"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="State"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Гражданство']">
+            <jaxb:property name="nationality"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Гражданства']">
+            <jaxb:class name="Nationalities"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:simpleType[@name='ТипТипУД']">
+            <jaxb:typesafeEnumClass name="IdentityDocumentType">
+                <jaxb:typesafeEnumMember value="ПАСПОРТ" name="PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ПАСПОРТ РОССИИ" name="RUSSIAN_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="СВИД О РОЖД" name="BIRTH_CERTIFICATE"/>
+                <jaxb:typesafeEnumMember value="СПРАВКА ОБ ОСВ" name="RELEASE_CERTIFICATE"/>
+                <jaxb:typesafeEnumMember value="СВИД БЕЖЕНЦА" name="REFUGEE_CERTIFICATE"/>
+                <jaxb:typesafeEnumMember value="ВИД НА ЖИТЕЛЬ" name="RESIDENCE_PERMIT"/>
+                <jaxb:typesafeEnumMember value="УДОСТ БЕЖЕНЦА" name="REFUGEE_DOCUMENT"/>
+                <jaxb:typesafeEnumMember value="ВОЕННЫЙ БИЛЕТ" name="MILITARY_ID"/>
+                <jaxb:typesafeEnumMember value="УДОСТ ЛИЧН ВОЕН" name="MILITARY_ID_CARD"/>
+                <jaxb:typesafeEnumMember value="ДИППАСПОРТ РФ" name="RUSSIAN_DIPLOMATIC_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ПАСПОРТ МОРФЛТ" name="MARINE_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ПАСПОРТ МОРЯКА" name="SEAMAN_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ЗГПАСПОРТ" name="INTERNATIONAL_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ИНПАСПОРТ" name="FOREIGN_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ЗГПАСПОРТ РФ" name="RUSSIAN_INTERNATIONAL_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="СЛУЖ ПАСПОРТ" name="SERVICE_PASSPORT"/>
+                <jaxb:typesafeEnumMember value="ВРЕМ УДОСТ" name="INTERIM_CERTIFICATE"/>
+                <jaxb:typesafeEnumMember value="ВОЕН БИЛЕТ ОЗ" name="RESERVE_OFFICER_MILITARY_ID_CARD"/>
+                <jaxb:typesafeEnumMember value="УДОСТ ОФИЦЕРА" name="OFFICER_CERTIFICATE"/>
+                <jaxb:typesafeEnumMember value="ПРОЧЕЕ" name="OTHER"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='КемВыдан']">
+            <jaxb:property name="issuedBy"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='СрокДействия']">
+            <jaxb:property name="validity"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипУдостоверяющийДокумент']">
+            <jaxb:class name="IdentityDocumentDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Тип']">
+                    <jaxb:property name="type"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='КодПодразделения']">
+                    <jaxb:property name="divisionCode"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='УдостоверяющийДокумент']">
+            <jaxb:property name="identityDocumentDetails"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Фамилия']">
+            <jaxb:property name="lastName"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Имя']">
+            <jaxb:property name="firstName"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Отчество']">
+            <jaxb:property name="middleName"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипФИО']">
+            <jaxb:class name="FullNameType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ФИО']">
+            <jaxb:property name="fullName"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСписокТелефонов']">
+            <jaxb:class name="PhoneListType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Телефон']">
+                    <jaxb:property name="phone"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Телефоны']">
+            <jaxb:property name="phones"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='АдресЭлПочты']">
+            <jaxb:property name="email"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ИНН']">
+            <jaxb:property name="individualTaxpayerNumber"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='РегНомер']">
+            <jaxb:property name="pensionFundInsuredRegistrationNumber"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='КПП']">
+            <jaxb:property name="industrialEnterprisesClassifier"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='КодЕГРИП']">
+            <jaxb:property name="uniformStateIndividualEntrepreneursRegister"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='КодЕГРЮЛ']">
+            <jaxb:property name="unifiedStateLegalEntitiesRegister"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='БИК']">
+            <jaxb:property name="bankIdentificationCode"/>
+        </jaxb:bindings>
+
+
+        <jaxb:bindings node="xs:element[@name='КБК']">
+            <jaxb:property name="budgetaryClassificationCode"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='РСчет']">
+            <jaxb:property name="recipientCurrentAccount"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='КСчет']">
+            <jaxb:property name="bankCorrespondentAccount"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипРеквизитыБанка']">
+            <jaxb:class name="BankRequisitesType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Адрес']">
+                    <jaxb:property name="address"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Банк']">
+            <jaxb:property name="bank"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипБанковскиеРеквизиты']">
+            <jaxb:class name="BankDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='РСчет']">
+                    <jaxb:property name="currentAccount"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='БанковскиеРеквизиты']">
+            <jaxb:property name="bankDetails"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПодразделениеОрганизации']">
+            <jaxb:class name="OrganizationalUnitType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Номер']">
+                    <jaxb:property name="number"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипОрганизация']">
+            <jaxb:class name="OrganizationType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Форма']">
+                    <jaxb:property name="organizationForm"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Адрес']">
+                    <jaxb:property name="address"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Подразделение']">
+                    <jaxb:property name="organizationalUnit"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='День']">
+            <jaxb:property name="dayNumber"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Месяц']">
+            <jaxb:property name="monthNumber"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипДатаОсобая']">
+            <jaxb:class name="SpecialDateType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Год']">
+                    <jaxb:property name="year"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Индекс']">
+            <jaxb:property name="mailIndex"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипГеография']">
+            <jaxb:class name="AddressDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Название']">
+                    <jaxb:property name="geographicName"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Сокращение']">
+                    <jaxb:property name="abbreviatedAddressElement"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрАдрес']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Регион']">
+                    <jaxb:property name="region"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Округ']">
+                    <jaxb:property name="area"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Район']">
+                    <jaxb:property name="district"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Город']">
+                    <jaxb:property name="city"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ВнутригородскойРайон']">
+                    <jaxb:property name="intraCityDistrict"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='НаселенныйПункт']">
+                    <jaxb:property name="locality"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Улица']">
+                    <jaxb:property name="street"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Дом']">
+                    <jaxb:property name="houseNumber"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Строение']">
+                    <jaxb:property name="buildingNumber"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Владение']">
+                    <jaxb:property name="ownerShipNumber"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Корпус']">
+                    <jaxb:property name="caseNumber"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Квартира']">
+                    <jaxb:property name="flatNumber"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='КодСтраны']">
+            <jaxb:property name="countryCode"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипАдресИностранный']">
+            <jaxb:class name="ForeignAddressType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='НазваниеСтраны']">
+                    <jaxb:property name="countryName"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='АдресКириллицей']">
+                    <jaxb:property name="cyrillicAddressRepresentation"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='АдресЛатиницей']">
+                    <jaxb:property name="latinScriptAddressRepresentation"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрАдресФИАС']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='GUID']">
+                    <jaxb:property name="GUID"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипАдресФИАС']">
+            <jaxb:class name="FederalInformationAddressSystemAddressType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='Адрес']">
+            <jaxb:property name="russianStructuralAddress"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипАдресОбщий']">
+            <jaxb:class name="CommonAddressType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:choice">
+                    <jaxb:bindings node="xs:element[@name='Иностранный']">
+                        <jaxb:property name="foreignAddress"/>
+                    </jaxb:bindings>
+                    <jaxb:bindings node="xs:element[@name='Неструктурированный']">
+                        <jaxb:property name="notStructuralAddress"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ЮрАдрес']">
+            <jaxb:property name="legalOrganizationAddress"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрАдресаФЛ']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='АдресРегистрации']">
+                    <jaxb:property name="registrationAddress"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='АдресПребывания']">
+                    <jaxb:property name="stayPlaceAddress"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='АдресФактический']">
+                    <jaxb:property name="actualAddress"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПодтверждающийДокумент']">
+            <jaxb:class name="ConfirmingDocumentType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ДокументПодтверждающийПолномочия']">
+            <jaxb:property name="confirmingDocument"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ФормаПредставительства']">
+            <jaxb:property name="agencyForm"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипАнкетаЮрЛица']">
+            <jaxb:class name="LegalEntityProfileType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Адрес']">
+                    <jaxb:property name="address"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПредставительФЛ-ЮЛ']">
+            <jaxb:class name="LegalAgentDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='АнкетныеДанные']">
+                    <jaxb:property name="personalData"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="PersonalData"/>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Тип']">
+                    <jaxb:property name="agentKind"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ЮридическоеЛицо']">
+                    <jaxb:property name="legalEntity"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПунктНормативногоДокумента']">
+            <jaxb:class name="NormativeDocumentParagraphType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='НормативныйДокумент']">
+                    <jaxb:property name="normativeDocument"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Статья']">
+                    <jaxb:property name="article"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Часть']">
+                    <jaxb:property name="part"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Пункт']">
+                    <jaxb:property name="paragraph"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Подпункт']">
+                    <jaxb:property name="subparagraph"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСписокОзнакомленийЗаявителя']">
+            <jaxb:class name="ApplicantReviewDocumentListType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ОзнакомлениеЗаявителя']">
+                    <jaxb:property name="applicantReviewDocumentList"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипОзнакомлениеЗаявителя']">
+            <jaxb:class name="ApplicantReviewType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ПредметОзнакомления']">
+                    <jaxb:property name="reviewSubject"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Ознакомлен']">
+                    <jaxb:property name="reviewed"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрПрилагаемыйДокумент']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Реквизиты']">
+                    <jaxb:property name="documentRequisites"/>
+                    <jaxb:bindings node="xs:complexType">
+                        <jaxb:class name="DocumentRequisites"/>
+                        <jaxb:bindings node="xs:sequence">
+                            <jaxb:bindings node="xs:element[@name='Реквизит']">
+                                <jaxb:property name="requisite"/>
+                                <jaxb:bindings node="xs:complexType">
+                                    <jaxb:class name="Requisite"/>
+                                    <jaxb:bindings node="xs:sequence">
+                                        <jaxb:bindings node="xs:element[@name='Значение']">
+                                            <jaxb:property name="requisiteValue"/>
+                                        </jaxb:bindings>
+                                    </jaxb:bindings>
+                                </jaxb:bindings>
+                            </jaxb:bindings>
+                        </jaxb:bindings>
+                    </jaxb:bindings>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='ПредставленностьДокумента']">
+                    <jaxb:property name="documentCopiesNumber"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПрилагаемыйДокументНумерованный']">
+            <jaxb:class name="NumberedAdditionalDocumentDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='НомерПП']">
+                    <jaxb:property name="stringNumber"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПрилагаемыйДокумент']">
+            <jaxb:class name="AdditionalDocumentDetailsType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипПрилагаемыеДокументы']">
+            <jaxb:class name="additionalDocumentsDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ПрилагаемыйДокумент']">
+                    <jaxb:property name="additionalDocument"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:group[@name='ГрДолжностноеЛицо']">
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='ФИО']">
+                    <jaxb:property name="fullName"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='Должность']">
+                    <jaxb:property name="post"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипДолжностноеЛицо']">
+            <jaxb:class name="officialPersonType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипКонтактноеДолжностноеЛицо']">
+            <jaxb:class name="ContactOfficialPersonType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Телефон']">
+                    <jaxb:property name="phoneNumber"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипОрганизацияПФР']">
+            <jaxb:class name="PensionFundDetailsType"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипСведенияТОПФР']">
+            <jaxb:class name="TerritorialPensionFundDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Код']">
+                    <jaxb:property name="code"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипТОПФР']">
+            <jaxb:class name="TerritorialPensionFundShortDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Код']">
+                    <jaxb:property name="code"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:complexType[@name='ТипТОПФРсАдресом']">
+            <jaxb:class name="TerritorialPensionFundFullDetailsType"/>
+            <jaxb:bindings node="xs:sequence">
+                <jaxb:bindings node="xs:element[@name='Код']">
+                    <jaxb:property name="code"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="xs:element[@name='ОКТМО']">
+            <jaxb:property name="allRussianMunicipalUnitsTerritoriesClassifier"/>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>

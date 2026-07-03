@@ -1,0 +1,1167 @@
+# Auto-generated JAXB binding vocabulary from project XJB files.
+# Rebuild: python scripts/build_xjb_vocabulary.py
+
+meta:
+  sourceFiles: 30
+  generatedFrom:
+    - src/main/resources/xjb/docs/application_approval_notification_2024-04-04.xjb
+    - src/main/resources/xjb/docs/loan_agreement_information_2024-01-01.xjb
+    - src/main/resources/xjb/docs/loan_agreement_information_2024-04-04.xjb
+    - src/main/resources/xjb/docs/loan_information_request_2024-01-01.xjb
+    - src/main/resources/xjb/docs/loan_information_request_2024-04-04.xjb
+    - src/main/resources/xjb/docs/mat_cap_amount_information_2018-04-03.xjb
+    - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+    - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    - src/main/resources/xjb/docs/mat_cap_rights_availability_notification_2024-04-04.xjb
+    - src/main/resources/xjb/docs/mat_cap_satisfaction_notification_2024-01-01.xjb
+    - src/main/resources/xjb/docs/ostmsk-1.0.0.xjb
+    - src/main/resources/xjb/format_album_types_2017-08-21.xjb
+    - src/main/resources/xjb/format_album_types_2018-12-07.xjb
+    - src/main/resources/xjb/format_album_types_2023-04-03.xjb
+    - src/main/resources/xjb/legalAgentDetailsType_2024-01-01.xjb
+    - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+    - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    - src/main/resources/xjb/mat_cap_types_2017-12-13.xjb
+    - src/main/resources/xjb/mat_cap_types_2019-07-08.xjb
+    - src/main/resources/xjb/mat_cap_types_2022-10-07.xjb
+    - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+    - src/main/resources/xjb/smev/PFR_MSKD/MQ_PayLoad_SFR_MSKD.xjb
+    - src/main/resources/xjb/smev/PFR_OSTMSK/MQ_PayLoad_PFR_OSTMSK.xjb
+    - src/main/resources/xjb/smev/SFR_MZRK/MQ_PayLoad_SFR_MZRK.xjb
+    - src/main/resources/xjb/uni_types_2017-08-21.xjb
+    - src/main/resources/xjb/uni_types_2022-07-14.xjb
+    - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    - src/main/resources/xjb/xmldsig_core_schema.xjb
+    - src/main/resources/xjb/xsd_uip/MQMessage_VTB.xjb
+    - src/main/resources/xjb/xsd_uip/Ticket_VTB.xjb
+
+elements:
+  BirthDay: birthDay
+  CertMSK: certificateRequisites
+  Comment: comment
+  FIO: fullName
+  FirstName: firstName
+  GUID: GUID
+  Issued: issued
+  MSKR: mskr
+  MSKRight: rightAvailability
+  Number: number
+  Ostatok: maternalFamilyCapitalAmount
+  Owner: owner
+  Patronymic: middleName
+  ProcessingStatusCode: processingStatusCode
+  ProcessingStatusComment: processingStatusComment
+  RequestDate: requestDate
+  RequestId: requestId
+  SNILS: individualInsuranceNumber
+  Serial: serial
+  Surname: lastName
+  Type: type
+  "Адрес": address
+  "АдресКириллицей": cyrillicAddressRepresentation
+  "АдресЛатиницей": latinScriptAddressRepresentation
+  "АдресПребывания": stayPlaceAddress
+  "АдресРФ": russianAddress
+  "АдресРегистрации": registrationAddress
+  "АдресФактический": actualAddress
+  "АдресЭлПочты": emailAddress
+  "Акт": act
+  "АктОбУсыновлении": adoptionAct
+  "АктОсвидетельствования": completedWorksInspectionCertificate
+  "АнкетныеДанные": personalData
+  "БИК": bik
+  "Банк": recipientPersonBank
+  "БанковскиеРеквизиты": bankDetails
+  "БезНомера": withoutNumber
+  "ВОтветНа": electronicDocumentGlobalIdentifier
+  "Вид": documentType
+  "ВидРасходов": expensesType
+  "ВидСобственности": propertyType
+  "Владелец": certificateHolder
+  "ВладелецСертификата": certificateHolder
+  "Владение": ownerShipNumber
+  "ВнутригородскойРайон": intraCityDistrict
+  "Год": year
+  "Город": city
+  "Государство": state
+  "Гражданство": citizenship
+  "Дата": date
+  "ДатаВозникновенияПраваНаДМГП": additionalStateRightSupportOccurrenceDate
+  "ДатаВремя": documentPreparationTimeDate
+  "ДатаВыдачи": issueDate
+  "ДатаЗаполнения": fillingDate
+  "ДатаПо": dateTo
+  "ДатаПодачи": applicationDate
+  "ДатаПолученияСредств": fundReceivingDate
+  "ДатаРождения": birthDate
+  "ДатаРожденияОсобая": specialBirthDate
+  "ДатаС": dateFrom
+  "ДатаУсыновления": adoptionDate
+  "ДатаФормирования": referenceDate
+  "Декларация": value
+  "День": dayNumber
+  "ДоверенноеЛицо": authorizedPerson
+  "Договор": contract
+  "ДоговорИпотеки": mortgageContract
+  "ДоговорРанее": loanAgreementEarlier
+  "Документ": document
+  "ДокументОснование": baseDocument
+  "ДокументПодтверждающийПолномочия": authorityConfirmingDocument
+  "ДокументПодтверждающийПраво": rightConfirmingDocument
+  "Должность": post
+  "Дом": houseNumber
+  "ДополнительныеСведения": additionalDetails
+  "Дубликат": duplicate
+  "Задолженность": debtAmount
+  "ЗаконныйПР": legalRepresentative
+  "Заявитель": applicant
+  "ЗемельныйУчасток": landPlot
+  "Значение": requisiteValue
+  "ИНН": inn
+  "ИПРА": disableChildrenIndividualRehabilitationProgramRequisites
+  "Идентификатор": id
+  "Издатель": publisher
+  "Имя": firstName
+  "Индекс": mailIndex
+  "Иностранный": foreignAddress
+  "ИнформированиеОбОбязанности": informedAboutObligation
+  "КБК": kbk
+  "КПП": kpp
+  "КСчет": bankCorrespondentAccount
+  "КадастровыйНомер": cadastralNumber
+  "КатегорияЗемель": landPlotCategory
+  "КатегорияНаправления": usingDirectionCategory
+  "Квартира": flatNumber
+  "КемВыдан": issuedBy
+  "Код": code
+  "КодЕГРИП": uniformStateIndividualEntrepreneursRegister
+  "КодЕГРЮЛ": unifiedStateLegalEntitiesRegister
+  "КодПодразделения": departmentCode
+  "КодСтраны": countryCode
+  "КоличествоМесяцев": monthNumber
+  "Корпус": caseNumber
+  "Кредит": credit
+  "Кредитор": creditor
+  "МВКД": loanAgreementInformation
+  "МЗРК": maternalFamilyCapitalDisposalStatement
+  "МРУВ": maternalFamilyCapitalSatisfactionNotification
+  "МСКД": loanInformationRequest
+  "МСОС": maternalFamilyCapitalAmountInformation
+  "МУБЗ": applicationApprovalNotification
+  "МУБП": maternalFamilyCapitalRightsAvailabilityNotification
+  "МестоРождения": birthPlace
+  "Месяц": monthNumber
+  "НП": fundedPensionMaternalFamilyCapitalUsing
+  "Название": geographicName
+  "НазваниеСтраны": countryName
+  "Наименование": title
+  "НаименованиеБанка": bankName
+  "НаименованиеБанкаОрганизации": bankName
+  "НаименованиеКраткое": shortTitle
+  "НаименованиеОрганизации": organizationName
+  "НаименованиеТОСФР": territorialPensionFundName
+  "НаличиеПрава": rightAvailability
+  "НаселенныйПункт": locality
+  "Неструктурированный": notStructuralAddress
+  "НеструктурированныйАдрес": notStructuralAddress
+  "НетНомера": noNumber
+  "Номер": number
+  "НомерБанковскогоСчета": bankAccountNumber
+  "НомерДоговораДС": dsContractNumber
+  "НомерЗакладной": mortgageNumber
+  "НомерЛицевогоСчета": accountNumber
+  "НомерПП": stringNumber
+  "НомерПриложения": appendixNumber
+  "НомерСсудногоСчета": loanAccountNumber
+  "НормативныйДокумент": normativeDocument
+  "ОГРН": mainStateRegistrationNumber
+  "ОКТМО": oktmo
+  "Образование": educationMaternalFamilyCapitalUsing
+  "Обременение": encumbrance
+  "ОбучающийсяРебенок": studyingChild
+  "Объект": object
+  "Ознакомлен": reviewed
+  "ОзнакомлениеЗаявителя": applicantReviewDocumentList
+  "Округ": area
+  "Описание": description
+  "ОрганСО": socialServiceAuthority
+  "Организация": creditOrganization
+  "Основание": refusalReason
+  "ОснованиеОтказа": refusalGrounds
+  "ОсновноеНазвание": mainTitle
+  "ОстатокЛС": maternalFamilyCapitalRemains
+  "Отчество": middleName
+  "ОчередностьРождения": birthOrder
+  "Перечисление": transferringDetails
+  "ПериодОплаты": paymentPeriod
+  "ПериодПеречисления": transferPeriod
+  "Площадь": landPlotArea
+  "По": to
+  "Подпункт": subparagraph
+  "Подразделение": organizationalUnit
+  "ПодтверждающиеДокументы": confirmingDocuments
+  "ПодтверждающийДокумент": confirmingDocument
+  "Пол": gender
+  "Получатель": loanTaker
+  "ПорядокПеречисленияСредств": maternalFamilyCapitalTransferringProcedure
+  "ПредметДоговора": contractSubject
+  "ПредметОзнакомления": reviewSubject
+  "Представитель": applicantDelegate
+  "ПредставленностьДокумента": documentCopiesNumber
+  "ПредупреждениеОбОтветственности": liabilityDisclaimer
+  "ПрилагаемыеДокументы": attachedDocuments
+  "ПрилагаемыйДокумент": attachedDocument
+  "Примечание": note
+  "ПринятоеРешение": adoptedDecision
+  "ПричинаОтказа": refusalReason
+  "ПричинаОтклонения": rejectionReason
+  "ПрограммаПодготовки": documentPreparationProgram
+  "Пункт": paragraph
+  "ПунктНормативногоДокумента": normativeDocumentParagraph
+  "РСчет": currentAccount
+  "РазмерМСК": maternalFamilyCapitalAmount
+  "РазмерПлатежа": paymentAmount
+  "РазрешениеНаСтроительство": buildingPermit
+  "Район": area
+  "Распоряжение": maternalFamilyCapitalDisposal
+  "РебенокИнвалид": disableChild
+  "РегНомер": pensionFundInsuredRegistrationNumber
+  "Регион": region
+  "Реквизит": requisite
+  "Реквизиты": requisites
+  "РеквизитыАкта": goodsConformityVerificationActRequisites
+  "РеквизитыБанка": bankRequisites
+  "РеквизитыДоговора": contractRequisites
+  "РеквизитыМЗРК": maternalFamilyCapitalDisposalStatementRequisites
+  "РеквизитыМРРУ": maternalFamilyCapitalDisposalDecisionRequisites
+  "РеквизитыОрганизации": organizationRequisites
+  "РеквизитыПеречисления": transferRequisites
+  "РеквизитыПеречисленияУЖУ": transferRequisites
+  "РеквизитыСертификата": certificateRequisites
+  "РеквизитыУведомления": notificationAttrs
+  "РеквизитыЭП": requisitesEP
+  "РуководительТОПФР": territorialPensionFundHead
+  "С": from
+  "САДИ": disableChildGoodsMaternalFamilyCapitalUsing
+  "СНИЛС": individualInsuranceNumber
+  "Сведения": educationMaternalFamilyCapitalUsingStatementDetails
+  "СведенияФизЛицо": physicalPersonMaternalFamilyCapitalSendingDetails
+  "СведенияЮрЛицо": legalEntityMaternalFamilyCapitalSendingDetails
+  "СведенияЮрЛицоЕП": monthlyPaymentLegalEntityMaternalFamilyCapitalSendingDetails
+  "Серия": series
+  "СлужебнаяИнформация": electronicDocumentServiceInformation
+  "Согласие": personalDataProcessingAgreement
+  "Сокращение": abbreviatedAddressElement
+  "СоответствиеДанных": matchingDataMark
+  "Составитель": notPensionFundDrafter
+  "СоставительПФР": pensionFundDrafter
+  "СоставительСФР": socialFundDrafter
+  "Специалист": specialist
+  "СписокОзнакомлений": introductionsList
+  "СписокТоваровУслуг": goodsList
+  "СпособУЖУ": housingImprovementMaternalFamilyCapitalUsingWay
+  "СрокДействия": validity
+  "СрокДействияЗакрытогоКлюча": privateKeyValidity
+  "СрокПогашения": maturityTerm
+  "СрокПредоставления": term
+  "СсудныйСчет": loanAccount
+  "СтатусПоМСК": statusMsk
+  "Статья": article
+  "Стоимость": amount
+  "Сторона": agreementParty
+  "СтороныДоговора": agreementParties
+  "Страна": country
+  "Строение": buildingNumber
+  "Сумма": amount
+  "Супруг": spouse
+  "СупругВладельца": certificateHolderSpouse
+  "ТОСФР": territorialSocialFundAuthority
+  "Телефон": phone
+  "Телефоны": phones
+  "Тип": type
+  "ТипОбращения": applicationForm
+  "ТипРодства": relationshipType
+  "ТипФормы": formType
+  "ТоварУслуга": goods
+  "УЖУ": housingImprovementMaternalFamilyCapitalUsing
+  "УдостоверяющийДокумент": identityDocumentDetails
+  "Улица": street
+  "ФБМСЭ": medicalSocialExpertiseFederalStateInstitutionName
+  "ФИО": fullName
+  "ФИОДоговор": contractPersonFullName
+  "ФИОРебенка": childFullName
+  "ФИОСупруга": spouseFullName
+  "Фамилия": lastName
+  "Форма": organizationForm
+  "ФормаПредставительства": agencyForm
+  "ЦельИспользования": loanPurpose
+  "ЦельКредитаЗайма": fundsUsingPurpose
+  "ЦельОбращения": requestPurpose
+  "ЦельПредоставления": fundsLoanUsingPurpose
+  "Часть": part
+  "ЮрАдрес": legalAddress
+  "ЮридическоеЛицо": legalEntity
+
+elementsAsClass:
+  AnswerMessage: AnswerMessage
+  FromSmev: FromSmev
+  RequestMessage: RequestMessage
+  Ticket: Ticket
+  ToSmev: ToSmev
+  "АдресРФ": RussianAddress
+  "АдресРФ_ПМЖ": RussianAddressBeforeLeavingRF
+  "Ведомство": Department
+  "Государство": State
+  "Гражданства": Nationalities
+  "ЗАГС": CivilRegistryOffice
+  "Получатель": Recipient
+  "ПредыдущееМестоЖительства": PreviousResidence
+  "Причина": Reason
+  "СлужебнаяИнформация": ServiceInformationType
+
+complexTypes:
+  CertMSKType: CertMSKType
+  FIOType: FIOType
+  "ТипАдресИностранный": ForeignAddressType
+  "ТипАдресОбщий": CommonAddressType
+  "ТипАдресФИАС": FederalInformationAddressSystemAddressType
+  "ТипАктГС": CivilStatusActType
+  "ТипАнкетаЮрЛица": LegalEntityProfileType
+  "ТипБанковскиеРеквизиты": BankDetailsType
+  "ТипВременнойПериод": TimePeriodType
+  "ТипГеография": AddressDetailsType
+  "ТипГражданство": NationalityType
+  "ТипДатаВозникновенияПраваНаДМГП": AdditionalStateRightSupportOccurrenceDateType
+  "ТипДатаОсобая": SpecialDateType
+  "ТипДокументПодтверждающийПраво": possessionRightConfirmingDocumentType
+  "ТипДолжностноеЛицо": officialPersonType
+  "ТипДопСведенияДляПеречисления": TransferringAdditionalDetailsType
+  "ТипКодВидаРасходовОбр": EducationExpensesCodeType
+  "ТипКодВидаРасходовУЖУ": HousingImprovementExpensesCodeType
+  "ТипКонтактноеДолжностноеЛицо": ContactOfficialPersonType
+  "ТипКредитор": CreditorType
+  "ТипМестоРождения": BirthPlaceType
+  "ТипНаправлениеРаспоряженияМСК": MaternalFamilyCapitalUsingDirectionType
+  "ТипОзнакомлениеЗаявителя": ApplicantReviewType
+  "ТипОписаниеПеременной": VariableDescriptionType
+  "ТипОрганизация": OrganizationType
+  "ТипОрганизацияПФР": PensionFundDetailsType
+  "ТипОрганизацияСФР": SocialFundDetailsType
+  "ТипОснованияОтказа": RefusalReasonType
+  "ТипОткрытыйВременнойПериод": OpenTimePeriodType
+  "ТипПеречисление": TransferringType
+  "ТипПодразделениеОрганизации": OrganizationalUnitType
+  "ТипПодтверждающийДокумент": ConfirmingDocumentType
+  "ТипПорядокПеречисленияСредств": TransferringFundsProcedureType
+  "ТипПорядокПеречисленияСредствОбразование": EducationTransferringFundsProcedureType
+  "ТипПредставитель_ГС": LegalAgentStateServiceType
+  "ТипПредставитель_ФЛ": LegalAgentPhysicalPersonType
+  "ТипПредставитель_ЮЛ_ФЛ": LegalAgentJuridicalPersonPhysicalPersonType
+  "ТипПредставительФЛ-ЮЛ": LegalAgentDetailsType
+  "ТипПрилагаемыеДокументы": additionalDocumentsDetailsType
+  "ТипПрилагаемыйДокумент": AdditionalDocumentDetailsType
+  "ТипПрилагаемыйДокументНумерованный": NumberedAdditionalDocumentDetailsType
+  "ТипПунктНормативногоДокумента": NormativeDocumentParagraphType
+  "ТипРебенок": ChildType
+  "ТипРеквизитыБанка": BankRequisitesType
+  "ТипРеквизитыДоговора": ContractDetailsType
+  "ТипРеквизитыДокумента": DocumentDetailsType
+  "ТипРеквизитыСертификатаМСК": MaternalFamilyCapitalCertificateRequisitesType
+  "ТипРеквизитыЭП": ElectronicSignatureRequisitesType
+  "ТипСведенияОСертификатеМСК": MaternalFamilyCapitalCertificateType
+  "ТипСведенияТОПФР": TerritorialPensionFundDetailsType
+  "ТипСведенияТОСФР": TerritorialSocialFundDetailsType
+  "ТипСертифицируемыйРебенок": CertifiedChildType
+  "ТипСлужебнаяИнформация": ElectronicDocumentServiceInformationType
+  "ТипСлужебнаяИнформацияЗМСК": MaternalFamilyCapitalApplicationServiceInformationType
+  "ТипСлужебнаяИнформацияЗМСК-ЭП": ElectronicSignatureMaternalFamilyCapitalStatementServiceInformationType
+  "ТипСлужебнаяИнформацияМСК": MaternalFamilyCapitalServiceInformationType
+  "ТипСлужебнаяИнформацияМСК-ЭП": ElectronicSignatureMaternalFamilyCapitalServiceInformationType
+  "ТипСлужебнаяИнформацияППЭД": ElectronicDocumentPreparationServiceInformationType
+  "ТипСлужебнаяИнформацияСМСК": MaternalFamilyCapitalRequestServiceInformationType
+  "ТипСлужебнаяИнформацияЭП": ElectronicSignatureServiceInformationType
+  "ТипСписокОзнакомленийЗаявителя": ApplicantReviewDocumentListType
+  "ТипСписокТелефонов": PhoneListType
+  "ТипСтатусПоМСК": MaternalFamilyCapitalStatusType
+  "ТипТОПФР": TerritorialPensionFundShortDetailsType
+  "ТипТОПФРсАдресом": TerritorialPensionFundFullDetailsType
+  "ТипТОСФР": TerritorialSocialFundShortDetailsType
+  "ТипТОСФРсАдресом": TerritorialSocialFundFullDetailsType
+  "ТипУдостоверяющийДокумент": IdentityDocumentDetailsType
+  "ТипФИО": FullNameType
+  "ТипЧасовойПериод": HourPeriodType
+
+simpleTypes:
+
+groups:
+
+enumClasses:
+  "ТипКодВидаРасходовОбр": EducationExpensesKindCodeType
+  "ТипКодВидаРасходовСАДИ": DisableChildGoodsExpensesKindCodeType
+  "ТипКодВидаРасходовУЖУ": HousingImprovementExpensesKindCodeType
+  "ТипКодПол": SexType
+  "ТипКодУД": IdentityDocumentType
+  "ТипКодФормаПредставительства": AgencyFormCode
+  "ТипПол": SexType
+  "ТипПричинаСнятияСРассмотрения": RemovalReasonType
+  "ТипСтатусПоМСК": MaternalFamilyCapitalStatusType
+  "ТипТипПредставителя": RepresentativeType
+  "ТипТипРодства": RelationshipType
+  "ТипТипУД": IdentityDocumentType
+
+enumMembers:
+  "ТипКодВидаРасходовОбр":
+    "ДОШК ОБУЧ": PRESCHOOLS
+    "ОБУЧЕНИЕ": LEARNING
+    "ПРИСМОТР И УХОД": SUPERVISION_AND_CARE
+    "ПРОЖИВАНИЕ": LIVING
+    "СОДЕРЖАНИЕ": MAINTENANCE
+  "ТипКодВидаРасходовСАДИ":
+    "57": GOODS
+    "58": SERVICE
+    "ТОВАР": GOODS
+    "УСЛУГА": SERVICE
+  "ТипКодВидаРасходовУЖУ":
+    "ДОЛЕВОЕ СТРОИТ-ВО": SHARED_CONSTRUCTION
+    "ЗАЙМ ПЕРВ ПРИОБ ВОЕНН": LOAN_INITIAL_PURCHASE_FACILITIES_MILITARY
+    "ЗАЙМ ПЕРВ ПРИОБ ОИРЖС": LOAN_INITIAL_PURCHASE_OIRZS_FACILITIES
+    "ЗАЙМ ПЕРВ ПРИОБ ОИРЖС БАНК": LOAN_INITIAL_PURCHASE_OIRZS_FACILITIES_BANK
+    "ЗАЙМ ПЕРВ ПРИОБ ОРГ ОИРЖС": LOAN_INITIAL_PURCHASE_ORG_OIRZS_FACILITIES
+    "ЗАЙМ ПЕРВ СТРОИТ ВОЕНН": LOAN_INITIAL_CONSTRUCTION_FACILITIES_MILITARY
+    "ЗАЙМ ПЕРВ СТРОИТ ОИРЖС": LOAN_INITIAL_CONSTRUCTION_OIRZS_FACILITIES
+    "ЗАЙМ ПЕРВ СТРОИТ ОИРЖС БАНК": LOAN_INITIAL_CONSTRUCTION_OIRZS_FACILITIES_BANK
+    "ЗАЙМ ПЕРВ СТРОИТ ОРГ ОИРЖС": LOAN_INITIAL_CONSTRUCTION_ORG_OIRZS_FACILITIES
+    "ЗАЙМ ПРИОБ ВОЕНН": PURCHASING_LOAN_MILITARY
+    "ЗАЙМ ПРИОБ ИНАЯ": LOAN_PURCHASE_ELSE
+    "ЗАЙМ ПРИОБ КООП": LOAN_PURCHASE_COOPERATIVE
+    "ЗАЙМ ПРИОБ КРЕДИТ": LOAN_PURCHASE_CREDIT
+    "ЗАЙМ ПРИОБ ОИРЖС": OIRJ_PURCHASING_LOAN
+    "ЗАЙМ ПРИОБ ОИРЖС БАНК": LOAN_PURCHASE_OIRZS_FACILITIES_BANK
+    "ЗАЙМ ПРИОБ ОРГ ОИРЖС": PURCHASING_LOAN_ORG_OIRZS
+    "ЗАЙМ ПРИОБ СКПК": SKPK_PURCHASING_LOAN
+    "ЗАЙМ СТРОИТ ВОЕНН": CONSTRUCTION_LOAN_MILITARY
+    "ЗАЙМ СТРОИТ ИНАЯ": LOAN_CONSTRUCTION_ELSE
+    "ЗАЙМ СТРОИТ КООП": LOAN_CONSTRUCTION_COOPERATIVE
+    "ЗАЙМ СТРОИТ КРЕДИТ": LOAN_CONSTRUCTION_CREDIT
+    "ЗАЙМ СТРОИТ ОИРЖС": OIRJ_CONSTRUCTION_LOAN
+    "ЗАЙМ СТРОИТ ОИРЖС БАНК": LOAN_CONSTRUCTION_OIRZS_FACILITIES_BANK
+    "ЗАЙМ СТРОИТ ОРГ ОИРЖС": CONSTRUCTION_LOAN_ORG_OIRZS
+    "ЗАЙМ СТРОИТ СКПК": SKPK_CONSTRUCTION_LOAN
+    "ИЖР 50": INDIVIDUAL_HOUSING_50
+    "ИЖР 6 МЕС": INDIVIDUAL_HOUSING_6
+    "ИЖС 50": INDIVIDUAL_HOUSING_CONSTRUCTION_50
+    "ИЖС 6 МЕС": INDIVIDUAL_HOUSING_CONSTRUCTION_6
+    "ИЖСР КОМП": IZSR
+    "ИНДИВИД СТРОИТ-ВО": INDIVIDUAL_CONSTRUCTION
+    "КООП ВСТУПИТ ВЗНОС": COOPERATIVE_ENTRY_FEE
+    "КООП ПАЕВОЙ ВЗНОС": COOPERATIVE_SHARE_PREMIUM
+    "КРЕДИТ ПРИОБ БАНК": CREDIT_PURCHASE_FACILITIES_BANK
+    "КРЕДИТ ПРИОБРЕТЕНИЕ": ACQUIREMENT_CREDIT
+    "КРЕДИТ СТРОИТ БАНК": CREDIT_CONSTRUCTION_FACILITIES_BANK
+    "КРЕДИТ СТРОИТ-ВО": CONSTRUCTION_CREDIT
+    "НАКОП КООП ВСТУПИТ ВЗНОС": ACCUMULATIVE_COOPERATIVE_ENTRY_FEE
+    "НАКОП КООП ПАЙ ВЗНОС": ACCUMULATIVE_COOPERATIVE_PAYMENT_CONTRIBUTION
+    "ПЕРВ ВЗНОС ПРИОБ БАНК": INITIAL_PAYMENT_PURCHASE_FACILITIES_BANK
+    "ПЕРВ ВЗНОС ПРИОБ-ИЕ": PURCHASE_INITIAL_PAYMENT
+    "ПЕРВ ВЗНОС СТРОИТ БАНК": INITIAL_PAYMENT_CONSTRUCTION_FACILITIES_BANK
+    "ПЕРВ ВЗНОС СТРОИТ-ВО": CONSTRUCTION_INITIAL_PAYMENT
+    "ПРИОБРЕТЕНИЕ": PURCHASE
+    "РЕФИН КРЕДИТ ПРИОБ": REFINANCING_CREDIT_PURCHASE
+    "РЕФИН КРЕДИТ ПРИОБ БАНК": REFINANCING_CREDIT_PURCHASE_BANK
+    "РЕФИН КРЕДИТ СТРОИТ-ВО": REFINANCING_CREDIT_CONSTRUCTION
+    "РЕФИН КРЕДИТ СТРОИТ-ВО БАНК": REFINANCING_CREDIT_CONSTRUCTION_BANK
+  "ТипКодПол":
+    "1": MALE
+    "2": FEMALE
+  "ТипКодУД":
+    "12": RESIDENCE_PERMIT
+    "13": FOREIGN_RESIDENCE_PERMIT
+    "16": MILITARY_ID
+    "18": INTERIM_CERTIFICATE
+    "210": RUSSIAN_DIPLOMATIC_PASSPORT
+    "26": RUSSIAN_INTERNATIONAL_PASSPORT
+    "27": RUSSIAN_PASSPORT
+    "28": FOREIGN_PASSPORT
+    "29": MARINE_PASSPORT
+    "30": SEAMAN_PASSPORT
+    "31": TEMPORARY_RESIDENCE_PERMIT
+    "32": TEMPORARY_ASYLUM_CERTIFICATE
+    "33": REFUGEE_APPLICATION_CERTIFICATE
+    "34": RESIDENCE_REGISTRATION_CERTIFICATE
+    "35": STAY_REGISTRATION_CERTIFICATE
+    "36": SERVICE_PASSPORT
+    "37": RELEASE_CERTIFICATE
+    "39": MILITARY_ID_CARD
+    "511": OTHER
+    "6": BIRTH_CERTIFICATE
+    "688": USSR_PASSPORT
+    "689": USSR_INTERNATIONAL_PASSPORT
+    "690": OFFICER_CERTIFICATE
+    "691": TEMPORARY_ASYLUM_CERTIFICATE_OLD
+    "692": BIRTH_CERTIFICATE_FOREIGN
+    "693": RESERVE_OFFICER_MILITARY_ID_CARD
+    "706": TEMPORARY_MILITARY_ID_CARD
+    "9": REFUGEE_DOCUMENT
+    "93": DEATH_CERTIFICATE
+  "ТипКодФормаПредставительства":
+    "1": PARENT
+    "2": GUARDIAN
+    "3": CUSTODIAN
+  "ТипПол":
+    "Ж": FEMALE
+    "М": MALE
+  "ТипПричинаСнятияСРассмотрения":
+    "1": CERTIFICATE_ISSUED_BASED_ON_FZ_CHILD_BIRTH_DATA
+    "2": FALSE_INFORMATION_PROVIDED
+  "ТипСтатусПоМСК":
+    "ЖЕНЩИНА - СУПРУГА МУЖЧИНЫ, УСЫНОВИВШАЯ РЕБЕНКА (ДЕТЕЙ)": WOMAN_MANS_WIFE_ADOPTS_CHILDREN
+    "МАТЬ": MOTHER
+    "МУЖЧИНА - ЕДИНСТВЕННЫЙ РОДИТЕЛЬ": MAN_SINGLE_PARENT
+    "МУЖЧИНА - ЕДИНСТВЕННЫЙ УСЫНОВИТЕЛЬ": MAN_ONLY_ADOPTIVE_PARENT
+    "МУЖЧИНА - единственный усыновитель": MAN_ONLY_ADOPTIVE_PARENT
+    "МУЖЧИНА, ВОСПИТЫВАЮЩИЙ ДЕТЕЙ": MAN_RAISING_CHILDREN
+    "ОТЕЦ": FATHER
+    "РЕБЕНОК": CHILD
+  "ТипТипПредставителя":
+    "1": LEGAL_REPRESENTATIVE
+    "2": ATTORNEY
+  "ТипТипРодства":
+    "1": BIRTH
+    "2": ADOPTION
+  "ТипТипУД":
+    "ВИД НА ЖИТЕЛЬ": RESIDENCE_PERMIT
+    "ВОЕН БИЛЕТ ОЗ": RESERVE_OFFICER_MILITARY_ID_CARD
+    "ВОЕННЫЙ БИЛЕТ": MILITARY_ID
+    "ВРЕМ УДОСТ": INTERIM_CERTIFICATE
+    "ВРУДВБ": TEMPORARY_MILITARY_ID_CARD
+    "ДИППАСПОРТ РФ": RUSSIAN_DIPLOMATIC_PASSPORT
+    "ЗГПАСПОРТ": INTERNATIONAL_PASSPORT
+    "ЗГПАСПОРТ РФ": RUSSIAN_INTERNATIONAL_PASSPORT
+    "ИНПАСПОРТ": FOREIGN_PASSPORT
+    "ПАСПОРТ": PASSPORT
+    "ПАСПОРТ МОРФЛТ": MARINE_PASSPORT
+    "ПАСПОРТ МОРЯКА": SEAMAN_PASSPORT
+    "ПАСПОРТ РОССИИ": RUSSIAN_PASSPORT
+    "ПРОЧЕЕ": OTHER
+    "РАЗРВР": TEMPORARY_RESIDENCE_PERMIT
+    "СВВРУБ": TEMPORARY_ASYLUM_CERTIFICATE
+    "СВИД БЕЖЕНЦА": REFUGEE_CERTIFICATE
+    "СВИД О РОЖД": BIRTH_CERTIFICATE
+    "СВРЖИН": BIRTH_CERTIFICATE_FOREIGN
+    "СЛУЖ ПАСПОРТ": SERVICE_PASSPORT
+    "СПРАВКА ОБ ОСВ": RELEASE_CERTIFICATE
+    "УДОСТ БЕЖЕНЦА": REFUGEE_DOCUMENT
+    "УДОСТ ЛИЧН ВОЕН": MILITARY_ID_CARD
+    "УДОСТ ОФИЦЕРА": OFFICER_CERTIFICATE
+
+conflicts:
+  elements:
+    "Адрес":
+      chosen: address
+      chosenCount: 268
+      alternatives:
+        - javaName: objectAddress
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+        - javaName: landPlotAddress
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+        - javaName: russianStructuralAddress
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "АдресЭлПочты":
+      chosen: emailAddress
+      chosenCount: 80
+      alternatives:
+        - javaName: email
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "БИК":
+      chosen: bik
+      chosenCount: 34
+      alternatives:
+        - javaName: bankIdentificationCode
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+        - javaName: bankIdentifierCode
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "Банк":
+      chosen: recipientPersonBank
+      chosenCount: 16
+      alternatives:
+        - javaName: recipientOrganizationBank
+          count: 16
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+        - javaName: bank
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "БезНомера":
+      chosen: withoutNumber
+      chosenCount: 1536
+      alternatives:
+        - javaName: numberless
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "Вид":
+      chosen: documentType
+      chosenCount: 781
+      alternatives:
+        - javaName: type
+          count: 167
+          sources:
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-01-01.xjb
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-04-04.xjb
+        - javaName: objectType
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    "ВидРасходов":
+      chosen: expensesType
+      chosenCount: 564
+      alternatives:
+        - javaName: expensesKind
+          count: 15
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "Владелец":
+      chosen: certificateHolder
+      chosenCount: 42
+      alternatives:
+        - javaName: owner
+          count: 16
+          sources:
+            - src/main/resources/xjb/format_album_types_2018-12-07.xjb
+            - src/main/resources/xjb/format_album_types_2023-04-03.xjb
+    "Гражданство":
+      chosen: citizenship
+      chosenCount: 48
+      alternatives:
+        - javaName: nationality
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "Дата":
+      chosen: date
+      chosenCount: 3734
+      alternatives:
+        - javaName: issueDate
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+        - javaName: transferringDate
+          count: 15
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ДатаВремя":
+      chosen: documentPreparationTimeDate
+      chosenCount: 6
+      alternatives:
+        - javaName: timeDate
+          count: 3
+          sources:
+            - src/main/resources/xjb/format_album_types_2017-08-21.xjb
+    "ДатаПодачи":
+      chosen: applicationDate
+      chosenCount: 34
+      alternatives:
+        - javaName: requestDate
+          count: 9
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2019-07-08.xjb
+    "ДоговорРанее":
+      chosen: loanAgreementEarlier
+      chosenCount: 8
+      alternatives:
+        - javaName: previousContract
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ДокументПодтверждающийПолномочия":
+      chosen: authorityConfirmingDocument
+      chosenCount: 21
+      alternatives:
+        - javaName: confirmingDocument
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "ДокументПодтверждающийПраво":
+      chosen: rightConfirmingDocument
+      chosenCount: 38
+      alternatives:
+        - javaName: landPlotRightConfirmingDocument
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    "ДополнительныеСведения":
+      chosen: additionalDetails
+      chosenCount: 386
+      alternatives:
+        - javaName: additionalInformation
+          count: 382
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    "ИНН":
+      chosen: inn
+      chosenCount: 73
+      alternatives:
+        - javaName: individualTaxpayerNumber
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+        - javaName: taxpayerIdentificationNumber
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "КБК":
+      chosen: kbk
+      chosenCount: 7
+      alternatives:
+        - javaName: budgetaryClassificationCode
+          count: 3
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+    "КПП":
+      chosen: kpp
+      chosenCount: 39
+      alternatives:
+        - javaName: industrialEnterprisesClassifier
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "КСчет":
+      chosen: bankCorrespondentAccount
+      chosenCount: 3
+      alternatives:
+        - javaName: correspondentAccount
+          count: 3
+          sources:
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "Код":
+      chosen: code
+      chosenCount: 6825
+      alternatives:
+        - javaName: documentCode
+          count: 765
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+        - javaName: type
+          count: 7
+          sources:
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "КодПодразделения":
+      chosen: departmentCode
+      chosenCount: 38
+      alternatives:
+        - javaName: divisionCode
+          count: 23
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "Наименование":
+      chosen: title
+      chosenCount: 6828
+      alternatives:
+        - javaName: documentTitle
+          count: 1548
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+        - javaName: name
+          count: 157
+          sources:
+            - src/main/resources/xjb/docs/loan_information_request_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/legalAgentDetailsType_2024-01-01.xjb
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+        - javaName: permissionTitle
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+        - javaName: bankName
+          count: 21
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_rights_availability_notification_2024-04-04.xjb
+    "Номер":
+      chosen: number
+      chosenCount: 3840
+      alternatives:
+        - javaName: requestNumber
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-01-01.xjb
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-04-04.xjb
+        - javaName: documentNumber
+          count: 38
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    "ОГРН":
+      chosen: mainStateRegistrationNumber
+      chosenCount: 9
+      alternatives:
+        - javaName: ogrn
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ОКТМО":
+      chosen: oktmo
+      chosenCount: 7
+      alternatives:
+        - javaName: allRussianMunicipalUnitsTerritoriesClassifier
+          count: 3
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+    "Организация":
+      chosen: creditOrganization
+      chosenCount: 21
+      alternatives:
+        - javaName: organization
+          count: 16
+          sources:
+            - src/main/resources/xjb/docs/loan_information_request_2024-01-01.xjb
+    "Пол":
+      chosen: gender
+      chosenCount: 48
+      alternatives:
+        - javaName: sex
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "Получатель":
+      chosen: loanTaker
+      chosenCount: 21
+      alternatives:
+        - javaName: recipientPerson
+          count: 16
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+        - javaName: recipientOrganization
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+    "ПрилагаемыйДокумент":
+      chosen: attachedDocument
+      chosenCount: 90
+      alternatives:
+        - javaName: additionalDocument
+          count: 23
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "ПричинаОтказа":
+      chosen: refusalReason
+      chosenCount: 57
+      alternatives:
+        - javaName: reason
+          count: 19
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+    "РСчет":
+      chosen: currentAccount
+      chosenCount: 23
+      alternatives:
+        - javaName: accountNumber
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+        - javaName: recipientCurrentAccount
+          count: 3
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+    "Район":
+      chosen: area
+      chosenCount: 23
+      alternatives:
+        - javaName: district
+          count: 23
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "Распоряжение":
+      chosen: maternalFamilyCapitalDisposal
+      chosenCount: 45
+      alternatives:
+        - javaName: maternalFamilyCapitalUsingOrder
+          count: 42
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    "Реквизиты":
+      chosen: requisites
+      chosenCount: 2069
+      alternatives:
+        - javaName: documentRequisites
+          count: 23
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "РеквизитыДоговора":
+      chosen: contractRequisites
+      chosenCount: 1554
+      alternatives:
+        - javaName: requisites
+          count: 8
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+        - javaName: ContractRequisites
+          count: 8
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+    "РеквизитыЭП":
+      chosen: requisitesEP
+      chosenCount: 23
+      alternatives:
+        - javaName: electronicSignatureRequisitesType
+          count: 6
+          sources:
+            - src/main/resources/xjb/format_album_types_2018-12-07.xjb
+            - src/main/resources/xjb/format_album_types_2023-04-03.xjb
+    "Сведения":
+      chosen: educationMaternalFamilyCapitalUsingStatementDetails
+      chosenCount: 188
+      alternatives:
+        - javaName: disableChildGoodsMaternalFamilyCapitalUsingStatement
+          count: 188
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-04-11.xjb
+    "СлужебнаяИнформация":
+      chosen: electronicDocumentServiceInformation
+      chosenCount: 77
+      alternatives:
+        - javaName: serviceInformationType
+          count: 9
+          sources:
+            - src/main/resources/xjb/docs/application_approval_notification_2024-04-04.xjb
+    "Составитель":
+      chosen: notPensionFundDrafter
+      chosenCount: 30
+      alternatives:
+        - javaName: notSocialFundDrafter
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+    "СтатусПоМСК":
+      chosen: statusMsk
+      chosenCount: 45
+      alternatives:
+        - javaName: maternalFamilyCapitalStatus
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2022-10-07.xjb
+    "Сумма":
+      chosen: amount
+      chosenCount: 2582
+      alternatives:
+        - javaName: transferringAmount
+          count: 15
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2022-11-23.xjb
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ТОСФР":
+      chosen: territorialSocialFundAuthority
+      chosenCount: 42
+      alternatives:
+        - javaName: territorialSocialFund
+          count: 17
+          sources:
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-01-01.xjb
+        - javaName: territorialPensionFundName
+          count: 16
+          sources:
+            - src/main/resources/xjb/docs/loan_information_request_2024-01-01.xjb
+    "Телефон":
+      chosen: phone
+      chosenCount: 148
+      alternatives:
+        - javaName: phoneNumber
+          count: 23
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "Тип":
+      chosen: type
+      chosenCount: 62
+      alternatives:
+        - javaName: agentKind
+          count: 23
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+        - javaName: agentType
+          count: 21
+          sources:
+            - src/main/resources/xjb/legalAgentDetailsType_2024-01-01.xjb
+    "ТипОбращения":
+      chosen: applicationForm
+      chosenCount: 18
+      alternatives:
+        - javaName: requestType
+          count: 9
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2019-07-08.xjb
+        - javaName: applicationType
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+    "УдостоверяющийДокумент":
+      chosen: identityDocumentDetails
+      chosenCount: 192
+      alternatives:
+        - javaName: identityDocument
+          count: 66
+          sources:
+            - src/main/resources/xjb/legalAgentDetailsType_2024-01-01.xjb
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+    "ФБМСЭ":
+      chosen: medicalSocialExpertiseFederalStateInstitutionName
+      chosenCount: 193
+      alternatives:
+        - javaName: medicalSocialExpertiseFederalStateInstitution
+          count: 189
+          sources:
+            - src/main/resources/xjb/docs/mat_cap_cash_disposal_statement_2024-01-01.xjb
+    "ФИОДоговор":
+      chosen: contractPersonFullName
+      chosenCount: 9
+      alternatives:
+        - javaName: contractPersonName
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ФИОРебенка":
+      chosen: childFullName
+      chosenCount: 10
+      alternatives:
+        - javaName: childPersonName
+          count: 7
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ЦельИспользования":
+      chosen: loanPurpose
+      chosenCount: 70
+      alternatives:
+        - javaName: fundsLoanUsingPurpose
+          count: 45
+          sources:
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-04-04.xjb
+    "ЦельПредоставления":
+      chosen: fundsLoanUsingPurpose
+      chosenCount: 70
+      alternatives:
+        - javaName: loanPurpose
+          count: 45
+          sources:
+            - src/main/resources/xjb/docs/loan_agreement_information_2024-04-04.xjb
+    "ЮрАдрес":
+      chosen: legalAddress
+      chosenCount: 32
+      alternatives:
+        - javaName: legalOrganizationAddress
+          count: 9
+          sources:
+            - src/main/resources/xjb/uni_types_2017-08-21.xjb
+            - src/main/resources/xjb/uni_types_2022-07-14.xjb
+            - src/main/resources/xjb/uni_types_2023-04-03.xjb
+    "ЮридическоеЛицо":
+      chosen: legalEntity
+      chosenCount: 23
+      alternatives:
+        - javaName: juridicalPerson
+          count: 14
+          sources:
+            - src/main/resources/xjb/legalAgentDetailsType_2024-01-01.xjb
+  complexTypes:
+    "ТипДокументПодтверждающийПраво":
+      chosen: possessionRightConfirmingDocumentType
+      chosenCount: 3
+      alternatives:
+        - javaName: RightConfirmingDocumentType
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ТипРеквизитыДоговора":
+      chosen: ContractDetailsType
+      chosenCount: 9
+      alternatives:
+        - javaName: ContractRequisitesType
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_order_types_2024-01-01.xjb
+    "ТипСлужебнаяИнформация":
+      chosen: ElectronicDocumentServiceInformationType
+      chosenCount: 6
+      alternatives:
+        - javaName: ServiceInformationType
+          count: 3
+          sources:
+            - src/main/resources/xjb/format_album_types_2017-08-21.xjb
+    "ТипСлужебнаяИнформацияЗМСК":
+      chosen: MaternalFamilyCapitalApplicationServiceInformationType
+      chosenCount: 9
+      alternatives:
+        - javaName: MaternalFamilyCapitalStatementServiceInformationType
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2019-07-08.xjb
+    "ТипСлужебнаяИнформацияЗМСК-ЭП":
+      chosen: ElectronicSignatureMaternalFamilyCapitalStatementServiceInformationType
+      chosenCount: 3
+      alternatives:
+        - javaName: MaternalFamilyCapitalApplicationServiceInformationEPType
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb
+    "ТипСлужебнаяИнформацияМСК-ЭП":
+      chosen: ElectronicSignatureMaternalFamilyCapitalServiceInformationType
+      chosenCount: 3
+      alternatives:
+        - javaName: MaternalFamilyCapitalServiceInformationEPType
+          count: 3
+          sources:
+            - src/main/resources/xjb/mat_cap_types_2024-01-01.xjb

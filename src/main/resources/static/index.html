@@ -46,6 +46,7 @@
             <label for="xmlInput">XML-документ</label>
             <div class="toolbar-actions">
                 <button type="button" id="loadSampleBtn" class="secondary">Валид</button>
+                <button type="button" id="generateXjbBtn" class="secondary">XJB</button>
                 <button type="button" id="clearXmlBtn" class="secondary">Очистить</button>
                 <button type="button" id="formatXmlBtn" class="secondary">Форматировать</button>
                 <button type="button" id="validateBtn">Проверить</button>
@@ -80,6 +81,20 @@
                 </tr>
                 </thead>
                 <tbody id="errorsBody"></tbody>
+            </table>
+        </div>
+        <div id="xjbWarningsBlock" class="hidden">
+            <p class="errors-hint">Имена не найдены в словаре — подставлены автоматически (транслитерация). Проверьте и при необходимости поправьте в XJB или добавьте в <code>vocabulary.yml</code>.</p>
+            <table class="errors-table xjb-warnings-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Имя в XSD</th>
+                    <th>Сгенерировано</th>
+                    <th>Тип binding</th>
+                </tr>
+                </thead>
+                <tbody id="xjbWarningsBody"></tbody>
             </table>
         </div>
     </section>
